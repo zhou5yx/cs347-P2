@@ -52,7 +52,11 @@ main {
 body {
   font-family: Montserrat;
   font-weight: 100;
-  color: #A8B2B9;
+  /**color: #A8B2B9;*/
+  width: 80%;
+  margin: auto;
+  background-color: #FCFBFC;
+
 }
 
 
@@ -101,11 +105,6 @@ main {
     box-shadow: inset 10px 0px 17px -13px var(--red);
   }
 }
-
-/**.copyright {
-  font-size: 0.7rem;
-  font-weight: 400;
-}*/
 
 .calendar {
   background-color: white;
@@ -156,4 +155,24 @@ main {
   color: var(--red);
   font-weight: 500;
   box-shadow: 1px 2px 30px -5px var(--red);
+}
+
+/*placeholder banner*/
+#profile{
+  padding: 10px;
+  margin-bottom: 5%;
+}
+
+#banner{
+  width: 100%;
+  background-color: #450084;
+}
+
+#banner h1{
+  color: white;
+  text-align: center;
+}
+
+#p_img{
+  border-radius: 50%;
 }
