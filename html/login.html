@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
   </head>
   <body>
+    <div id = "banner"><h1>JMU COMPUTER SCIENCE<h1></div>
     <h1>Log In or Register</h1>
     <div id="login">
       <h2>Log In</h2>
@@ -16,7 +17,7 @@
         <input type="text" id="dukes-id">
         <label for="password">Password: </label>
         <input type="text" id="password">
-        <input type="submit">
+        <input type="submit" value="Login">
       </form>
     </div>
     <div id="register">
@@ -32,11 +33,11 @@
         <input type="text" id="password-register">
         <label for="password-confirm">Password Confirmation: </label>
         <input type="text" id="password-confirm">
-        <label for="student-button">Student</label>
         <input type="radio" value="student" id="student-button" name="account-type">
-        <label for="ta-button">TA</label>
+        <label for="student-button">Student</label>
         <input type="radio" value="ta" id="ta-button" name="account-type">
-        <input type="submit">
+        <label for="ta-button">TA</label>
+        <input type="submit" value="Register">
       </form>
     </div>
   </body>
