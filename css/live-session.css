@@ -1,0 +1,23 @@
+.top-div {
+  display: inline;
+}
+
+.session-title {
+  float: left;
+}
+
+.question-filter {
+  float: right;
+  margin-right: 20%;
+}
+
+.questions-table {
+  width: 95%;
+  margin: auto;
+}
+
+#answer-question {
+  display: block;
+  position: absolute;
+  margin-left: 5%;
+}
