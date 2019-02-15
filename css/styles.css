@@ -4,12 +4,6 @@
   height: 100vh;
 }
 
-/* SIDEBAR */
-
-main {
-  padding: 48px;
-}
-
 /* MAIN */
 
 .toolbar{
@@ -163,16 +157,62 @@ main {
   margin-bottom: 5%;
 }
 
-#banner{
+.banner{
   width: 100%;
   background-color: #450084;
 }
 
-#banner h1{
+.banner h1{
   color: white;
   text-align: center;
 }
 
 #p_img{
   border-radius: 50%;
+}
+
+/*text-input labels*/
+input[type=text] {
+  width: 25%;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=text]:focus {
+  border: 2px solid #FCFBFC;
+}
+
+
+/**/
+#login{
+  width: 50%;
+}
+
+#register{
+  width: 50%;
+}
+
+#login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+#login-form input[type=submit]{
+   width: 10%;
+   margin-top: 1%;
+}
+
+#register-form{
+  display: flex;
+  flex-direction: column;
+}
+
+#register-form input[type=submit]{
+  margin-top: 2%;
+  width: 12%;
+}
+
+.container{
+  display: flex;
+  flex-flow: row;
 }

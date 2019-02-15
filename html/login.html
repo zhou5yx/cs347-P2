@@ -8,12 +8,13 @@
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
   </head>
   <body>
-    <div id = "banner"><h1>JMU COMPUTER SCIENCE<h1></div>
+    <div class = "banner"><h1>JMU COMPUTER SCIENCE<h1></div>
     <h1>Log In or Register</h1>
+    <div class = "container">
     <div id="login">
       <h2>Log In</h2>
       <form action="" id="login-form">
-        <label for="dukes-id">Dukes ID: </label>
+        <label for="dukes-id">eID: </label>
         <input type="text" id="dukes-id">
         <label for="password">Password: </label>
         <input type="text" id="password">
@@ -27,18 +28,21 @@
         <input type="text" id="firstname">
         <label for="lastname">Last Name</label>
         <input type="text" id="lastname">
-        <label for="dukes-id-register">Dukes ID: </label>
+        <label for="dukes-id-register">eID: </label>
         <input type="text" id="dukes-id-register">
         <label for="password-register">Password: </label>
         <input type="text" id="password-register">
         <label for="password-confirm">Password Confirmation: </label>
         <input type="text" id="password-confirm">
-        <input type="radio" value="student" id="student-button" name="account-type">
-        <label for="student-button">Student</label>
-        <input type="radio" value="ta" id="ta-button" name="account-type">
-        <label for="ta-button">TA</label>
+        <div id ="radio-buttons">
+          <input type="radio" value="student" id="student-button" name="account-type">
+          <label for="student-button">Student</label>
+          <input type="radio" value="ta" id="ta-button" name="account-type">
+          <label for="ta-button">TA</label>
+        </div>
         <input type="submit" value="Register">
       </form>
     </div>
+  </div>
   </body>
 </html>
