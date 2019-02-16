@@ -46,11 +46,9 @@
 body {
   font-family: Montserrat;
   font-weight: 100;
-  /**color: #A8B2B9;*/
   width: 80%;
   margin: auto;
   background-color: #FCFBFC;
-
 }
 
 
@@ -169,6 +167,9 @@ main {
 
 #p_img{
   border-radius: 50%;
+  border: 2px;
+  border-style: solid;
+  border-color: #AD9C65
 }
 
 /*text-input labels*/
@@ -182,6 +183,31 @@ input[type=text]:focus {
   border: 2px solid #FCFBFC;
 }
 
+/* navbar */
+.navigation-bar {
+  list-style-type: none;
+  top: 0;
+  margin: 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #CBB677;
+}
+
+.navigation-bar li {
+  display: inline;
+}
+
+.navigation-bar li a {
+  color: white;
+  text-align: center;
+  font-size: 12pt;
+  padding: 20px 40px;
+  text-decoration: none;
+}
+
+.navigation-bar li a:hover {
+   background-color: #AD9C65;
+}
 
 /**/
 #login{
@@ -197,7 +223,7 @@ input[type=text]:focus {
     flex-direction: column;
 }
 
-#login-form input[type=submit]{
+#login-form button[type=submit]{
    width: 10%;
    margin-top: 1%;
 }
