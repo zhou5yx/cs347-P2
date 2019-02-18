@@ -16,9 +16,9 @@
       <h2>Log In</h2>
       <form action="" id="login-form">
         <label for="dukes-id">eID: </label>
-        <input type="text" id="dukes-id">
+        <input type="text" id="dukes-id" required>
         <label for="password">Password: </label>
-        <input type="text" id="password">
+        <input type="text" id="password" required>
         <div class="login-filter">
           <select id="login-filter">
             <option value="ta">TA</option>
@@ -32,15 +32,15 @@
       <h2>Register</h2>
       <form action="ta-setup.html" id="register-form">
         <label for="firstname">First Name: </label>
-        <input type="text" id="firstname">
+        <input type="text" id="firstname" required>
         <label for="lastname">Last Name</label>
-        <input type="text" id="lastname">
+        <input type="text" id="lastname" required>
         <label for="dukes-id-register">eID: </label>
-        <input type="text" id="dukes-id-register">
+        <input type="text" id="dukes-id-register" required>
         <label for="password-register">Password: </label>
-        <input type="text" id="password-register">
+        <input type="text" id="password-register" required>
         <label for="password-confirm">Password Confirmation: </label>
-        <input type="text" id="password-confirm">
+        <input type="text" id="password-confirm" required>
         <div id ="radio-buttons">
           <input type="radio" value="student" id="student-button" name="account-type">
           <label for="student-button">Student</label>
