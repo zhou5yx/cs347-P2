@@ -1,0 +1,85 @@
+
+
+
+/* COSMETIC STYLING */
+body {
+  font-family: Montserrat;
+  font-weight: 100;
+  width: 80%;
+  margin: auto;
+  background-color: #FCFBFC;
+}
+
+/*placeholder banner*/
+#profile{
+  padding: 10px;
+  margin-bottom: 5%;
+}
+
+.banner{
+  margin-top: -20px;
+  width: 100%;
+  background-color: #450084;
+}
+
+.banner h1{
+  color: white;
+  text-align: center;
+}
+
+#p_img{
+  border-radius: 50%;
+  border: 1px;
+  border-style: solid;
+  border-color: #AD9C65;
+  box-shadow: 1px 2px 15px -5px #AD9C65;
+  width: 68%;
+  height:24%;
+  margin-bottom: 10px;
+
+}
+
+/*text-input labels*/
+input[type=text] {
+  width: 25%;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=text]:focus {
+  border: 2px solid #FCFBFC;
+}
+
+/* navbar */
+.navigation-bar {
+  list-style-type: none;
+  margin-top: -20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width:100%;
+  background-color: #CBB677;
+}
+
+.navigation-bar li {
+  display: inline;
+}
+
+.navigation-bar li a {
+  color: white;
+  text-align: center;
+  font-size: 12pt;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-decoration: none;
+}
+
+.navigation-bar li a:hover {
+   background-color: #AD9C65;
+}
+
+#profile{
+  margin-top: -20px;
+  padding-top: 0;
+}

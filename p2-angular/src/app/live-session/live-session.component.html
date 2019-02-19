@@ -1,0 +1,76 @@
+<ul class="navigation-bar">
+  <li><a routerLink="/profile/1">Profile</a></li>
+  <li><a routerLink="/session">Live Session</a></li>
+</ul>
+<div class="top-div">
+  <h1 class="session-title">Current Questions</h1>
+  <div class="question-filter">
+    <label for="question-filter-student">Filter:</label>
+    <select id="question-filter-student">
+      <option value="pa1">PA1</option>
+      <option value="pa2">PA2</option>
+      <option value="lab1">Lab 1</option>
+    </select>
+  </div>
+</div>
+<div class="questions-table">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Asked By</th>
+        <th>Class</th>
+        <th>Time</th>
+        <th>Ups</th>
+        <!-- <th>Answer</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>How do I fix this bug?</td>
+        <td>Jeremiah Tinklewinkers</td>
+        <td>CS149</td>
+        <td>5:00 pm</td>
+        <td>5 <span class="glyphicon glyphicon-chevron-up"></span></td>
+        <!-- <td><textarea name="question1" id="question1" cols="30" rows="5">
+          Your for loop is going one iteration too many.
+        </textarea></td> -->
+      </tr>
+      <tr>
+        <td>How do I write a Java Swing GUI?</td>
+        <td>Harold C. Jaboobalop</td>
+        <td>CS159</td>
+        <td>6:00 pm</td>
+        <td>2<span class="glyphicon glyphicon-chevron-up"></span></td>
+        <!-- <td><textarea name="question2" id="question2" cols="30" rows="5">
+          Lord help you.
+        </textarea></td> -->
+      </tr>
+      <tr>
+        <td>My eclipse keeps crashing?</td>
+        <td>Helga Welga</td>
+        <td>CS149</td>
+        <td>7:00 pm</td>
+        <td>5<span class="glyphicon glyphicon-chevron-up"></span></td>
+        <!-- <td><textarea name="question3" id="question3" cols="30" rows="5">
+          Redownloaded eclipse.
+        </textarea></td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="answer-question">
+  <h2>Ask a Question</h2>
+  <form action="">
+    <div>
+      <label for="question-title">Title:</label>
+      <input type="text" id="question-title">
+    </div>
+    <div>
+      <div>
+        <label for="question-description">Description:</label>
+      </div>
+      <textarea name="question-description" id="question-description" cols="30" rows="10"></textarea>
+    </div>
+  </form>
+</div>
