@@ -1,41 +1,50 @@
-<h1>Login</h1>
-<div class="container">
-<div id="login">
-  <h2>Log In</h2>
-  <form action="" id="login-form">
-    <label for="dukes-id">eID: </label>
-    <input type="text" id="dukes-id" required>
-    <label for="password">Password: </label>
-    <input type="text" id="password" required>
-    <div class="login-filter">
-      <select id="login-filter">
-        <option value="ta">TA</option>
-        <option value="student">Student</option>
-      </select>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
     </div>
-    <input type="submit" value="Login" >
-  </form>
-</div>
-<div id="register">
-  <h2>Register</h2>
-  <form action="ta-setup.html" id="register-form">
-    <label for="firstname">First Name: </label>
-    <input type="text" id="firstname" required>
-    <label for="lastname">Last Name</label>
-    <input type="text" id="lastname" required>
-    <label for="dukes-id-register">eID: </label>
-    <input type="text" id="dukes-id-register" required>
-    <label for="password-register">Password: </label>
-    <input type="text" id="password-register" required>
-    <label for="password-confirm">Password Confirmation: </label>
-    <input type="text" id="password-confirm" required>
-    <div id ="radio-buttons">
-      <input type="radio" value="student" id="student-button" name="account-type">
-      <label for="student-button">Student</label>
-      <input type="radio" value="ta" id="ta-button" name="account-type">
-      <label for="ta-button">TA</label>
+    <div id="login-container" *ngIf="login">
+      <form action="" id="login-form">
+        <input type="text" id="dukes-id" class="fadeIn second"
+          name="login" placeholder="JMU e-id" required>
+        <input type="text" id="password" class="fadeIn third"
+          name="login" placeholder="password" required>
+        <div class="login-filter">
+          <select id="login-filter">
+            <option value="ta">TA</option>
+            <option value="student">Student</option>
+          </select>
+        </div>
+        <input type="submit" class="fadeIn fourth" value="Log In">
+        <button (click)="login = !login">Register</button>
+      </form>
     </div>
-    <input type="submit" value="Register">
-  </form>
-</div>
+    <div id="register-container" *ngIf="!login">
+      <form action="ta-setup.html" id="register-form">
+        <input type="text" id="firstname" name="firstname" value="firstname" required>
+        <input type="text" id="lastname" name="lastname" value="lastname" required>
+        <input type="text" id="dukes-id-register" name="eid" value="JMU e-id" required>
+        <input type="text" id="password-register" name="password" value="password" required>
+        <input type="text" id="password-confirm" name="password-confirm" value="confirm password" required>
+        <div id ="radio-buttons">
+          <input type="radio" value="student" id="student-button" name="account-type">
+          <label for="student-button">Student</label>
+          <input type="radio" value="ta" id="ta-button" name="account-type">
+          <label for="ta-button">TA</label>
+        </div>
+        <input type="submit" class="fadeIn fourth" value="Register">
+        <button (click)="login = !login">Login</button>
+      </form>
+    </div>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
 </div>

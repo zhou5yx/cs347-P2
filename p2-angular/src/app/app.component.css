@@ -1,0 +1,10 @@
+.banner{
+  padding-bottom: 4px;
+  width: 100%;
+  background-color: #450084;
+}
+
+.banner h1{
+  color: white;
+  text-align: center;
+}

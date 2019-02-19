@@ -1,26 +1,6 @@
-.wrapper {
-  width: 75%; /* unnecessary, but let's keep things consistent */
-  margin:auto;
-  height: 110vh;
-  margin-top: -20px;
-}
-
-#wrap-container{
-  display: flex;
-  flex-direction: row;
-}
-
-.wrapper h2{
-  text-align: right;
-}
 
 .current-month{
   font-size: 18px;
-}
-
-.container{
-  display: flex;
-  flex-flow: row;
 }
 
 tr td {
