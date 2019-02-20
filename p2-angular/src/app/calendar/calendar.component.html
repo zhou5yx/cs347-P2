@@ -2,8 +2,8 @@
 <main>
   <div class="toolbar">
     <div class="toggle">
-      <div class="toggle__option" (click)="weekView = true">week</div>
-      <div class="toggle__option toggle__option--selected" (click)="weekView = false">month</div>
+      <div [ngClass]="{'toggle__option': !weekView, 'toggle__option--selected': weekView }" (click)="weekView = true">week</div>
+      <div [ngClass]="{'toggle__option': weekView, 'toggle__option--selected': !weekView}"  (click)="weekView = false">month</div>
     </div>
     <div class="current-month">February 2019</div>
     <div class="toggle">

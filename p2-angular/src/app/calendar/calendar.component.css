@@ -93,10 +93,15 @@ main {
     border-bottom-left-radius: 0;
 }
 .toggle__option--selected{
+
   border-color: white;
   background-color: white;
   font-weight: 500;
-  box-shadow: 1px 2px 15px -5px #450084; /**var(--red);*/
+  box-shadow: 1px 2px 15px -5px #450084;
+  padding: 16px;
+  border: 1px solid #e1e1e1;
+  text-transform: capitalize;
+  border-radius: 8px;
 }
 
 .toggle__option:hover{
@@ -104,4 +109,5 @@ main {
   background-color: white;
   font-weight: 500;
   box-shadow: 1px 2px 15px -5px #450084;
+
 }
