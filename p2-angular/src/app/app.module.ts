@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { LiveSessionComponent } from './live-session/live-session.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ProfileComponent } from './profile/profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,6 +26,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

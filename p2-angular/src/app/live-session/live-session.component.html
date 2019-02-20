@@ -14,7 +14,63 @@
   </div>
 </div>
 <div class="questions-table">
-  <table class="table table-striped">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          How do I fix this bug?
+        </mat-panel-title>
+        <mat-panel-description>
+          Jeremiah Tinklewinkers at 5:00pm
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <h2>Description</h2>
+      <p>There is a bug, a very bad bug, and it is under my rug.
+      Can you please help me? I don't know what to do!</p>
+      <h2>Student Answer</h2>
+      <tr><textarea name="student1" id="student1" cols="50" rows="10"></textarea></tr>
+      <h2>TA Answer</h2>
+      <tr><textarea name="ta1" id="ta1" cols="50" rows="10"></textarea></tr>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          How do I write a Java Swing GUI?
+        </mat-panel-title>
+        <mat-panel-description>
+          Harold C. Jaboobalop at 6:00 pm
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <h2>Description</h2>
+      <p>You have to start by writing panels. Then after that you have to
+      do a layout. Then you should add buttons. Then you should make some
+      events like click and stuff. Good luck!</p>
+      <h2>Student Answer</h2>
+      <tr><textarea name="student2" id="student2" cols="50" rows="10"></textarea></tr>
+      <h2>TA Answer</h2>
+      <tr><textarea name="ta2" id="ta2" cols="50" rows="10"></textarea></tr>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          My eclipse keeps crashing?
+        </mat-panel-title>
+        <mat-panel-description>
+          Helga Welga at 7:00 pm
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <h2>Description</h2>
+      <p>I tried to open by 149 lab in eclipse but it crashed and now
+      my screen is displaying a laughing skull and crossbones. What gives?</p>
+      <h2>Student Answer</h2>
+      <tr><textarea name="student3" id="student3" cols="50" rows="10"></textarea></tr>
+      <h2>TA Answer</h2>
+      <tr><textarea name="ta3" id="ta3" cols="50" rows="10">This is actually
+      a common problem in eclipse and they are working on a fix now. If you get up
+      and do 3 spins then sit back down you should be good.</textarea></tr>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- <table class="table table-striped">
     <thead>
       <tr>
         <th>Question</th>
@@ -23,9 +79,9 @@
         <th>Time</th>
         <th>Ups</th>
         <!-- <th>Answer</th> -->
-      </tr>
-    </thead>
-    <tbody>
+      <!-- </tr>
+    </thead> -->
+    <!-- <tbody>
       <tr>
         <td>How do I fix this bug?</td>
         <td>Jeremiah Tinklewinkers</td>
@@ -35,29 +91,29 @@
         <!-- <td><textarea name="question1" id="question1" cols="30" rows="5">
           Your for loop is going one iteration too many.
         </textarea></td> -->
-      </tr>
-      <tr>
-        <td>How do I write a Java Swing GUI?</td>
+      <!-- </tr>
+      <tr> -->
+        <!-- <td>How do I write a Java Swing GUI?</td>
         <td>Harold C. Jaboobalop</td>
         <td>CS159</td>
         <td>6:00 pm</td>
-        <td>2<span class="glyphicon glyphicon-chevron-up"></span></td>
+        <td>2<span class="glyphicon glyphicon-chevron-up"></span></td> -->
         <!-- <td><textarea name="question2" id="question2" cols="30" rows="5">
           Lord help you.
         </textarea></td> -->
-      </tr>
+      <!-- </tr>
       <tr>
         <td>My eclipse keeps crashing?</td>
         <td>Helga Welga</td>
         <td>CS149</td>
         <td>7:00 pm</td>
-        <td>5<span class="glyphicon glyphicon-chevron-up"></span></td>
+        <td>5<span class="glyphicon glyphicon-chevron-up"></span></td> -->
         <!-- <td><textarea name="question3" id="question3" cols="30" rows="5">
           Redownloaded eclipse.
         </textarea></td> -->
-      </tr>
+      <!-- </tr>
     </tbody>
-  </table>
+  </table> -->
 </div>
 <div id="answer-question">
   <h2>Ask a Question</h2>
