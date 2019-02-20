@@ -4,50 +4,54 @@
 </ul>
 <div id="wrap-container">
   <div id="profile">
+    <div class="student-profile" *ngIf="showStudent">
     <h2>Student Profile</h2>
-    <table id="student-table">
-      <tr>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwQCm9PbjRcwixwQERgE88we7n1e72OriAvpd2UNN3Q3UHvtp1Q" alt ="profile_img" id="p_img">
-      </tr>
-      <tr>
-        <td>Name:</td>
-        <td>ABCD</td>
-      </tr>
-      <tr>
-        <td>Role:</td>
-        <td>Student</td>
-      </tr>
-      <tr>
-        <td>Semester:</td>
-        <td>Spring 2019</td>
-      </tr>
-      <tr>
-        <td>Courses:</td>
-        <td>CS 149</td>
-      </tr>
-    </table>
-    <h2>TA Profile</h2>
-    <table id="ta-table">
-      <tr>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwQCm9PbjRcwixwQERgE88we7n1e72OriAvpd2UNN3Q3UHvtp1Q" alt ="profile_img" id="p_img">
-      </tr>
-      <tr>
-        <td>Name:</td>
-        <td>Dr. TA</td>
-      </tr>
-      <tr>
-        <td>Role:</td>
-        <td>TA</td>
-      </tr>
-      <tr>
-        <td>Semester: </td>
-        <td> Spring 2019</td>
-      </tr>
-      <tr>
-        <td>Courses:</td>
-        <td>CS 149</td>
-      </tr>
-    </table>
+      <table id="student-table">
+        <tr>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwQCm9PbjRcwixwQERgE88we7n1e72OriAvpd2UNN3Q3UHvtp1Q" alt ="profile_img" id="p_img">
+        </tr>
+        <tr>
+          <td>Name:</td>
+          <td>ABCD</td>
+        </tr>
+        <tr>
+          <td>Role:</td>
+          <td>Student</td>
+        </tr>
+        <tr>
+          <td>Semester:</td>
+          <td>Spring 2019</td>
+        </tr>
+        <tr>
+          <td>Courses:</td>
+          <td>CS 149</td>
+        </tr>
+      </table>
+    </div>
+    <div id="ta-profile" *ngIf="!showStudent">
+      <h2>TA Profile</h2>
+      <table id="ta-table">
+        <tr>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwQCm9PbjRcwixwQERgE88we7n1e72OriAvpd2UNN3Q3UHvtp1Q" alt ="profile_img" id="p_img">
+        </tr>
+        <tr>
+          <td>Name:</td>
+          <td>Dr. TA</td>
+        </tr>
+        <tr>
+          <td>Role:</td>
+          <td>TA</td>
+        </tr>
+        <tr>
+          <td>Semester: </td>
+          <td> Spring 2019</td>
+        </tr>
+        <tr>
+          <td>Courses:</td>
+          <td>CS 149</td>
+        </tr>
+      </table>
+    </div>
   </div>
   <div class="wrapper">
     <app-calendar></app-calendar>
