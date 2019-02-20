@@ -36,6 +36,12 @@ tr td {
   padding: 16px;
 }
 
+.calendar-weekview {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 500px;
+}
+
 main {
   background-color: #FCFBFC;
 }
