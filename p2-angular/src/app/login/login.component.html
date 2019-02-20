@@ -1,11 +1,11 @@
 
-<div class="wrapper fadeInDown">
+<div class="wrap fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+      <img src="../../assets/images/jmu-logo.png" id="icon" alt="JMU Icon">
     </div>
     <div id="login-register">
       <div id="login-container" *ngIf="login">
@@ -14,12 +14,14 @@
             name="login" placeholder="JMU e-id" required>
           <input type="text" id="password" class="fadeIn third"
             name="login" placeholder="password" required>
-          <div class="login-filter" class="fadeIn third">
-            <select id="login-filter">
-              <option value="ta">TA</option>
-              <option value="student">Student</option>
-            </select>
-          </div>
+            <div class="toggle_radio fadeIn third" id="login-slider">
+              <input type="radio" class="toggle_option" id="first_toggle" name="toggle_option">
+              <input type="radio" checked class="toggle_option" id="second_toggle" name="toggle_option">
+              <label for="first_toggle"><p>Student</p></label>
+              <label for="second_toggle"><p>TA</p></label>
+              <div class="toggle_option_slider">
+              </div>
+            </div>
           <input type="submit" class="fadeIn fourth" value="Log In">
           <button class="btn btn-primary fadeIn fourth" (click)="login = !login">Register</button>
         </form>
@@ -36,11 +38,15 @@
             name="password" placeholder="password" required>
           <input type="text" id="password-confirm" class="fadeIn second"
             name="password-confirm" placeholder="confirm password" required>
-          <div id ="radio-buttons" class="fadeIn third">
-            <input type="radio" placeholder="student" id="student-button" name="account-type">
-            <label for="student-button">Student</label>
-            <input type="radio" placeholder="ta" id="ta-button" name="account-type">
-            <label for="ta-button">TA</label>
+          <div class="toggle_radio fadeIn third">
+            <input type="radio" class="toggle_option" id="first_toggle" name="toggle_option">
+            <input type="radio" checked class="toggle_option" id="second_toggle" name="toggle_option">
+            <input type="radio" class="toggle_option" id="third_toggle" name="toggle_option">
+            <label for="first_toggle"><p>Student</p></label>
+            <label for="second_toggle"><p>TA</p></label>
+            <label for="third_toggle"><p>Admin</p></label>
+            <div class="toggle_option_slider">
+            </div>
           </div>
           <input type="submit" class="fadeIn fourth" value="Register">
           <button class="btn btn-primary fadeIn fourth" (click)="login = !login">Login</button>
