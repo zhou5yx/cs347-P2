@@ -52,6 +52,7 @@ input[type=text]:focus {
   padding-bottom: 8px;
   width:100%;
   background-color: #CBB677;
+  margin-bottom: 3%;
 }
 
 .navigation-bar li {
