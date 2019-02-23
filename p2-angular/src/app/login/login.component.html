@@ -9,15 +9,15 @@
     </div>
     <div id="login-register">
       <div id="login-container" *ngIf="login">
-        <form action="" id="login-form">
+        <form action="" id="login-form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
           <input type="text" id="dukes-id" class="fadeIn second"
-            name="login" placeholder="JMU e-id" required>
+            name="login" placeholder="JMU e-id" required ngModel>
           <input type="password" id="password" class="fadeIn third"
-            name="login" placeholder="Password" minlength="8" required>
+            name="password" placeholder="Password" minlength="8" required ngModel>
             <div class="toggle_radio fadeIn third" id="login-slider">
-              <input type="radio" class="toggle_option" id="first_toggle" name="toggle_option">
-              <input type="radio" checked class="toggle_option" id="second_toggle" name="toggle_option">
-              <input type="radio" checked class="toggle_option" id="third_toggle" name="toggle_option">
+              <input type="radio" class="toggle_option" id="first_toggle" name="toggle_option" value="student" ngModel>
+              <input type="radio" class="toggle_option" id="second_toggle" name="toggle_option" value="ta" ngModel>
+              <input type="radio" checked class="toggle_option" id="third_toggle" name="toggle_option" value="admin" ngModel>
               <label for="first_toggle"><p>Student</p></label>
               <label for="second_toggle"><p>TA</p></label>
               <label for="third_toggle"><p>Admin</p></label>
@@ -29,21 +29,21 @@
         </form>
       </div>
       <div id="register-container" *ngIf="!login">
-        <form action="ta-setup.html" id="register-form">
+        <form action="ta-setup.html" id="register-form" #regForm="ngForm" (ngSubmit)="onSubmit(regForm.value)">
           <input type="text" class="fadeIn first" id="firstname"
-            name="firstname" placeholder="First Name" required>
+            name="firstname" placeholder="First Name" required ngModel>
           <input type="text" id="lastname" class="fadeIn first"
-            name="lastname" placeholder="Last Name" required>
+            name="lastname" placeholder="Last Name" required ngModel>
           <input type="text" id="dukes-id-register" class="fadeIn second"
-            name="eid" placeholder="JMU e-id" required>
+            name="eid" placeholder="JMU e-id" required ngModel>
           <input type="password" id="password-register" class="fadeIn second"
-            name="password" placeholder="Password" minlength="8" required>
+            name="password" placeholder="Password" minlength="8" required ngModel>
           <input type="password" id="password-confirm" class="fadeIn second"
-            name="password-confirm" placeholder="Confirm Password" minlength="8" required>
+            name="password-confirm" placeholder="Confirm Password" minlength="8" required ngModel>
           <div class="toggle_radio fadeIn third">
-            <input type="radio" class="toggle_option" id="first_toggle" name="toggle_option">
-            <input type="radio" checked class="toggle_option" id="second_toggle" name="toggle_option">
-            <input type="radio" class="toggle_option" id="third_toggle" name="toggle_option">
+            <input type="radio" class="toggle_option" id="first_toggle" name="toggle_option" value="student" ngModel>
+            <input type="radio" checked class="toggle_option" id="second_toggle" name="toggle_option" value="ta" ngModel>
+            <input type="radio" class="toggle_option" id="third_toggle" name="toggle_option" value="admin" ngModel>
             <label for="first_toggle"><p>Student</p></label>
             <label for="second_toggle"><p>TA</p></label>
             <label for="third_toggle"><p>Admin</p></label>
