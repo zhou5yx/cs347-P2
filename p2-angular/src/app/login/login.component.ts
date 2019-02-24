@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     } else if (form.toggle_option === "student") {
       this.router.navigate(['/profile/2']);
     } else if (form.toggle_option === "admin"){
-      this.router.navigate(['/session']);
+      this.router.navigate(['/admin']);
     }
   }
 
