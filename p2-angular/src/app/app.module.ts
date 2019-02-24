@@ -16,7 +16,7 @@ import {AdminComponent} from './admin/admin.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSortModule} from '@angular/material/sort';
 import { TaTableComponent } from './ta-table/ta-table.component';
-
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,6 +38,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatExpansionModule,
     MatTabsModule,
     MatDividerModule,
