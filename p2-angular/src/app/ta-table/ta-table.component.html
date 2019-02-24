@@ -1,0 +1,61 @@
+
+                  <div class ="requests">
+                  <div class ="head">
+                  <button mat-raised-button id="a-button">Onboard</button>
+                  <mat-form-field>
+                  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                  </mat-form-field>
+                  </div>
+                   <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
+
+                   <!-- Checkbox Column -->
+                  <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef>
+                      <mat-checkbox (change)="$event ? masterToggle() : null"
+                                    [checked]="selection.hasValue() && isAllSelected()"
+                                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+                      </mat-checkbox>
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                      <mat-checkbox (click)="$event.stopPropagation()"
+                                    (change)="$event ? selection.toggle(row) : null"
+                                    [checked]="selection.isSelected(row)">
+                      </mat-checkbox>
+                    </td>
+                  </ng-container>
+
+
+                   <!-- Name Column -->
+                   <ng-container matColumnDef="Name">
+                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                   <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+                   </ng-container>
+
+                   <!-- Course Column -->
+                   <ng-container matColumnDef="Course">
+                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Course </th>
+                   <td mat-cell *matCellDef="let element"> {{element.Course}} </td>
+                   </ng-container>
+
+                   <ng-container matColumnDef="expandedDetail">
+                    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+                      <div class="example-element-detail"
+                           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                      <div class="example-element-description">
+                        <h3>Availability</h3>
+                        <li>Monday 3-9pm</li>
+                        <li>Tuesday 3-6pm</li>
+                        <li>Sunday 1-3pm</li>
+                      </div>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+                    class="example-element-row"
+                    [class.example-expanded-row]="expandedElement === element"
+                    (click)="expandedElement = expandedElement === element ? null : element">
+                </tr>
+                <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row" (click)="selection.toggle(row)"></tr>
+                 </table>

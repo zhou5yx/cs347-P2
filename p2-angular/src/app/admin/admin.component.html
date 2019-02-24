@@ -1,0 +1,169 @@
+<ul class="navigation-bar">
+  <li style="margin-left: -35px"><a routerLink="/admin">Profile</a></li>
+  <li  style="float: right"><a routerLink="/login">Logout</a><li>
+</ul>
+<div id="wrap-container">
+  <div id="profile">
+    <div class="admin-profile" >
+    <h2>Admin Profile</h2>
+    <table id="admin-table">
+      <tr>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwQCm9PbjRcwixwQERgE88we7n1e72OriAvpd2UNN3Q3UHvtp1Q" alt ="profile_img" id="p_img">
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td>Admin</td>
+      </tr>
+      <tr>
+        <td>Role:</td>
+        <td>Admin</td>
+      </tr>
+    </table>
+    </div>
+  </div>
+  <div class ="wrapper">
+  <h2>TA Management</h2>
+  <div class = "semester">
+    <label for="semester">Define Semester: </label>
+    <select id="semester-filter-">
+      <option value=""></option>
+      <option value="sp19">Spring 2019</option>
+    </select>
+  </div>
+  <div class ="tabs">
+    <mat-tab-group>
+      <mat-tab label="TA Onboarding">
+        <div class ="add-ta">
+          <mat-accordion>
+         <mat-expansion-panel>
+           <mat-expansion-panel-header>
+             <mat-panel-title>
+               Add a New TA
+             </mat-panel-title>
+           </mat-expansion-panel-header>
+           <p>Pleae fill in the information below:</p>
+           <div class="example-container">
+             <mat-form-field>
+               <input matInput placeholder="Student Name">
+             </mat-form-field>
+             <mat-form-field>
+               <input matInput placeholder="JMU E-mail">
+             </mat-form-field>
+             <mat-form-field>
+               <mat-select placeholder="Course">
+                 <mat-option value="CS 149">CS 149</mat-option>
+                 <mat-option value="CS 159">CS 159</mat-option>
+               </mat-select>
+             </mat-form-field>
+             <mat-form-field>
+               <textarea matInput placeholder="Additional Comments"></textarea>
+             </mat-form-field>
+             <button mat-raised-button id="add">Add</button>
+           </div>
+         </mat-expansion-panel>
+       </mat-accordion>
+      </div>
+      <div class ="app-ta">
+        <mat-accordion>
+         <mat-expansion-panel>
+           <mat-expansion-panel-header>
+             <mat-panel-title>
+               Onboard Pending TAs
+             </mat-panel-title>
+           </mat-expansion-panel-header>
+              <app-ta-table></app-ta-table>
+         </mat-expansion-panel>
+       </mat-accordion>
+      </div>
+      </mat-tab>
+      <mat-tab label="TA Scheduling">
+
+      </mat-tab>
+      <mat-tab label="Full TA Calendar">
+        <div class="ta-cal">
+          <app-calendar></app-calendar>
+        </div>
+      </mat-tab>
+      <mat-tab label="Swap Requests">
+      <div class ="requests">
+        <div class ="head">
+        <button mat-raised-button id="a-button">Approve</button>
+        <button mat-raised-button id="d-button">Deny</button>
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+        </mat-form-field>
+      </div>
+      <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
+
+      <!-- Checkbox Column -->
+     <ng-container matColumnDef="select">
+       <th mat-header-cell *matHeaderCellDef>
+         <mat-checkbox (change)="$event ? masterToggle() : null"
+                       [checked]="selection.hasValue() && isAllSelected()"
+                       [indeterminate]="selection.hasValue() && !isAllSelected()">
+         </mat-checkbox>
+       </th>
+       <td mat-cell *matCellDef="let row">
+         <mat-checkbox (click)="$event.stopPropagation()"
+                       (change)="$event ? selection.toggle(row) : null"
+                       [checked]="selection.isSelected(row)">
+         </mat-checkbox>
+       </td>
+     </ng-container>
+
+
+      <!-- Requester Column -->
+      <ng-container matColumnDef="Requester">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Requester </th>
+      <td mat-cell *matCellDef="let element"> {{element.Requester}} </td>
+      </ng-container>
+
+      <!-- Requestee Column -->
+      <ng-container matColumnDef="Requestee">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Requestee </th>
+      <td mat-cell *matCellDef="let element"> {{element.Requestee}} </td>
+      </ng-container>
+
+      <!-- Course Column -->
+      <ng-container matColumnDef="Course">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Course </th>
+      <td mat-cell *matCellDef="let element"> {{element.Course}} </td>
+      </ng-container>
+
+      <!-- Shift Column -->
+      <ng-container matColumnDef="Shift">
+      <th mat-header-cell *matHeaderCellDef> Shift </th>
+      <td mat-cell *matCellDef="let element"> {{element.Shift}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+       <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+         <div class="example-element-detail"
+              [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+         <div class="example-element-description">
+           {{element.description}}
+         </div>
+       </div>
+     </td>
+   </ng-container>
+
+   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+   <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+       class="example-element-row"
+       [class.example-expanded-row]="expandedElement === element"
+       (click)="expandedElement = expandedElement === element ? null : element">
+   </tr>
+   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row" (click)="selection.toggle(row)"></tr>
+
+      </table>
+      </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  </div>
+</div>

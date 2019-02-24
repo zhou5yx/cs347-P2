@@ -4,37 +4,30 @@
   <li  style="float: right"><a routerLink="/login">Logout</a><li>
 </ul>
 <div class="top-div">
-  <h1 class="session-title">Current Questions</h1>
-  <div class="question-filter">
-    <label for="question-filter-student">Filter:</label>
-    <select id="question-filter-student">
-      <option value="pa1">PA1</option>
-      <option value="pa2">PA2</option>
-      <option value="lab1">Lab 1</option>
-    </select>
-  </div>
-</div>
-<div class="questions-table">
-  <mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          How do I fix this bug?
-        </mat-panel-title>
-        <mat-panel-description>
-          Jeremiah Tinklewinkers at 5:00pm
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <h3>Description</h3>
-      <p>There is a bug, a very bad bug, and it is under my rug.
-      Can you please help me? I don't know what to do!</p>
-      <h3>Student Answer</h3>
-      <tr><textarea name="student1" id="student1" cols="150" rows="5"></textarea></tr>
-      <h3>TA Answer</h3>
-      <tr><textarea name="ta1" id="ta1" cols="150" rows="5"></textarea></tr>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
+  <mat-tab-group>
+    <mat-tab label="Questions">
+      <h2>Current Questions</h2>
+      <div class="questions-table">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                How do I fix this bug?
+              </mat-panel-title>
+            <mat-panel-description>
+              Jeremiah Tinklewinkers at 5:00pm
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <h3>Description</h3>
+          <p>There is a bug, a very bad bug, and it is under my rug.
+            Can you please help me? I don't know what to do!</p>
+          <h3>Student Answer</h3>
+          <tr><textarea name="student1" id="student1" cols="150" rows="5"></textarea></tr>
+          <h3>TA Answer</h3>
+          <tr><textarea name="ta1" id="ta1" cols="150" rows="5"></textarea></tr>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
         <mat-panel-title>
           How do I write a Java Swing GUI?
         </mat-panel-title>
@@ -69,52 +62,8 @@
       <tr><textarea name="ta3" id="ta3" cols="150" rows="5">This is actually a common problem in eclipse and they are working on a fix now. If you get up and do 3 spins then sit back down you should be good.</textarea></tr>
     </mat-expansion-panel>
   </mat-accordion>
-  <!-- <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Question</th>
-        <th>Asked By</th>
-        <th>Class</th>
-        <th>Time</th>
-        <th>Ups</th>
-        <!-- <th>Answer</th> -->
-      <!-- </tr>
-    </thead> -->
-    <!-- <tbody>
-      <tr>
-        <td>How do I fix this bug?</td>
-        <td>Jeremiah Tinklewinkers</td>
-        <td>CS149</td>
-        <td>5:00 pm</td>
-        <td>5 <span class="glyphicon glyphicon-chevron-up"></span></td>
-        <!-- <td><textarea name="question1" id="question1" cols="30" rows="5">
-          Your for loop is going one iteration too many.
-        </textarea></td> -->
-      <!-- </tr>
-      <tr> -->
-        <!-- <td>How do I write a Java Swing GUI?</td>
-        <td>Harold C. Jaboobalop</td>
-        <td>CS159</td>
-        <td>6:00 pm</td>
-        <td>2<span class="glyphicon glyphicon-chevron-up"></span></td> -->
-        <!-- <td><textarea name="question2" id="question2" cols="30" rows="5">
-          Lord help you.
-        </textarea></td> -->
-      <!-- </tr>
-      <tr>
-        <td>My eclipse keeps crashing?</td>
-        <td>Helga Welga</td>
-        <td>CS149</td>
-        <td>7:00 pm</td>
-        <td>5<span class="glyphicon glyphicon-chevron-up"></span></td> -->
-        <!-- <td><textarea name="question3" id="question3" cols="30" rows="5">
-          Redownloaded eclipse.
-        </textarea></td> -->
-      <!-- </tr>
-    </tbody>
-  </table> -->
-</div>
-<div id="answer-question">
+  </div>
+  <div id="answer-question">
   <h2>Ask a Question</h2>
   <form action="">
     <div>
@@ -125,7 +74,48 @@
       <div>
         <label for="question-description">Description:</label>
       </div>
-      <textarea name="question-description" id="question-description" cols="30" rows="10"></textarea>
+      <textarea name="question-description" id="question-description" cols="138.5" rows="5"></textarea>
+      <button mat-raised-button id="s-button">Submit</button>
     </div>
   </form>
 </div>
+<div id="announce-ments">
+<h2>Make a Announcement</h2>
+<form action="">
+  <div>
+    <label for="announcement-title">Title:</label>
+    <input type="text" id="annoucement-title">
+  </div>
+  <div>
+    <div>
+      <label for="annoucement-description">Description:</label>
+    </div>
+    <textarea name="annoucement-description" id="annoucement-description" cols="138.5" rows="5"></textarea>
+    <button mat-raised-button id="s-button">Submit</button>
+  </div>
+</form>
+</div>
+    </mat-tab>
+    <mat-tab label="Announcements">
+      <mat-accordion>
+         <mat-expansion-panel>
+           <mat-expansion-panel-header>
+             <mat-panel-title>
+               Tips on how to complete PA-1
+             </mat-panel-title>
+           </mat-expansion-panel-header>
+           Yeah sorry, you're on your own :) Google is probably your best friend but remember no cheating!
+         </mat-expansion-panel>
+         <mat-expansion-panel>
+         <mat-expansion-panel-header>
+           <mat-panel-title>
+             Helpful Links
+           </mat-panel-title>
+         </mat-expansion-panel-header>
+            <li><a href ="https://piazza.com/">Piazza</a></li>
+            <li><a href="https://canvas.jmu.edu">Canvas</a></li>
+            <li><a href="https://www.google.com/search?hl=EN&tbm=isch&source=hp&biw=1423&bih=658&ei=vBZyXLyZEpHaswW9yZfQBA&q=Puppy+photos&oq=Puppy+photos&gs_l=img.3..0l10.1534.5041..5279...2.0..0.219.1430.11j2j1......1....1..gws-wiz-img.....0.7M0ElK4ld78">Puppy Photos</a></li>
+       </mat-expansion-panel>
+       </mat-accordion>
+    </mat-tab>
+</mat-tab-group>
