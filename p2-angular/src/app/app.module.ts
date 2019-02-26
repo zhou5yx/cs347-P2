@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { TaTableComponent } from './ta-table/ta-table.component';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from './services/account.service';
+import { CalendarDayComponent } from './calendar/calendar-day/calendar-day.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -34,7 +35,8 @@ const routes: Routes = [
     CalendarComponent,
     ProfileComponent,
     AdminComponent,
-    TaTableComponent
+    TaTableComponent,
+    CalendarDayComponent
   ],
   imports: [
     BrowserModule,

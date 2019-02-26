@@ -22,60 +22,60 @@
     </div>
     <div id="month-view" *ngIf="!weekView">
       <div class="calendar__week">
-        <div class="calendar__day day">28</div>
-        <div class="calendar__day day">29</div>
-        <div class="calendar__day day">30</div>
-        <div class="calendar__day day">31</div>
-        <div class="calendar__day day">1</div>
-        <div class="calendar__day day">2</div>
-        <div class="calendar__day day">3</div>
+        <app-calendar-day class="calendar__day day" [day]="28"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="29" [events]="events[0]"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="30"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="31"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="1" [events]="events[1]"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="2"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="3"></app-calendar-day>
       </div>
       <div class="calendar__week">
-        <div class="calendar__day day">4</div>
-        <div class="calendar__day day">5</div>
-        <div class="calendar__day day">6</div>
-        <div class="calendar__day day">7</div>
-        <div class="calendar__day day">8</div>
-        <div class="calendar__day day">9</div>
-        <div class="calendar__day day">10</div>
+        <app-calendar-day class="calendar__day day" [day]="4" [events]="events[2]"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="5"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="6" [events]="events[3]"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="7"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="8" [events]="events[4]"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="9"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="10"></app-calendar-day>
       </div>
       <div class="calendar__week">
-        <div class="calendar__day day">11</div>
-        <div class="calendar__day day">12</div>
-        <div class="calendar__day day">13</div>
-        <div class="calendar__day day">14</div>
-        <div class="calendar__day day">15</div>
-        <div class="calendar__day day">16</div>
-        <div class="calendar__day day">17</div>
+        <app-calendar-day class="calendar__day day" [day]="11"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="12"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="13"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="14"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="15"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="16" [events]="events[5]"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="17"></app-calendar-day>
       </div>
       <div class="calendar__week">
-        <div class="calendar__day day">18</div>
-        <div class="calendar__day day">19</div>
-        <div class="calendar__day day">20</div>
-        <div class="calendar__day day">21</div>
-        <div class="calendar__day day">22</div>
-        <div class="calendar__day day">23</div>
-        <div class="calendar__day day">24</div>
+        <app-calendar-day class="calendar__day day" [day]="18"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="19"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="20"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="21"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="22"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="23"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="24"></app-calendar-day>
       </div>
       <div class="calendar__week">
-        <div class="calendar__day day">25</div>
-        <div class="calendar__day day">26</div>
-        <div class="calendar__day day">27</div>
-        <div class="calendar__day day">28</div>
-        <div class="calendar__day day">1</div>
-        <div class="calendar__day day">2</div>
-        <div class="calendar__day day">3</div>
+        <app-calendar-day class="calendar__day day" [day]="25"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="26"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="27"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="28"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="1"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="2"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="3"></app-calendar-day>
       </div>
     </div>
     <div id="week-view" *ngIf="weekView">
       <div class="calendar-weekview">
-        <div class="calendar__day day">25</div>
-        <div class="calendar__day day">26</div>
-        <div class="calendar__day day">27</div>
-        <div class="calendar__day day">28</div>
-        <div class="calendar__day day">1</div>
-        <div class="calendar__day day">2</div>
-        <div class="calendar__day day">3</div>
+        <app-calendar-day class="calendar__day day" [day]="25"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="26"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="27"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="28"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="1"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="2"></app-calendar-day>
+        <app-calendar-day class="calendar__day day" [day]="3"></app-calendar-day>
       </div>
     </div>
   </div>

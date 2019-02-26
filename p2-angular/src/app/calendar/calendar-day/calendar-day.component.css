@@ -1,0 +1,8 @@
+li {
+  list-style: none;
+  color: green;
+  float: left;
+  border: 1px solid green;
+  padding: 5px;
+  border-radius: 5px;
+}

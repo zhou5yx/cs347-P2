@@ -1,0 +1,9 @@
+
+<div>
+  <div>{{ day }}</div>
+  <div>
+    <ul>
+      <li *ngFor="let event of events">{{ event.start }} - {{ event.end }}</li>
+    </ul>
+  </div>
+</div>
