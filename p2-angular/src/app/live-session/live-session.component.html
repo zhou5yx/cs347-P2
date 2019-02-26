@@ -8,60 +8,68 @@
     <mat-tab label="Questions">
       <h2>Current Questions</h2>
       <div class="questions-table">
-        <mat-accordion>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                How do I fix this bug?
-              </mat-panel-title>
-            <mat-panel-description>
-              Jeremiah Tinklewinkers at 5:00pm
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <h3>Description</h3>
-          <p>There is a bug, a very bad bug, and it is under my rug.
-            Can you please help me? I don't know what to do!</p>
-          <h3>Student Answer</h3>
-          <tr><textarea name="student1" id="student1" cols="150" rows="5"></textarea></tr>
-          <h3>TA Answer</h3>
-          <tr><textarea name="ta1" id="ta1" cols="150" rows="5"></textarea></tr>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-        <mat-panel-title>
-          How do I write a Java Swing GUI?
-        </mat-panel-title>
-        <mat-panel-description>
-          Harold C. Jaboobalop at 6:00 pm
-        </mat-panel-description>
-      </mat-expansion-panel-header>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+      </mat-form-field>
+      <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort matSortActive="Time" matSortDirection="asc" class="mat-elevation-z8">
+
+      <!-- Requester Column -->
+      <ng-container matColumnDef="Question">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Question </th>
+      <td mat-cell *matCellDef="let element"> {{element.Question}} </td>
+      </ng-container>
+
+      <!-- Requestee Column -->
+      <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Asked By </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+      </ng-container>
+
+      <!-- Course Column -->
+      <ng-container matColumnDef="Time">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Time </th>
+      <td mat-cell *matCellDef="let element"> {{element.Time}} </td>
+      </ng-container>
+
+      <!-- Shift Column -->
+      <ng-container matColumnDef="Status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Votes">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Votes </th>
+      <td mat-cell *matCellDef="let element"> {{element.Votes}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+      <div class="example-element-detail"
+        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+      <div class="example-element-description">
       <h3>Description</h3>
-      <p>You have to start by writing panels. Then after that you have to
-      do a layout. Then you should add buttons. Then you should make some
-      events like click and stuff. Good luck!</p>
-      <h3>Student Answer</h3>
-      <tr><textarea name="student2" id="student2" cols="150" rows="5"></textarea></tr>
-      <h3>TA Answer</h3>
-      <tr><textarea name="ta2" id="ta2" cols="150" rows="5"></textarea></tr>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          My eclipse keeps crashing?
-        </mat-panel-title>
-        <mat-panel-description>
-          Helga Welga at 7:00 pm
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <h3>Description</h3>
-      <p>I tried to open by 149 lab in eclipse but it crashed and now
-      my screen is displaying a laughing skull and crossbones. What gives?</p>
-      <h3>Student Answer</h3>
-      <tr><textarea name="student3" id="student3" cols="150" rows="5"></textarea></tr>
-      <h3>TA Answer</h3>
-      <tr><textarea name="ta3" id="ta3" cols="150" rows="5">This is actually a common problem in eclipse and they are working on a fix now. If you get up and do 3 spins then sit back down you should be good.</textarea></tr>
-    </mat-expansion-panel>
-  </mat-accordion>
+      {{element.description}}
+      <div class ="ans">
+       <h3>Student Answer</h3>
+       <tr><textarea name="student" id="student-a" cols="145" rows="5" value={{element.Stuanswer}}></textarea></tr>
+        <button mat-raised-button id="s-answer">Answer</button>
+        <h3>TA Answer</h3>
+        <tr><textarea name="ta" id="ta" cols="145" rows="5" value={{element.TAanswer}}></textarea></tr>
+        <button mat-raised-button id="s-answer">Answer</button>
+       </div>
+      </div>
+      </div>
+      </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+         class="example-element-row"
+         [class.example-expanded-row]="expandedElement === element"
+         (click)="expandedElement = expandedElement === element ? null : element">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
   </div>
   <div id="answer-question" *ngIf="currentAccount.type === 'student'">
     <h2>Ask a Question</h2>
@@ -79,22 +87,6 @@
       </div>
     </form>
   </div>
-<div id="announce-ments" *ngIf="currentAccount.type === 'ta'">
-<h2>Make an Announcement</h2>
-<form action="">
-  <div>
-    <label for="announcement-title">Title:</label>
-    <input type="text" id="annoucement-title">
-  </div>
-  <div>
-    <div>
-      <label for="annoucement-description">Description:</label>
-    </div>
-    <textarea name="annoucement-description" id="annoucement-description" cols="138.5" rows="5"></textarea>
-    <button mat-raised-button id="s-button">Submit</button>
-  </div>
-</form>
-</div>
     </mat-tab>
     <mat-tab label="Announcements">
       <mat-accordion>
@@ -117,5 +109,21 @@
             <li><a href="https://www.google.com/search?hl=EN&tbm=isch&source=hp&biw=1423&bih=658&ei=vBZyXLyZEpHaswW9yZfQBA&q=Puppy+photos&oq=Puppy+photos&gs_l=img.3..0l10.1534.5041..5279...2.0..0.219.1430.11j2j1......1....1..gws-wiz-img.....0.7M0ElK4ld78">Puppy Photos</a></li>
        </mat-expansion-panel>
        </mat-accordion>
+       <div id="announce-ments" *ngIf="currentAccount.type === 'ta'">
+       <h2>Make an Announcement</h2>
+       <form action="">
+         <div>
+           <label for="announcement-title">Title:</label>
+           <input type="text" id="annoucement-title">
+         </div>
+         <div>
+           <div>
+             <label for="annoucement-description">Description:</label>
+           </div>
+           <textarea name="annoucement-description" id="annoucement-description" cols="138.5" rows="5"></textarea>
+           <button mat-raised-button id="s-button">Submit</button>
+         </div>
+       </form>
+       </div>
     </mat-tab>
 </mat-tab-group>
