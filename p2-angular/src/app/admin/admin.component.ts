@@ -38,40 +38,6 @@ const FAKE_DATA: FakeData[] = [
   }
 ];
 
-export interface FakeData {
-  Requester: string;
-  Requestee: string;
-  Course: string;
-  Shift: string;
-  Status: string;
-  description: string;
-}
-
-const FAKE_DATA: FakeData[] = [
-  {
-    Requester: 'Ross Woodhams',
-    Requestee: 'Raghnall Reynell',
-    Course: 'CS 149',
-    Shift: 'Wednesday, March 13, 2019 4:00pm-6:00pm',
-    Status: 'Approved',
-    description: 'This request has been approved'
-  }, {
-    Requester: 'Shandar Hathaway',
-    Requestee: 'Sebastián Perrault',
-    Course: 'CS 159',
-    Shift: 'Sunday March 16, 2019 1:00pm-3:00pm',
-    Status: 'Pending',
-    description: 'Request is still waiting for approval'
-  }, {
-    Requester: 'Ali Tod',
-    Requestee: 'Alvis Borislavov',
-    Course: 'CS 159',
-    Shift: 'Tuesday March 19, 2019, 6:00pm-8:00pm',
-    Status: 'Pending',
-    description: 'Request is still waiting for approval'
-  }
-];
-
 @Component({
   selector: 'app-admin',
   styleUrls: ['./admin.component.css'],

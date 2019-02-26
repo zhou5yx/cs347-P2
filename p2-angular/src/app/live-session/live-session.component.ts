@@ -45,8 +45,7 @@ const LIVE_DATA: LiveData[] = [
     description: 'I tried to open by 149 lab in eclipse but it crashed and now my screen is displaying a laughing skull and crossbones. What gives?',
     TAanswer: 'This is actually a common problem in eclipse and they are working on a fix now. If you get up and do 3 spins then sit back down you should be good!',
     Stuanswer: ''
-   };
-
+   }
 ];
 
 @Component({
@@ -65,7 +64,7 @@ export class LiveSessionComponent implements OnInit {
   currentAccount: IAccount;
   displayedColumns: string[] = ['Question', 'Name', 'Time', 'Status','Votes'];
   dataSource =   new MatTableDataSource(LIVE_DATA);
-  expandedElement: FakeData | null;
+  expandedElement: LiveData | null;
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
