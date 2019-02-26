@@ -5,7 +5,7 @@
 </ul>
 <div id="wrap-container">
   <div id="profile">
-    <div class="student-profile" *ngIf="showStudent">
+    <div class="student-profile" *ngIf="currentAccount.type === 'student'">
     <h2>Student Profile</h2>
       <table id="student-table">
         <tr>
@@ -29,7 +29,7 @@
         </tr>
       </table>
     </div>
-    <div id="ta-profile" *ngIf="!showStudent">
+    <div id="ta-profile" *ngIf="currentAccount.type !== 'student'">
       <h2>TA Profile</h2>
       <table id="ta-table">
         <tr>

@@ -8,15 +8,16 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatTableModule} from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule, MatInputModule,MatCheckboxModule,MatSelectModule } from '@angular/material';
-import {AdminComponent} from './admin/admin.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSortModule} from '@angular/material/sort';
+import { AdminComponent } from './admin/admin.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSortModule } from '@angular/material/sort';
 import { TaTableComponent } from './ta-table/ta-table.component';
 import { FormsModule } from '@angular/forms';
+import { AccountService } from './services/account.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -51,7 +52,7 @@ const routes: Routes = [
     MatSelectModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

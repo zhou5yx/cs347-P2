@@ -9,7 +9,7 @@
     </div>
     <div id="login-register">
       <div id="login-container" *ngIf="login">
-        <form action="" id="login-form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <form action="" id="login-form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
           <input type="text" id="dukes-id" class="fadeIn second"
             name="login" placeholder="JMU e-id" required ngModel>
           <input type="password" id="password" class="fadeIn third"
@@ -29,7 +29,7 @@
         </form>
       </div>
       <div id="register-container" *ngIf="!login">
-        <form action="ta-setup.html" id="register-form" #regForm="ngForm" (ngSubmit)="onSubmit(regForm.value)">
+        <form action="ta-setup.html" id="register-form" #regForm="ngForm" (ngSubmit)="onSubmit(regForm)">
           <input type="text" class="fadeIn first" id="firstname"
             name="firstname" placeholder="First Name" required ngModel>
           <input type="text" id="lastname" class="fadeIn first"

@@ -63,24 +63,24 @@
     </mat-expansion-panel>
   </mat-accordion>
   </div>
-  <div id="answer-question">
-  <h2>Ask a Question</h2>
-  <form action="">
-    <div>
-      <label for="question-title">Title:</label>
-      <input type="text" id="question-title">
-    </div>
-    <div>
+  <div id="answer-question" *ngIf="currentAccount.type === 'student'">
+    <h2>Ask a Question</h2>
+    <form action="">
       <div>
-        <label for="question-description">Description:</label>
+        <label for="question-title">Title:</label>
+        <input type="text" id="question-title">
       </div>
-      <textarea name="question-description" id="question-description" cols="138.5" rows="5"></textarea>
-      <button mat-raised-button id="s-button">Submit</button>
-    </div>
-  </form>
-</div>
-<div id="announce-ments">
-<h2>Make a Announcement</h2>
+      <div>
+        <div>
+          <label for="question-description">Description:</label>
+        </div>
+        <textarea name="question-description" id="question-description" cols="138.5" rows="5"></textarea>
+        <button mat-raised-button id="s-button">Submit</button>
+      </div>
+    </form>
+  </div>
+<div id="announce-ments" *ngIf="currentAccount.type === 'ta'">
+<h2>Make an Announcement</h2>
 <form action="">
   <div>
     <label for="announcement-title">Title:</label>

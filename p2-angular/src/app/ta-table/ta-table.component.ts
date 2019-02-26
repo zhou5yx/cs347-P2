@@ -3,6 +3,28 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 
+export interface FakeTA {
+  Name: string;
+  Course: string;
+  description:string;
+}
+
+const FAKE_TA: FakeTA[] = [
+  {
+    Name: 'Rose Woodhams',
+    Course: 'CS 149',
+    description: ''
+  }, {
+    Name: 'Shondra Hathaway',
+    Course: 'CS 159',
+    description: ''
+  }, {
+    Name: 'Alice Tod',
+    Course: 'CS 159',
+    description: ''
+  }
+];
+
 @Component({
   selector: 'app-ta-table',
   templateUrl: './ta-table.component.html', animations: [
@@ -19,7 +41,7 @@ export class TaTableComponent implements OnInit {
   displayedColumns: string[] = ['select','Name', 'Course'];
   dataSource =   new MatTableDataSource<FakeTA>(FAKE_TA);
   selection = new SelectionModel<FakeTA>(true, []);
-  expandedElement: FakeData | null;
+  expandedElement: FakeTA | null;
 
   isAllSelected() {
    const numSelected = this.selection.selected.length;
@@ -46,23 +68,4 @@ export class TaTableComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  export interface FakeTA {
-    Name: string;
-    Course: string;
-    description:string;
-  }
-
-  const FAKE_TA: FakeTA[] = [
-    {
-      Name: 'Rose Woodhams',
-      Course: 'CS 149',
-    }, {
-      Name: 'Shondra Hathaway',
-      Course: 'CS 159',
-
-    }, {
-      Name: 'Alice Tod',
-      Course: 'CS 159',
-
-    };
-  ];
+}
