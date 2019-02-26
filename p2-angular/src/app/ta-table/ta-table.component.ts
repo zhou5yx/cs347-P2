@@ -6,6 +6,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 export interface FakeTA {
   Name: string;
   Course: string;
+  Email: string;
   description:string;
 }
 
@@ -13,15 +14,18 @@ const FAKE_TA: FakeTA[] = [
   {
     Name: 'Rose Woodhams',
     Course: 'CS 149',
-    description: ''
+    description: '',
+    Email:'woodhamsr@dukes.jmu.edu'
   }, {
     Name: 'Shondra Hathaway',
     Course: 'CS 159',
-    description: ''
+    description: '',
+    Email:'Hathaways@dukes.jmu.edu'
   }, {
     Name: 'Alice Tod',
     Course: 'CS 159',
-    description: ''
+    description: '',
+    Email:'Toda@dukes.jmu.edu'
   }
 ];
 
@@ -38,7 +42,7 @@ const FAKE_TA: FakeTA[] = [
 })
 export class TaTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['select','Name', 'Course'];
+  displayedColumns: string[] = ['select','Name', 'Course','Email'];
   dataSource =   new MatTableDataSource<FakeTA>(FAKE_TA);
   selection = new SelectionModel<FakeTA>(true, []);
   expandedElement: FakeTA | null;
