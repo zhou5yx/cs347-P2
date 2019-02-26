@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarComponent } from '../calendar/calendar.component';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
+import { AccountService } from '../services/account.service';
+import { IAccount } from '../interfaces/account.type';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -9,16 +9,14 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   id: number = 0;
-  showStudent: boolean = false;
+  currentAccount: IAccount;
+
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
+    private accountService: AccountService
   ) { }
 
   ngOnInit() {
-    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-    console.log(this.id);
-    this.showStudent = this.id % 2 == 0;
+    this.currentAccount = this.accountService.currentAccount;
   }
 
 }
