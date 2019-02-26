@@ -3,6 +3,8 @@
   margin:auto;
   height: 110vh;
   margin-top: -20px;
+  display: flex;
+  flex-direction: column;
 }
 
 #wrap-container{
@@ -109,4 +111,16 @@ th.mat-sort-header-sorted {
 
 .example-container > * {
   width: 100%;
+}
+#semester-filter-{
+  margin-left: 10px;
+  background-color: #FCFBFC;
+  border: 1px solid #AD9C65;
+  border-radius: 5px;
+
+}
+
+#semester-selection{
+  float:left;
+
 }

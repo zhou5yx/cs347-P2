@@ -24,56 +24,19 @@
   <div class ="wrapper">
   <h2>TA Management</h2>
   <div class = "semester">
-    <label for="semester">Define Semester: </label>
-    <select id="semester-filter-">
-      <option value=""></option>
-      <option value="sp19">Spring 2019</option>
-    </select>
+    <mat-form-field id="semester-selection" placeholder="Define Semester">
+      <mat-select [(value)]="SemesterSel">
+        <mat-option></mat-option>
+        <mat-option value="sp19">Spring 2019</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-  <div class ="tabs">
+  <div class ="tabs" *ngIf="SemesterSel">
     <mat-tab-group>
       <mat-tab label="TA Onboarding">
-        <div class ="add-ta">
-          <mat-accordion>
-         <mat-expansion-panel>
-           <mat-expansion-panel-header>
-             <mat-panel-title>
-               Add a New TA
-             </mat-panel-title>
-           </mat-expansion-panel-header>
-           <p>Pleae fill in the information below:</p>
-           <div class="example-container">
-             <mat-form-field>
-               <input matInput placeholder="Student Name">
-             </mat-form-field>
-             <mat-form-field>
-               <input matInput placeholder="JMU E-mail">
-             </mat-form-field>
-             <mat-form-field>
-               <mat-select placeholder="Course">
-                 <mat-option value="CS 149">CS 149</mat-option>
-                 <mat-option value="CS 159">CS 159</mat-option>
-               </mat-select>
-             </mat-form-field>
-             <mat-form-field>
-               <textarea matInput placeholder="Additional Comments"></textarea>
-             </mat-form-field>
-             <button mat-raised-button id="add">Add</button>
-           </div>
-         </mat-expansion-panel>
-       </mat-accordion>
-      </div>
       <div class ="app-ta">
-        <mat-accordion>
-         <mat-expansion-panel>
-           <mat-expansion-panel-header>
-             <mat-panel-title>
-               Onboard Pending TAs
-             </mat-panel-title>
-           </mat-expansion-panel-header>
-              <app-ta-table></app-ta-table>
-         </mat-expansion-panel>
-       </mat-accordion>
+        <h4>Onboard Pending TAs</h4>
+          <app-ta-table></app-ta-table>
       </div>
       </mat-tab>
       <mat-tab label="TA Scheduling">
