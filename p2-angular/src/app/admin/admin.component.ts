@@ -71,11 +71,11 @@ export class AdminComponent implements OnInit {
        this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
-   applyFilter(filterValue: string) {
+  applyFilter(filterValue: string) {
      this.dataSource.filter = filterValue.trim().toLowerCase();
    }
 
-   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor() { }
 

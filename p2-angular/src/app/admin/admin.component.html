@@ -43,8 +43,7 @@
         <div class ="container">
         <div class = "month_to_schedule">
           <mat-form-field id="month-selection" >
-            <mat-select placeholder="Please Select a Month">
-              <mat-option></mat-option>
+            <mat-select placeholder="Please Select a Month" [(ngModel)]="selectedMon">
               <mat-option value="jan">January</mat-option>
               <mat-option value="feb">February</mat-option>
               <mat-option value="mar">March</mat-option>
@@ -54,6 +53,22 @@
         </div>
         <div class ="avail-ta">
           <label for="avail-tas">Available TAs</label>
+          <div id= "j-tas" *ngIf="selectedMon == 'jan'">
+            <mat-checkbox>Ross Woodhams</mat-checkbox>
+            <mat-checkbox>Shandar Hathaway</mat-checkbox>
+            <mat-checkbox>Sebastián Perrault</mat-checkbox>
+          </div>
+          <div id = "f-tas" *ngIf="selectedMon == 'feb'">
+            <mat-checkbox>Raghnall Reynell</mat-checkbox>
+            <mat-checkbox>Ali Tod</mat-checkbox>
+          </div>
+          <div id = "m-tas" *ngIf="selectedMon == 'mar'">
+            <mat-checkbox>Alvis Borislavov</mat-checkbox>
+            <mat-checkbox>Shandar Hathaway</mat-checkbox>
+          </div>
+          <div id = "a-tas" *ngIf="selectedMon == 'april'">
+            <mat-checkbox>Ross Woodhams</mat-checkbox>
+          </div>
         </div>
         <div class ="generate-button">
           <button mat-raised-button id="g-button">Generate Schedule</button>

@@ -137,6 +137,12 @@ th.mat-sort-header-sorted {
 
 .avail-ta{
   margin-top: 10px;
+
+}
+
+#j-tas, #f-tas, #m-tas,#a-tas{
+  display: flex;
+  flex-direction: column;
 }
 
 .generate-button{
