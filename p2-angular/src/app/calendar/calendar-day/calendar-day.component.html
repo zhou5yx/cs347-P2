@@ -3,7 +3,7 @@
   <div>{{ day }}</div>
   <div>
     <ul>
-      <li *ngFor="let event of events">{{ event.start }} - {{ event.end }}</li>
+      <li *ngFor="let event of events" (click)="openDialog(event)">{{ event.start }} - {{ event.end }}</li>
     </ul>
   </div>
 </div>

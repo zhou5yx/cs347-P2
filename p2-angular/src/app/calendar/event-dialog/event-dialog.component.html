@@ -1,0 +1,5 @@
+<p>
+  {{ data.event.start }} - {{ data.event.end }}
+</p>
+<button class="btn btn-primary" *ngIf="data.event.type === 'shift'">Request Cover</button>
+<button class="btn btn-primary" *ngIf="data.event.type === 'cover'">Take Shift</button>

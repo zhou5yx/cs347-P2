@@ -11,7 +11,7 @@ import { MatExpansionModule } from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
-import { MatFormFieldModule, MatInputModule,MatCheckboxModule,MatSelectModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule,MatCheckboxModule,MatSelectModule, MatDialogModule } from '@angular/material';
 import { AdminComponent } from './admin/admin.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSortModule } from '@angular/material/sort';
@@ -19,6 +19,7 @@ import { TaTableComponent } from './ta-table/ta-table.component';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from './services/account.service';
 import { CalendarDayComponent } from './calendar/calendar-day/calendar-day.component';
+import { EventDialogComponent } from './calendar/event-dialog/event-dialog.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -36,7 +37,8 @@ const routes: Routes = [
     ProfileComponent,
     AdminComponent,
     TaTableComponent,
-    CalendarDayComponent
+    CalendarDayComponent,
+    EventDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,10 +51,14 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    MatDialogModule,
     MatButtonModule,
     MatSortModule,
     MatSelectModule,
     RouterModule.forRoot(routes)
+  ],
+  entryComponents: [
+    EventDialogComponent
   ],
   providers: [AccountService],
   bootstrap: [AppComponent]
