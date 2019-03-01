@@ -54,20 +54,100 @@
         <div class ="avail-ta">
           <label for="avail-tas">Available TAs</label>
           <div id= "j-tas" *ngIf="selectedMon == 'jan'">
-            <mat-checkbox>Ross Woodhams</mat-checkbox>
-            <mat-checkbox>Shandar Hathaway</mat-checkbox>
-            <mat-checkbox>Sebastián Perrault</mat-checkbox>
+          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <thead>
+              <tr>
+                <th class="mdl-data-table__cell--non-numeric">Name</th>
+                <th>Scheduled Hours</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+               <td class="mdl-data-table__cell--non-numeric">Ross Woodhams</td>
+               <td>30</td>
+              </tr>
+              <tr>
+               <td class="mdl-data-table__cell--non-numeric">Shandar Hathaway</td>
+               <td>25</td>
+              </tr>
+              <tr>
+               <td class="mdl-data-table__cell--non-numeric">Sebastián Perrault</td>
+               <td>32</td>
+              </tr>
+            </tbody>
+          </table>
           </div>
           <div id = "f-tas" *ngIf="selectedMon == 'feb'">
-            <mat-checkbox>Raghnall Reynell</mat-checkbox>
-            <mat-checkbox>Ali Tod</mat-checkbox>
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Name</th>
+                  <th>Scheduled Hours</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                 <td class="mdl-data-table__cell--non-numeric">Ross Woodhams</td>
+                 <td></td>
+                </tr>
+                <tr>
+                 <td class="mdl-data-table__cell--non-numeric">Shandar Hathaway</td>
+                 <td></td>
+                </tr>
+                <tr>
+                 <td class="mdl-data-table__cell--non-numeric">Sebastián Perrault</td>
+                 <td></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div id = "m-tas" *ngIf="selectedMon == 'mar'">
-            <mat-checkbox>Alvis Borislavov</mat-checkbox>
-            <mat-checkbox>Shandar Hathaway</mat-checkbox>
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Name</th>
+                  <th>Scheduled Hours</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                 <td class="mdl-data-table__cell--non-numeric">Ross Woodhams</td>
+                 <td></td>
+                </tr>
+                <tr>
+                 <td class="mdl-data-table__cell--non-numeric">Shandar Hathaway</td>
+                 <td></td>
+                </tr>
+                <tr>
+                 <td class="mdl-data-table__cell--non-numeric">Sebastián Perrault</td>
+                 <td></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div id = "a-tas" *ngIf="selectedMon == 'april'">
-            <mat-checkbox>Ross Woodhams</mat-checkbox>
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Name</th>
+                  <th>Scheduled Hours</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                 <td class="mdl-data-table__cell--non-numeric">Ross Woodhams</td>
+                 <td></td>
+                </tr>
+                <tr>
+                 <td class="mdl-data-table__cell--non-numeric">Shandar Hathaway</td>
+                 <td></td>
+                </tr>
+                <tr>
+                 <td class="mdl-data-table__cell--non-numeric">Sebastián Perrault</td>
+                 <td></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         <div class ="generate-button">
