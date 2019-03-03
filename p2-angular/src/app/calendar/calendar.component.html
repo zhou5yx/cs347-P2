@@ -4,7 +4,7 @@
       <div [ngClass]="{'toggle__option': !weekView, 'toggle__option--selected': weekView }" (click)="weekView = true">week</div>
       <div [ngClass]="{'toggle__option': weekView, 'toggle__option--selected': !weekView}"  (click)="weekView = false">month</div>
     </div>
-    <div class="current-month">February 2019</div>
+    <div class="current-month">{{ monthNames[currentMonth] }} {{ currentYear }}</div>
     <div class="toggle">
       <div class="toggle__option" id="leftarrow">&larr;</div>
       <div class="toggle__option" id="rightarrow">&rarr;</div>

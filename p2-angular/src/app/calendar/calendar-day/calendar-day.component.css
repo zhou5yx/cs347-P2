@@ -1,9 +1,11 @@
 li {
   list-style: none;
   color: green;
-  float: left;
+  float: right;
   border: 1px solid green;
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 12pt;
+  white-space: nowrap;
 }
