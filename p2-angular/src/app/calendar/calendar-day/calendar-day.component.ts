@@ -15,6 +15,7 @@ export class CalendarDayComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+    console.log(this.events);
   }
 
   openDialog(event: ICalendarEvent) {
