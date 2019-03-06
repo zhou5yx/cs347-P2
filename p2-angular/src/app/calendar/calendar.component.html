@@ -6,19 +6,23 @@
     </div>
     <div class="current-month">{{ monthNames[currentMonth] }} {{ currentYear }}</div>
     <div class="toggle">
-      <div class="toggle__option" id="leftarrow">&larr;</div>
-      <div class="toggle__option" id="rightarrow">&rarr;</div>
+      <button class="toggle__option" id="leftarrow"
+           (click)="changeCalendarMonth(currentYear, currentMonth - 1)"
+           [disabled]="currentMonth <= 0">&larr;</button>
+      <button class="toggle__option" id="rightarrow"
+           (click)="changeCalendarMonth(currentYear, currentMonth + 1)"
+           [disabled]="currentMonth > 10">&rarr;</button>
     </div>
   </div>
   <div class="calendar">
     <div class="calendar__header">
+      <div>sun</div>
       <div>mon</div>
       <div>tue</div>
       <div>wed</div>
       <div>thu</div>
       <div>fri</div>
       <div>sat</div>
-      <div>sun</div>
     </div>
     <div id="month-view" *ngIf="!weekView">
       <div class="calendar__week" *ngFor="let row of monthRows">

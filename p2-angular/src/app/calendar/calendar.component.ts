@@ -34,14 +34,42 @@ export class CalendarComponent implements OnInit {
   }
 
   changeCalendarMonth(year: number, month: number) {
+    // get the number of days this month
     const numDays = new Date(year, month+1, 0).getDate();
+    // get number of days last month
+    let prevNumDays = new Date(year, month, 0).getDate();
+    // update displayed variables
     this.currentYear = year;
     this.currentMonth = month;
-    const firstDay = new Date(year, month, 1).getDay();
-    for (let i = 0; i < numDays; i++, firstDay++) {
-      this.days[Math.floor(firstDay / 7)][firstDay % 7] = i + 1;
+    // zero out days array
+    this.resetDays();
+    // get day of week of the first day of this month
+    let calDay = new Date(year, month, 1).getDay();
+    // fill in calendar with this months days
+    let nextMonthDay = 1;
+    for (let currMonthDay = 1; calDay < this.monthRows.length * this.monthCols.length; currMonthDay++, calDay++) {
+      if (currMonthDay <= numDays)
+        this.days[Math.floor(calDay / 7)][calDay % 7] = currMonthDay;
+      else {
+        this.days[Math.floor(calDay / 7)][calDay % 7] = nextMonthDay;
+        nextMonthDay++;
+      }
     }
-    console.log(this.events);
+    // fill in the beginning of calendar with last month's days
+    for (let i = new Date(year, month, 1).getDay() - 1; i >= 0; i--, prevNumDays--) {
+      this.days[0][i] = prevNumDays;
+    }
+  }
+
+  resetDays() {
+    this.days = [
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]
+    ];
   }
 
   getEvents(): ICalendarEvent[][][] {
