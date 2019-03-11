@@ -12,7 +12,6 @@ export class CalendarComponent implements OnInit {
   ];
   monthRows: number[] = [0,1,2,3,4,5];
   monthCols: number[] = [0,1,2,3,4,5,6];
-  weekView: boolean = false;
   events: ICalendarEvent[][][];
   currentYear: number;
   currentMonth: number;

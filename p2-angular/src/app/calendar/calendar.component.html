@@ -1,10 +1,6 @@
 <main>
   <div class="toolbar">
-    <div class="toggle">
-      <div [ngClass]="{'toggle__option': !weekView, 'toggle__option--selected': weekView }" (click)="weekView = true">week</div>
-      <div [ngClass]="{'toggle__option': weekView, 'toggle__option--selected': !weekView}"  (click)="weekView = false">month</div>
-    </div>
-    <div class="current-month">{{ monthNames[currentMonth] }} {{ currentYear }}</div>
+    <div class="current-month"><h3>{{ monthNames[currentMonth] }} {{ currentYear }}</h3></div>
     <div class="toggle">
       <button class="toggle__option" id="leftarrow"
            (click)="changeCalendarMonth(currentYear, currentMonth - 1)"
@@ -24,22 +20,11 @@
       <div>fri</div>
       <div>sat</div>
     </div>
-    <div id="month-view" *ngIf="!weekView">
+    <div id="month-view">
       <div class="calendar__week" *ngFor="let row of monthRows">
         <app-calendar-day *ngFor="let col of monthCols"
           class="calendar__day day" [day]="days[row][col]" [events]="events[row][col]">
         </app-calendar-day>
-      </div>
-    </div>
-    <div id="week-view" *ngIf="weekView">
-      <div class="calendar-weekview">
-        <app-calendar-day class="calendar__day day" [day]="25"></app-calendar-day>
-        <app-calendar-day class="calendar__day day" [day]="26"></app-calendar-day>
-        <app-calendar-day class="calendar__day day" [day]="27"></app-calendar-day>
-        <app-calendar-day class="calendar__day day" [day]="28"></app-calendar-day>
-        <app-calendar-day class="calendar__day day" [day]="1"></app-calendar-day>
-        <app-calendar-day class="calendar__day day" [day]="2"></app-calendar-day>
-        <app-calendar-day class="calendar__day day" [day]="3"></app-calendar-day>
       </div>
     </div>
   </div>
