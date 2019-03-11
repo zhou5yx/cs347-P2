@@ -26,6 +26,8 @@ const routes: Routes = [
   { path: 'session',      component: LiveSessionComponent },
   { path: 'profile/:id', component: ProfileComponent},
   { path: 'admin', component: AdminComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
