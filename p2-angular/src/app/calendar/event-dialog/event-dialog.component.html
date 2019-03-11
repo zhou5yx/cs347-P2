@@ -1,5 +1,22 @@
-<p>
-  {{ data.event.start }} - {{ data.event.end }}
-</p>
-<button class="btn btn-primary" *ngIf="data.event.type === 'shift'">Request Cover</button>
-<button class="btn btn-primary" *ngIf="data.event.type === 'cover'">Take Shift</button>
+<div class="event-dialog-container">
+  <table>
+    <tr>
+      <td>TA:</td>
+      <td>Tina TA</td>
+    </tr>
+    <tr>
+      <td>Class:</td>
+      <td>CS149</td>
+    </tr>
+    <tr>
+      <td>Time:</td>
+      <td>{{ data.event.start }} - {{ data.event.end }}</td>
+    </tr>
+    <tr>
+      <td>Room:</td>
+      <td>ISAT 254</td>
+    </tr>
+  </table>
+  <button class="btn btn-primary" *ngIf="data.event.type === 'shift'">Request Cover</button>
+  <button class="btn btn-primary" *ngIf="data.event.type === 'cover'">Take Shift</button>
+</div>

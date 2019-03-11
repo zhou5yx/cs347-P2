@@ -1,0 +1,13 @@
+table {
+  display: flex;
+  flex-direction: row;
+}
+
+td {
+  padding: 2px 10px;
+}
+
+.event-dialog-container {
+  width: 90%;
+  margin: auto;
+}
