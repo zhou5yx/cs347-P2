@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ICalendarEvent } from '../interfaces/calendar-event.type';
+import { CalendarService } from '../services/calendar.service';
 
 @Component({
   selector: 'app-calendar',
@@ -12,7 +13,7 @@ export class CalendarComponent implements OnInit {
   ];
   monthRows: number[] = [0,1,2,3,4,5];
   monthCols: number[] = [0,1,2,3,4,5,6];
-  events: ICalendarEvent[][][];
+  events: ICalendarEvent[][][] = [];
   currentYear: number;
   currentMonth: number;
   days: number[][] = [
@@ -24,10 +25,12 @@ export class CalendarComponent implements OnInit {
     [0, 0, 0, 0, 0, 0, 0]
   ]
 
-  constructor() { }
+  constructor(private calendarService: CalendarService) { }
 
   ngOnInit() {
-    this.events = this.getEvents();
+    this.calendarService.getEvents(1, 1).subscribe((events) => {
+      this.events = events;
+    });
     const now = new Date();
     this.changeCalendarMonth(now.getFullYear(), now.getMonth());
   }
@@ -68,53 +71,6 @@ export class CalendarComponent implements OnInit {
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
-    ];
-  }
-
-  getEvents(): ICalendarEvent[][][] {
-    return [
-      [[],[],[],[],[],[],[]],
-      [
-        [],
-        [
-          {start: 1, end: 2, type: 'shift'},
-          {start: 3, end: 4, type: 'shift'}
-        ],
-        [],[],
-        [
-          {start: 1, end: 4, type: 'shift'},
-          {start: 7, end: 11, type: 'cover'}
-        ],
-        [],[]
-      ],
-      [
-        [],[],[],[],[],[],
-        [
-          {start: 1, end: 2, type: 'cover'},
-          {start: 5, end: 8, type: 'shift'}
-        ],
-      ],
-      [
-        [],[],[],[],[],
-        [
-          {start: 7, end: 11, type: 'shift'}
-        ],
-        [],
-      ],
-      [
-        [],[],[],[],
-        [
-          {start: 5, end: 9, type: 'shift'}
-        ],
-        [],[]
-      ],
-      [
-        [
-          {start: 1, end: 2, type: 'cover'},
-          {start: 3, end: 4, type: 'cover'}
-        ],
-        [],[],[],[],[],[]
-      ]
     ];
   }
 

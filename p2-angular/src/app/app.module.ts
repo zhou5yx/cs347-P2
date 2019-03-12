@@ -18,8 +18,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { TaTableComponent } from './ta-table/ta-table.component';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from './services/account.service';
+import { CalendarService } from './services/calendar.service';
 import { CalendarDayComponent } from './calendar/calendar-day/calendar-day.component';
 import { EventDialogComponent } from './calendar/event-dialog/event-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -46,6 +48,7 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     MatExpansionModule,
     MatTabsModule,
     MatDividerModule,
@@ -62,7 +65,7 @@ const routes: Routes = [
   entryComponents: [
     EventDialogComponent
   ],
-  providers: [AccountService],
+  providers: [AccountService, CalendarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
