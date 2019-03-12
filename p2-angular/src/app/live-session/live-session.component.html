@@ -48,7 +48,7 @@
         [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
       <div class="example-element-description">
       <h3>Description</h3>
-      {{element.description}}
+      {{element.description}} <button mat-raised-button id="heart">&#10084; Like</button>
       <div class ="ans">
        <h3>Student Answer</h3>
        <tr><textarea name="student" id="student-a" cols="145" rows="5" value={{element.Stuanswer}}></textarea></tr>
