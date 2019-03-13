@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 var mysql = require('mysql');
+var dbStart = require('./db_startup');
 const app = express();
 
 app.use(bodyParser.json()); // parses POST request json
@@ -39,6 +40,7 @@ connection.connect(function(err) {
     if (err) console.log(err);
     else {
       console.log("Connected to db!");
+      dbStart.create(connection);
     }
 });
 
