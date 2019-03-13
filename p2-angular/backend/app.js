@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var mysql = require('mysql');
 const app = express();
 
 app.use(bodyParser.json()); // parses POST request json
+
 // handling for CORS
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -24,6 +26,22 @@ app.use((req, res, next) => {
     next();
   }
 });
+
+// connect to database
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'password',
+  database : 'p2'
+});
+
+connection.connect(function(err) {
+    if (err) console.log(err);
+    else {
+      console.log("Connected to db!");
+    }
+});
+
 
 app.get('/api/calendar-events/:id', (req, res, next) => {
   res.status(200).json({
