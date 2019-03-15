@@ -4,6 +4,10 @@ var mysql = require('mysql');
 var dbStart = require('./db_startup');
 const app = express();
 
+// routes
+var calendarRoutes = require('./routes/calendar');
+var userRoutes = require('./routes/user');
+
 app.use(bodyParser.json()); // parses POST request json
 
 // handling for CORS
@@ -39,59 +43,13 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
     if (err) console.log(err);
     else {
+      // create tables, add data to db
       console.log("Connected to db!");
       dbStart.create(connection);
+      dbStart.addUsers(connection);
     }
 });
 
-
-app.get('/api/calendar-events/:id', (req, res, next) => {
-  res.status(200).json({
-    events: [
-      [[],[],[],[],[],[],[]],
-      [
-        [],
-        [
-          {start: 1, end: 2, type: 'shift'},
-          {start: 3, end: 4, type: 'shift'}
-        ],
-        [],[],
-        [
-          {start: 1, end: 4, type: 'shift'},
-          {start: 7, end: 11, type: 'cover'}
-        ],
-        [],[]
-      ],
-      [
-        [],[],[],[],[],[],
-        [
-          {start: 1, end: 2, type: 'cover'},
-          {start: 5, end: 8, type: 'shift'}
-        ],
-      ],
-      [
-        [],[],[],[],[],
-        [
-          {start: 7, end: 11, type: 'shift'}
-        ],
-        [],
-      ],
-      [
-        [],[],[],[],
-        [
-          {start: 5, end: 9, type: 'shift'}
-        ],
-        [],[]
-      ],
-      [
-        [
-          {start: 1, end: 2, type: 'cover'},
-          {start: 3, end: 4, type: 'cover'}
-        ],
-        [],[],[],[],[],[]
-      ]
-    ]
-  });
-});
-
+app.use('/api/user', userRoutes);
+app.use('/api/calendar', calendarRoutes)
 module.exports = app;

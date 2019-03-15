@@ -10,7 +10,7 @@ export class CalendarService {
   constructor(private http: HttpClient) {}
 
   getEvents(personId: number, month: number): Observable<ICalendarEvent[][][]> {
-    return this.http.get<{events: ICalendarEvent[][][]}>('http://localhost:3000/api/calendar-events/' + personId + '?month=' + month)
+    return this.http.get<{events: ICalendarEvent[][][]}>('http://localhost:3000/api/calendar/' + personId + '?month=' + month)
       .pipe(
         map(res => {
           return res.events;
