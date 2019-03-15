@@ -1,4 +1,4 @@
 # cs347-P2
 Angular Dev Environment:
 
-To run the angular application, install the necessary packages by running "npm install" in the project folder. Then run "ng serve" and view the application at localhost:4200. To run the node/express backend application, run "node server.js" and the server can be found at localhost:3000.
+To run the angular application, install the necessary packages by running "npm install" in the project folder. Then run "ng serve" and view the application at localhost:4200. To run the node/express backend application, run "node server.js" and the server can be found at localhost:3000. We are currently using MySQL on our local machines for the database. To use this download mysql version 5.7.25 if you don't already have it installed and verify that you can use it by running mysql.server start (you may have to reconfigure the file locations a bit or cd into the mysql folder to do this). Once you can start the server, the app will connect to the database when you run node server.js if everything is correct. Make sure that your username and password are correct for your setup in the backend/app.js file to connect. 
