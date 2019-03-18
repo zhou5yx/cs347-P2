@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarComponent } from '../calendar/calendar.component';
 import { AccountService } from '../services/account.service';
 import { IAccount } from '../interfaces/account.type';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -12,11 +13,13 @@ export class ProfileComponent implements OnInit {
   currentAccount: IAccount;
 
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.currentAccount = this.accountService.currentAccount;
+    this.accountService.getProfileData(this.route.snapshot.params.id).subscribe();
   }
 
 }

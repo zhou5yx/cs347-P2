@@ -65,7 +65,7 @@ export class LiveSessionComponent implements OnInit {
   displayedColumns: string[] = ['Question', 'Name', 'Time', 'Status','Votes'];
   dataSource =   new MatTableDataSource(LIVE_DATA);
   expandedElement: LiveData | null;
-  showsess:boolean false;
+  showsess: boolean = false;
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

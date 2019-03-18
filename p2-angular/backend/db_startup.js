@@ -1,19 +1,36 @@
 /*
  * Functions to create the database and schema
  */
+var mysql = require('mysql');
 module.exports = {
+  connect: function() {
+    var connection = mysql.createConnection({
+      host     : 'localhost',
+      user     : 'root',
+      password : 'password',
+      database : 'p2'
+    });
+
+    connection.connect(function(err) {
+        if (err) console.log(err);
+        else {
+          // create tables, add data to db
+          console.log("Connected to db!");
+        }
+    });
+
+    return connection;
+  },
+
   create: function(conn) {
     conn.query('DROP TABLE IF EXISTS user', function(err, result) {
       if (err) console.log(err);
-      if (result) console.log(result);
     });
     conn.query('DROP TABLE IF EXISTS course', function(err, result) {
       if (err) console.log(err);
-      if (result) console.log(result);
     });
     conn.query('DROP TABLE IF EXISTS role', function(err, result) {
       if (err) console.log(err);
-      if (result) console.log(result);
     });
     conn.query('CREATE TABLE IF NOT EXISTS course (id int NOT NULL AUTO_INCREMENT, name varchar(5), PRIMARY KEY (id))',
                 function(err, result) {
@@ -36,9 +53,6 @@ module.exports = {
                 + 'PRIMARY KEY (id)'
               + ')', function(err, result) {
                 if (err) console.log(err);
-                if (result) {
-
-                }
               });
     conn.query('CREATE TABLE IF NOT EXISTS role (' +
                 'id int NOT NULL AUTO_INCREMENT,'
@@ -46,7 +60,6 @@ module.exports = {
                 + 'PRIMARY KEY (id)'
               + ')', function(err, result) {
                 if (err) console.log(err);
-                if (result) console.log(result);
               });
   },
 
@@ -60,7 +73,6 @@ module.exports = {
               + "1"
               + ")", function(err, result) {
                 if (err) console.log(err);
-                if (result) console.log(result);
               });
     conn.query("INSERT INTO user VALUES ("
               + "NULL,"
@@ -71,7 +83,6 @@ module.exports = {
               + "2"
               + ")", function(err, result) {
                 if (err) console.log(err);
-                if (result) console.log(result);
               });
     conn.query("INSERT INTO user VALUES ("
               + "NULL,"
@@ -82,18 +93,16 @@ module.exports = {
               + "1"
               + ")", function(err, result) {
                 if (err) console.log(err);
-                if (result) console.log(result);
               });
     conn.query("INSERT INTO user VALUES ("
               + "NULL,"
-              + "'johhnys',"
+              + "'johnnys',"
               + "'nicetomeetyou',"
               + "'Johnny',"
               + "'Jarganfargangas',"
               + "1"
               + ")", function(err, result) {
                 if (err) console.log(err);
-                if (result) console.log(result);
               });
   }
 }
