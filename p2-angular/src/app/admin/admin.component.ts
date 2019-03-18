@@ -56,7 +56,8 @@ export class AdminComponent implements OnInit {
   dataSource =   new MatTableDataSource<FakeData>(FAKE_DATA);
   selection = new SelectionModel<FakeData>(true, []);
   expandedElement: FakeData | null;
-  SemesterSel:boolean = false;
+  SemesterSel = "sp19";
+
 
   isAllSelected() {
    const numSelected = this.selection.selected.length;

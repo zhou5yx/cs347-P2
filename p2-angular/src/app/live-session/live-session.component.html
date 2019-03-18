@@ -3,7 +3,14 @@
   <li><a routerLink="/session">Live Session</a></li>
   <li  style="float: right"><a routerLink="/login">Logout</a><li>
 </ul>
-<div class="top-div">
+<div class = "pre-container" *ngIf="!showsess">
+ <p>Please enter the session code below to access the current live session:</p>
+ <mat-form-field id="code" >
+   <input matInput placeholder="Session Code" value="">
+ </mat-form-field>
+ <button mat-raised-button id="code-button" (click)="testM()">Submit</button>
+</div>
+<div class="top-div" *ngIf="showsess">
   <mat-tab-group>
     <mat-tab label="Questions">
       <h2>Current Questions</h2>

@@ -27,22 +27,25 @@
     <mat-form-field id="semester-selection" >
       <mat-select [(value)]="SemesterSel" placeholder="Define Semester">
         <mat-option></mat-option>
-        <mat-option value="sp19">Spring 2019</mat-option>
+        <mat-option value="sp19" selected>Spring 2019</mat-option>
+        <mat-option value="fa19" selected>Fall 2019</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
-  <div class ="tabs" *ngIf="SemesterSel">
+  <div class ="tabs">
     <mat-tab-group>
       <mat-tab label="TA Onboarding">
       <div class ="app-ta">
         <h4>Onboard Pending TAs</h4>
+          <div id="app-ta-table" *ngIf="SemesterSel==='sp19'">
           <app-ta-table></app-ta-table>
+          </div>
       </div>
       </mat-tab>
       <mat-tab label="TA Scheduling">
         <div class ="container">
         <div class = "month_to_schedule">
-          <mat-form-field id="month-selection" >
+          <mat-form-field id="month-selection" *ngIf="SemesterSel==='sp19'">
             <mat-select placeholder="Please Select a Month" [(ngModel)]="selectedMon">
               <mat-option value="jan">January</mat-option>
               <mat-option value="feb">February</mat-option>
@@ -50,10 +53,19 @@
               <mat-option value="april">April</mat-option>
             </mat-select>
           </mat-form-field>
+          <mat-form-field id="month-selection-fall" *ngIf="SemesterSel==='fa19'">
+            <mat-select placeholder="Please Select a Month" [(ngModel)]="selectedMon">
+              <mat-option value="sep">September</mat-option>
+              <mat-option value="oct">October</mat-option>
+              <mat-option value="nov">November</mat-option>
+              <mat-option value="dec">December</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
+
         <div class ="avail-ta">
           <label for="avail-tas">TAs Data</label>
-          <div id= "j-tas" *ngIf="selectedMon == 'jan'">
+          <div id= "j-tas" *ngIf="selectedMon == 'jan' && SemesterSel==='sp19'">
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
             <thead>
               <tr>
@@ -77,7 +89,7 @@
             </tbody>
           </table>
           </div>
-          <div id = "f-tas" *ngIf="selectedMon == 'feb'">
+          <div id = "f-tas" *ngIf="selectedMon == 'feb' && SemesterSel==='sp19'">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
               <thead>
                 <tr>
@@ -101,7 +113,7 @@
               </tbody>
             </table>
           </div>
-          <div id = "m-tas" *ngIf="selectedMon == 'mar'">
+          <div id = "m-tas" *ngIf="selectedMon == 'mar' && SemesterSel==='sp19'">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
               <thead>
                 <tr>
@@ -125,7 +137,7 @@
               </tbody>
             </table>
           </div>
-          <div id = "a-tas" *ngIf="selectedMon == 'april'">
+          <div id = "a-tas" *ngIf="selectedMon == 'april' && SemesterSel==='sp19'">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
               <thead>
                 <tr>
@@ -155,8 +167,13 @@
         </div>
       </div>
       </mat-tab>
-      <mat-tab label="Full TA Calendar">
-        <div class="ta-cal">
+      <mat-tab label="CS 149 Calendar">
+        <div class="ta-cal-1" *ngIf="SemesterSel==='sp19'">
+          <app-calendar></app-calendar>
+        </div>
+      </mat-tab>
+      <mat-tab label="CS 159 Calendar">
+        <div class="ta-cal-2" *ngIf="SemesterSel==='sp19'">
           <app-calendar></app-calendar>
         </div>
       </mat-tab>
@@ -169,6 +186,7 @@
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
         </mat-form-field>
       </div>
+      <div id= "request-data" *ngIf="SemesterSel==='sp19'">
       <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="mat-elevation-z8">
 
       <!-- Checkbox Column -->
@@ -237,6 +255,7 @@
    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row" (click)="selection.toggle(row)"></tr>
 
       </table>
+      </div>
       </div>
       </mat-tab>
     </mat-tab-group>

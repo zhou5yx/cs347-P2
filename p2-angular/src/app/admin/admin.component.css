@@ -122,10 +122,9 @@ th.mat-sort-header-sorted {
 
 #semester-selection{
   float:left;
-
 }
 
-#month-selection{
+#month-selection, #month-selection-fall{
   float:left;
   width: 30%;
 }
