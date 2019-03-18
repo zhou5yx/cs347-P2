@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileComponent implements OnInit {
   id: number = 0;
   currentAccount: IAccount;
+  displayedAccount: IAccount = {firstname: '', lastname: '', username: '',
+                                role_id: 0, id: 0, };
 
   constructor(
     private accountService: AccountService,
@@ -19,7 +21,14 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentAccount = this.accountService.currentAccount;
-    this.accountService.getProfileData(this.route.snapshot.params.id).subscribe();
+    this.accountService.getProfileData(this.route.snapshot.params.id)
+      .subscribe((account: IAccount) => {
+        if (!account) {
+          alert("account not found");
+        } else {
+          this.displayedAccount = account;
+        }
+      });
   }
 
 }

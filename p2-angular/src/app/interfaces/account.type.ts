@@ -1,5 +1,10 @@
 export interface IAccount {
+  firstname: string,
+  id: number,
+  lastname: string,
+  password?: string,
   username: string,
-  type: string,
-  courses: string[],
+  role_id: number,
+  type?: string,
+  courses?: string[],
 }
