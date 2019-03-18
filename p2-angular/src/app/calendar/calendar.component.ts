@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ICalendarEvent } from '../interfaces/calendar-event.type';
 import { CalendarService } from '../services/calendar.service';
 
@@ -8,6 +8,7 @@ import { CalendarService } from '../services/calendar.service';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+  @Input() inputMonth?: number;
   monthNames: string[] = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
   ];
@@ -25,6 +26,7 @@ export class CalendarComponent implements OnInit {
     [0, 0, 0, 0, 0, 0, 0]
   ]
 
+
   constructor(private calendarService: CalendarService) { }
 
   ngOnInit() {
@@ -32,7 +34,11 @@ export class CalendarComponent implements OnInit {
       this.events = events;
     });
     const now = new Date();
-    this.changeCalendarMonth(now.getFullYear(), now.getMonth());
+    if (!this.inputMonth) {
+      this.changeCalendarMonth(now.getFullYear(), now.getMonth());
+    } else {
+      this.changeCalendarMonth(now.getFullYear(), this.inputMonth);
+    }
   }
 
   changeCalendarMonth(year: number, month: number) {
