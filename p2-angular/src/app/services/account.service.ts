@@ -17,7 +17,6 @@ export class AccountService {
     return this.http.get('http://localhost:3000/api/user/' + personId)
       .pipe(
         map(res => {
-          console.log(res);
           return res[0];
         })
       );

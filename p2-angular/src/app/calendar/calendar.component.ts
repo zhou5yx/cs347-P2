@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { ICalendarEvent } from '../interfaces/calendar-event.type';
+import { IAccount } from '../interfaces/account.type';
 import { CalendarService } from '../services/calendar.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { CalendarService } from '../services/calendar.service';
 })
 export class CalendarComponent implements OnInit {
   @Input() inputMonth?: number;
+  @Input() person: IAccount;
+
   monthNames: string[] = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
   ];
@@ -30,9 +33,16 @@ export class CalendarComponent implements OnInit {
   constructor(private calendarService: CalendarService) { }
 
   ngOnInit() {
-    this.calendarService.getEvents(1, 1).subscribe((events) => {
-      this.events = events;
-    });
+    this.resetCalendar();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.person) {
+      this.resetCalendar();
+    }
+  }
+
+  resetCalendar() {
     const now = new Date();
     if (!this.inputMonth) {
       this.changeCalendarMonth(now.getFullYear(), now.getMonth());
@@ -42,6 +52,11 @@ export class CalendarComponent implements OnInit {
   }
 
   changeCalendarMonth(year: number, month: number) {
+    if (this.person && this.person.role_id === 1) {
+      this.calendarService.getEvents(this.person.id, month).subscribe((events) => {
+        this.events = events;
+      });
+    }
     // get the number of days this month
     const numDays = new Date(year, month+1, 0).getDate();
     // get number of days last month

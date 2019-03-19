@@ -5,7 +5,7 @@
 </ul>
 <div id="wrap-container">
   <div id="profile">
-    <div class="student-profile" *ngIf="currentAccount.type === 'student'">
+    <div class="student-profile" *ngIf="displayedAccount.role_id === 2">
     <h2>Student Profile</h2>
       <table id="student-table">
         <tr>
@@ -29,7 +29,7 @@
         </tr>
       </table>
     </div>
-    <div id="ta-profile" *ngIf="currentAccount.type !== 'student'">
+    <div id="ta-profile" *ngIf="displayedAccount.role_id === 1">
       <h2>TA Profile</h2>
       <table id="ta-table">
         <tr>
@@ -56,6 +56,6 @@
   </div>
   <div class="wrapper">
     <h2>TA Hours</h2>
-    <app-calendar></app-calendar>
+    <app-calendar [person]=displayedAccount></app-calendar>
   </div>
 </div>

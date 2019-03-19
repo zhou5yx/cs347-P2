@@ -75,10 +75,15 @@ module.exports = {
     );
     conn.query('CREATE TABLE IF NOT EXISTS role (' +
       'id int NOT NULL AUTO_INCREMENT,'
-      + 'role_name varchar(255),'
+      + 'role_name varchar(10),'
       + 'PRIMARY KEY (id)'
       + ')', function(err, result) {
         if (err) console.log(err);
+        else {
+          conn.query("INSERT INTO role VALUES (NULL, 'ta')");
+          conn.query("INSERT INTO role VALUES (NULL, 'student')");
+          conn.query("INSERT INTO role VALUES (NULL, 'admin')");
+        }
       }
     );
     conn.query('CREATE TABLE IF NOT EXISTS event ('
