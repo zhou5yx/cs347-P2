@@ -17,17 +17,11 @@ export class CalendarComponent implements OnInit {
   ];
   monthRows: number[] = [0,1,2,3,4,5];
   monthCols: number[] = [0,1,2,3,4,5,6];
-  events: ICalendarEvent[][][] = [];
   currentYear: number;
   currentMonth: number;
-  days: number[][] = [
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0]
-  ]
+  events = [];
+  calendarInfo: {day: number, month: number, events: ICalendarEvent[]}[][]
+    = this.resetInfo();
 
 
   constructor(private calendarService: CalendarService) { }
@@ -36,12 +30,14 @@ export class CalendarComponent implements OnInit {
     this.resetCalendar();
   }
 
+  // reset if person was just loaded
   ngOnChanges(changes: SimpleChanges) {
     if (changes.person) {
       this.resetCalendar();
     }
   }
 
+  // resets calendar based on whether input month was passed in
   resetCalendar() {
     const now = new Date();
     if (!this.inputMonth) {
@@ -54,7 +50,9 @@ export class CalendarComponent implements OnInit {
   changeCalendarMonth(year: number, month: number) {
     if (this.person && this.person.role_id === 1) {
       this.calendarService.getEvents(this.person.id, month).subscribe((events) => {
+        console.log(events);
         this.events = events;
+        this.fillEvents(new Date(year, month, 1).getDay(), month, year);
       });
     }
     // get the number of days this month
@@ -65,34 +63,50 @@ export class CalendarComponent implements OnInit {
     this.currentYear = year;
     this.currentMonth = month;
     // zero out days array
-    this.resetDays();
+    this.resetInfo();
     // get day of week of the first day of this month
     let calDay = new Date(year, month, 1).getDay();
     // fill in calendar with this months days
     let nextMonthDay = 1;
     for (let currMonthDay = 1; calDay < this.monthRows.length * this.monthCols.length; currMonthDay++, calDay++) {
-      if (currMonthDay <= numDays)
-        this.days[Math.floor(calDay / 7)][calDay % 7] = currMonthDay;
-      else {
-        this.days[Math.floor(calDay / 7)][calDay % 7] = nextMonthDay;
+      if (currMonthDay <= numDays) {
+        this.calendarInfo[Math.floor(calDay / 7)][calDay % 7].day = currMonthDay;
+        this.calendarInfo[Math.floor(calDay / 7)][calDay % 7].month = this.currentMonth;
+      } else { // fill in the overflow of next month's days
+        this.calendarInfo[Math.floor(calDay / 7)][calDay % 7].day = nextMonthDay;
+        this.calendarInfo[Math.floor(calDay / 7)][calDay % 7].month = (this.currentMonth + 1) % 12;
         nextMonthDay++;
       }
     }
     // fill in the beginning of calendar with last month's days
     for (let i = new Date(year, month, 1).getDay() - 1; i >= 0; i--, prevNumDays--) {
-      this.days[0][i] = prevNumDays;
+      this.calendarInfo[0][i].day = prevNumDays;
+      this.calendarInfo[0][i].month = (this.currentMonth + 11) % 12;
     }
   }
 
-  resetDays() {
-    this.days = [
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0]
-    ];
+  resetInfo() {
+    let reset = [[],[],[],[],[],[]];
+    for (let i = 0; i < 6; i++) {
+      for (let j = 0; j < 7; j++) {
+        reset[i][j] = {day: 0, month: 0, events: []};
+      }
+    }
+    return reset;
+  }
+
+  fillEvents(calDay: number, month: number, year: number) {
+    for (let i = 1; i <= new Date(year, month+1, 0).getDate(); i++, calDay++) {
+      let dayEvents = [];
+      if (this.events.length > 0) {
+        this.events.forEach((event) => {
+          var date = new Date(event.start_date);
+          if (date.getDate() === i) dayEvents.push(event);
+        });
+      }
+      this.calendarInfo[Math.floor(calDay / 7)][calDay % 7].events = dayEvents;
+    }
+    console.log(this.calendarInfo);
   }
 
 }
