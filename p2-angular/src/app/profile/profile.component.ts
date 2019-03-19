@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarComponent } from '../calendar/calendar.component';
 import { AccountService } from '../services/account.service';
 import { IAccount } from '../interfaces/account.type';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -16,7 +16,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -24,7 +25,7 @@ export class ProfileComponent implements OnInit {
     this.accountService.getProfileData(this.route.snapshot.params.id)
       .subscribe((account: IAccount) => {
         if (!account) {
-          alert("account not found");
+          this.router.navigate(['/notfound']);
         } else {
           this.displayedAccount = account;
         }

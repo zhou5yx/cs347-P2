@@ -22,14 +22,16 @@ import { CalendarService } from './services/calendar.service';
 import { CalendarDayComponent } from './calendar/calendar-day/calendar-day.component';
 import { EventDialogComponent } from './calendar/event-dialog/event-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'session',      component: LiveSessionComponent },
   { path: 'profile/:id', component: ProfileComponent},
   { path: 'admin', component: AdminComponent },
+  { path: 'notfound', component: PageNotFoundComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', redirectTo: '/login', pathMatch: 'full' }
+  { path: '**', redirectTo: '/notfound', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -42,7 +44,8 @@ const routes: Routes = [
     AdminComponent,
     TaTableComponent,
     CalendarDayComponent,
-    EventDialogComponent
+    EventDialogComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
