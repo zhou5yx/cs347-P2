@@ -10,10 +10,10 @@ exports.getCalendarEventProfileData = function(req, res, next) {
   var month = parseInt(req.query.month) + 1;
   var numDays = new Date(2019, month, 0).getDate();
   var sql = "SELECT * FROM event WHERE user_id = " + req.params.id + " AND "
-    + "start_date BETWEEN CAST('2019-" + month + "-01' AS DATE) AND "
+    + "(start_date BETWEEN CAST('2019-" + month + "-01' AS DATE) AND "
     + "CAST('2019-" + month + "-" + numDays + "' AS DATE) OR "
     + "end_date BETWEEN CAST('2019-" + month + "-01' AS DATE) AND "
-    + "CAST('2019-" + month + "-" + numDays + "' AS DATE);"
+    + "CAST('2019-" + month + "-" + numDays + "' AS DATE));"
   connection.query(sql, function(err, result) {
     if (err) {
       return res.status(500).json({
@@ -34,7 +34,7 @@ exports.getCourseEvents = function(req, res, next){
   var numDays = new Date(2019, month, 0).getDate();
   var course = parseInt(req.query.course);
 
-  var sql = "SELECT * FROM event WHERE course_id = " + course+ " AND "
+  var sql = "SELECT * FROM event WHERE course_id = " + course + " AND "
     + "(start_date BETWEEN CAST('2019-" + month + "-01' AS DATE) AND "
     + "CAST('2019-" + month + "-" + numDays + "' AS DATE) OR "
     + "end_date BETWEEN CAST('2019-" + month + "-01' AS DATE) AND "

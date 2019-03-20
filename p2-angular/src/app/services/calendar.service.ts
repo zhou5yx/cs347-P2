@@ -22,8 +22,7 @@ export class CalendarService {
     return this.http.get<{result: ICalendarEvent[][][]}>('http://localhost:3000/api/calendar/'+ '?course='+ course + '&month=' +month)
       .pipe(
         map(res=> {
-          console.log(res.result);
-          return null;
+          return res.result;
         })
       );
   }
