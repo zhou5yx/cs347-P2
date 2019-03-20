@@ -11,7 +11,7 @@ import { EventDialogComponent } from '../event-dialog/event-dialog.component';
 export class CalendarDayComponent implements OnInit {
 
   @Input() day: number;
-  @Input() events?: ICalendarEvent[];
+  @Input() events?: ICalendarEvent[] = [];
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -28,6 +28,10 @@ export class CalendarDayComponent implements OnInit {
     // dialogRef.afterClosed().subscribe(result => {
     //
     // });
+  }
+
+  getDay(dateStr: string) {
+    return new Date(dateStr).getHours() % 12;
   }
 
 }

@@ -50,7 +50,6 @@ export class CalendarComponent implements OnInit {
   changeCalendarMonth(year: number, month: number) {
     if (this.person && this.person.role_id === 1) {
       this.calendarService.getEvents(this.person.id, month).subscribe((events) => {
-        console.log(events);
         this.events = events;
         this.fillEvents(new Date(year, month, 1).getDay(), month, year);
       });
@@ -106,7 +105,6 @@ export class CalendarComponent implements OnInit {
       }
       this.calendarInfo[Math.floor(calDay / 7)][calDay % 7].events = dayEvents;
     }
-    console.log(this.calendarInfo);
   }
 
 }

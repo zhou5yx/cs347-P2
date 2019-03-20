@@ -4,7 +4,7 @@
     <ul *ngIf="events && events.length > 0">
       <li *ngFor="let event of events" (click)="openDialog(event)"
           [ngStyle]="event.type === 'cover' && {'color': 'red', 'border-color': 'red'}">
-        {{ event.start }} - {{ event.end }}</li>
+        {{ getDay(event.start_date) }} - {{ getDay(event.end_date) }}</li>
     </ul>
   </div>
 </div>

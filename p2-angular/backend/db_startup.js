@@ -178,7 +178,7 @@ module.exports = {
       + "1,"
       + "'shift',"
       + "'2019-03-05 16:00:00',"
-      + "'2019-03-16 23:00:00',"
+      + "'2019-03-05 23:00:00',"
       + "1,"
       + "250"
       + ")", function(err, result) {
@@ -263,6 +263,42 @@ module.exports = {
       + "'shift',"
       + "'2019-03-09 17:00:00',"
       + "'2019-03-09 19:00:00',"
+      + "1,"
+      + "250"
+      + ")", function(err, result) {
+        if (err) console.log(err);
+      }
+    );
+    conn.query("INSERT INTO event VALUES ("
+      + "NULL,"
+      + "1,"
+      + "'shift',"
+      + "'2019-04-14 17:00:00',"
+      + "'2019-04-14 19:00:00',"
+      + "1,"
+      + "250"
+      + ")", function(err, result) {
+        if (err) console.log(err);
+      }
+    );
+    conn.query("INSERT INTO event VALUES ("
+      + "NULL,"
+      + "1,"
+      + "'shift',"
+      + "'2019-04-06 12:00:00',"
+      + "'2019-04-06 23:00:00',"
+      + "1,"
+      + "250"
+      + ")", function(err, result) {
+        if (err) console.log(err);
+      }
+    );
+    conn.query("INSERT INTO event VALUES ("
+      + "NULL,"
+      + "1,"
+      + "'shift',"
+      + "'2019-05-12 17:00:00',"
+      + "'2019-05-12 19:00:00',"
       + "1,"
       + "250"
       + ")", function(err, result) {
