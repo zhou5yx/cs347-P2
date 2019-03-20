@@ -1,20 +1,4 @@
-/**var execsql = require('execsql'),
-    dbConfig = {
-        host: 'localhost',
-        user: 'root',
-        password: 'password'
-    },
-    sql = 'use p2;',
-    sqlFile = './backend/sql/create.sql';
 
-execsql.config(dbConfig)
-    .exec(sql, function(err,results){
-      console.log(err);
-    })
-    .execFile(sqlFile, function(err, results){
-        console.log(err);
-        console.log(results);
-    }).end;**/
 
 const cp = require('child_process');
 

@@ -10,7 +10,8 @@ import { CalendarService } from '../services/calendar.service';
 })
 export class CalendarComponent implements OnInit {
   @Input() inputMonth?: number;
-  @Input() person: IAccount;
+  @Input() person?: IAccount;
+  @Input() course?: number;
 
   monthNames: string[] = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -53,6 +54,12 @@ export class CalendarComponent implements OnInit {
         this.events = events;
         this.fillEvents(new Date(year, month, 1).getDay(), month, year);
       });
+    }
+    else if(this.course){
+        this.calendarService.getAdminEvents(this.course, month).subscribe((events) => {
+          this.events = events;
+          this.fillEvents(new Date(year,month,1).getDay(),month,year);
+        });
     }
     // get the number of days this month
     const numDays = new Date(year, month+1, 0).getDate();

@@ -155,7 +155,7 @@ module.exports = {
       + "'shift',"
       + "'2019-03-16 17:00:00',"
       + "'2019-03-16 19:00:00',"
-      + "1,"
+      + "149,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);
@@ -167,7 +167,7 @@ module.exports = {
       + "'shift',"
       + "'2019-03-19 17:00:00',"
       + "'2019-03-19 19:00:00',"
-      + "1,"
+      + "149,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);
@@ -179,7 +179,7 @@ module.exports = {
       + "'shift',"
       + "'2019-03-05 16:00:00',"
       + "'2019-03-05 23:00:00',"
-      + "1,"
+      + "159,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);
@@ -191,7 +191,7 @@ module.exports = {
       + "'cover',"
       + "'2019-03-26 17:00:00',"
       + "'2019-03-26 19:00:00',"
-      + "1,"
+      + "149,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);
@@ -203,7 +203,7 @@ module.exports = {
       + "'cover',"
       + "'2019-03-18 21:00:00',"
       + "'2019-03-18 23:00:00',"
-      + "1,"
+      + "159,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);
@@ -215,7 +215,7 @@ module.exports = {
       + "'shift',"
       + "'2019-03-29 20:00:00',"
       + "'2019-03-29 23:00:00',"
-      + "1,"
+      + "149,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);
@@ -227,7 +227,7 @@ module.exports = {
       + "'cover',"
       + "'2019-03-10 19:00:00',"
       + "'2019-03-10 23:00:00',"
-      + "1,"
+      + "159,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);
@@ -239,7 +239,7 @@ module.exports = {
       + "'shift',"
       + "'2019-03-16 19:00:00',"
       + "'2019-03-16 21:00:00',"
-      + "1,"
+      + "149,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);
@@ -251,7 +251,7 @@ module.exports = {
       + "'shift',"
       + "'2019-03-06 17:00:00',"
       + "'2019-03-06 19:00:00',"
-      + "1,"
+      + "159,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);
@@ -263,7 +263,7 @@ module.exports = {
       + "'shift',"
       + "'2019-03-09 17:00:00',"
       + "'2019-03-09 19:00:00',"
-      + "1,"
+      + "149,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);
@@ -275,7 +275,7 @@ module.exports = {
       + "'shift',"
       + "'2019-04-14 17:00:00',"
       + "'2019-04-14 19:00:00',"
-      + "1,"
+      + "159,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);
@@ -287,7 +287,7 @@ module.exports = {
       + "'shift',"
       + "'2019-04-06 12:00:00',"
       + "'2019-04-06 23:00:00',"
-      + "1,"
+      + "149,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);
@@ -299,7 +299,7 @@ module.exports = {
       + "'shift',"
       + "'2019-05-12 17:00:00',"
       + "'2019-05-12 19:00:00',"
-      + "1,"
+      + "159,"
       + "250"
       + ")", function(err, result) {
         if (err) console.log(err);

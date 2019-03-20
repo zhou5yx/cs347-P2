@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS role (
 CREATE TABLE IF NOT EXISTS test (
    id int NOT NULL AUTO_INCREMENT,
    PRIMARY KEY(id)
-);
+)
 
 INSERT INTO test VALUES ('1');
 SELECT id from test;
