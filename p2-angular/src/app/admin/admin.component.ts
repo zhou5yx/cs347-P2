@@ -82,6 +82,8 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
+
+
   }
 
 }
