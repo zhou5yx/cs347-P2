@@ -1,4 +1,4 @@
-/**INSERT INTO course VALUES (149, 'CS149');
+INSERT INTO course VALUES (149, 'CS149');
 INSERT INTO course VALUES (159, 'CS159');
 
 
@@ -7,12 +7,12 @@ INSERT INTO user VALUES (id, 'arnolde', 'password', 'Arnold', 'Schwarzenboy', 2)
 INSERT INTO user VALUES (id, 'johnys', 'nicetomeetyou', 'Johnny', 'Jarganfargangas', 1);
 INSERT INTO user VALUES (id, 'happyfeet99', 'penguin', 'Catalina', 'Happyfeetpenguingirl III', 1);
 
-*/
+
 INSERT INTO location VALUES (143, 'Linux Lab');
 INSERT INTO location VALUES (250, 'Linux Lab');
 INSERT INTO location VALUES (252, 'Mac Lab');
 
-/**
+
 INSERT INTO role VALUES (id, 'ta');
 INSERT INTO role VALUES (id, 'student');
 INSERT INTO role VALUES (id, 'admin');
@@ -30,4 +30,3 @@ INSERT INTO event VALUES (id,1,'shift','2019-03-09 17:00:00','2019-03-09 19:00:0
 INSERT INTO event VALUES (id,1,'shift','2019-04-14 17:00:00','2019-04-14 19:00:00',159,250);
 INSERT INTO event VALUES (id,1,'shift','2019-04-06 12:00:00','2019-04-06 23:00:00',149,250);
 INSERT INTO event VALUES (id,1,'shift','2019-05-12 17:00:00','2019-05-12 19:00:00',159,250);
-*/
