@@ -23,7 +23,8 @@
     <div id="month-view">
       <div class="calendar__week" *ngFor="let row of monthRows">
         <app-calendar-day *ngFor="let col of monthCols"
-          class="calendar__day day" [day]="calendarInfo[row][col].day" [events]="calendarInfo[row][col].events">
+          class="calendar__day day" [day]="calendarInfo[row][col].day" [events]="calendarInfo[row][col].events"
+          [person]="person"> 
         </app-calendar-day>
       </div>
     </div>
