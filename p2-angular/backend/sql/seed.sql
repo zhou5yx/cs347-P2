@@ -1,11 +1,13 @@
+USE p2;
+
 INSERT INTO course VALUES (149, 'CS149');
 INSERT INTO course VALUES (159, 'CS159');
 
 
-INSERT INTO user VALUES (id, 'meatballboy28', 'spaghetti', 'Nicholas', 'Meatball', 1);
-INSERT INTO user VALUES (id, 'arnolde', 'password', 'Arnold', 'Schwarzenboy', 2);
-INSERT INTO user VALUES (id, 'johnys', 'nicetomeetyou', 'Johnny', 'Jarganfargangas', 1);
-INSERT INTO user VALUES (id, 'happyfeet99', 'penguin', 'Catalina', 'Happyfeetpenguingirl III', 1);
+INSERT INTO user VALUES (id, 'meatballboy28', 'spaghetti', 'Nicholas', 'Meatball', 1, 149);
+INSERT INTO user VALUES (id, 'arnolde', 'password', 'Arnold', 'Schwarzenboy', 2, 159);
+INSERT INTO user VALUES (id, 'johnys', 'nicetomeetyou', 'Johnny', 'Jarganfargangas', 1, 149);
+INSERT INTO user VALUES (id, 'happyfeet99', 'penguin', 'Catalina', 'Happyfeetpenguingirl III', 1, 159);
 
 
 INSERT INTO location VALUES (143, 'Linux Lab');
