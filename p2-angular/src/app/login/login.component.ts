@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 import { IAccount } from '../interfaces/account.type';
 import { AccountService } from '../services/account.service';
 @Component({
@@ -34,6 +35,14 @@ export class LoginComponent implements OnInit {
     } else {
       // TODO: figure out form validation for angular
       alert('invalid form');
+    }
+  }
+
+  registerSubmit(form: NgForm) {
+    if (form.invalid) {
+
+    } else {
+      //send to backend
     }
   }
 

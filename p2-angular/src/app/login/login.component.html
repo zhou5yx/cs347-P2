@@ -29,17 +29,40 @@
         </form>
       </div>
       <div id="register-container" *ngIf="!login">
-        <form action="ta-setup.html" id="register-form" #regForm="ngForm" (ngSubmit)="onSubmit(regForm)">
+        <form action="ta-setup.html" id="register-form" #regForm="ngForm" (ngSubmit)="registerSubmit(regForm)">
           <input type="text" class="fadeIn first" id="firstname"
-            name="firstname" placeholder="First Name" required ngModel>
+            name="firstname" placeholder="First Name" required ngModel
+            #regFirstName="ngModel">
+          <small [hidden]="regFirstName.valid || (regFirstName.pristine && !regForm.submitted)" class="text-danger">
+            First Name is required
+          </small>
+
           <input type="text" id="lastname" class="fadeIn first"
-            name="lastname" placeholder="Last Name" required ngModel>
+            name="lastname" placeholder="Last Name" required #regLastName="ngModel" ngModel>
+          <small [hidden]="regLastName.valid || (regLastName.pristine && !regForm.submitted)" class="text-danger">
+            Last Name is required
+          </small>
+
           <input type="text" id="dukes-id-register" class="fadeIn second"
-            name="eid" placeholder="JMU e-id" required ngModel>
+            name="eid" placeholder="JMU e-id" required ngModel #regUsername="ngModel">
+          <small [hidden]="regUsername.valid || (regUsername.pristine && !regForm.submitted)" class="text-danger">
+            Username is required
+          </small>
+
           <input type="password" id="password-register" class="fadeIn second"
-            name="password" placeholder="Password" minlength="8" required ngModel>
+            name="password" placeholder="Password" minlength="8" required ngModel #regPassword="ngModel">
+          <small [hidden]="regPassword.valid || (regPassword.pristine && !regForm.submitted)" class="text-danger">
+            Password is required and must have a minimum of 8 characters
+          </small>
+
           <input type="password" id="password-confirm" class="fadeIn second"
-            name="password-confirm" placeholder="Confirm Password" minlength="8" required ngModel>
+            name="password-confirm" placeholder="Confirm Password" minlength="8"
+            required ngModel #regPasswordConfirm="ngModel">
+          <small [hidden]="regPasswordConfirm.valid || (regPasswordConfirm.pristine && !regForm.submitted)"
+            class="text-danger">
+            Please confirm password
+          </small>
+
           <div class="toggle_radio fadeIn third">
             <input type="radio" class="toggle_option" id="first_toggle" name="toggle_option" value="student" ngModel>
             <input type="radio" checked class="toggle_option" id="second_toggle" name="toggle_option" value="ta" ngModel>

@@ -2,6 +2,8 @@
  * Functions to create the database and schema
  */
 var mysql = require('mysql');
+const cp = require('child_process');
+
 module.exports = {
   connect: function() {
     var connection = mysql.createConnection({
@@ -21,6 +23,7 @@ module.exports = {
 
     return connection;
   },
+
 
   create: function(conn) {
     conn.query('DROP TABLE IF EXISTS user', function(err, result) {

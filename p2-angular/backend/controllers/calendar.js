@@ -39,7 +39,6 @@ exports.getCourseEvents = function(req, res, next){
     + "CAST('2019-" + month + "-" + numDays + "' AS DATE) OR "
     + "end_date BETWEEN CAST('2019-" + month + "-01' AS DATE) AND "
     + "CAST('2019-" + month + "-" + numDays + "' AS DATE));"
-  console.log(sql);
   connection.query(sql, function(err, result) {
       if (err) {
         return res.status(500).json({
