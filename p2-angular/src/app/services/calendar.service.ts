@@ -18,7 +18,7 @@ export class CalendarService {
       );
   }
 
-  getAdminEvents(course: number, month: number): Observable<ICalendarEvent[][][]> {
+  getCourseEvents(course: number, month: number): Observable<ICalendarEvent[][][]> {
     return this.http.get<{result: ICalendarEvent[][][]}>('http://localhost:3000/api/calendar/'+ '?course='+ course + '&month=' +month)
       .pipe(
         map(res=> {
@@ -26,4 +26,5 @@ export class CalendarService {
         })
       );
   }
+
 }

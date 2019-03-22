@@ -56,7 +56,7 @@ export class CalendarComponent implements OnInit {
       });
     }
     else if(this.course){
-        this.calendarService.getAdminEvents(this.course, month).subscribe((events) => {
+        this.calendarService.getCourseEvents(this.course, month).subscribe((events) => {
           this.events = events;
           this.fillEvents(new Date(year,month,1).getDay(),month,year);
         });
