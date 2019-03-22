@@ -35,8 +35,6 @@ app.use((req, res, next) => {
 // connect to database
 var connection = dbStart.connect();
 dbStart.create(connection);
-dbStart.addUsers(connection);
-dbStart.addEvents(connection);
 
 app.use('/api/user', userRoutes);
 app.use('/api/calendar', calendarRoutes)
