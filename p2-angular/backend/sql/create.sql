@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS question (
   student_answer varchar(1000),
   status varchar(20),
   votes int,
-  timestamp datetime,
+  mytimestamp datetime,
   PRIMARY KEY (id)
 );
 
