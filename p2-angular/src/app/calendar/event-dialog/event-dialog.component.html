@@ -1,12 +1,12 @@
 <div class="event-dialog-container">
   <table>
     <tr>
-      <td>TA:</td>
-      <td>Tina TA</td>
+      <td *ngIf="data.person.role_id !=2">TA:</td>
+      <td *ngIf="data.person.role_id !=2">{{data.person.firstname}} {{data.person.lastname}}</td>
     </tr>
     <tr>
       <td>Class:</td>
-      <td>CS149</td>
+      <td>CS{{data.event.course_id}}</td>
     </tr>
     <tr>
       <td>Time:</td>
@@ -14,9 +14,9 @@
     </tr>
     <tr>
       <td>Room:</td>
-      <td>ISAT 254</td>
+      <td>ISAT {{data.event.location}}</td>
     </tr>
   </table>
-  <button class="btn btn-primary" *ngIf="data.event.type === 'shift'">Request Cover</button>
-  <button class="btn btn-primary" *ngIf="data.event.type === 'cover'">Take Shift</button>
+  <button class="btn btn-primary" *ngIf="data.event.type === 'shift' && data.person.role_id ===1" (click)="updateType()">Request Cover</button>
+  <button class="btn btn-primary" *ngIf="data.event.type === 'cover'&& data.person.role_id ===1 " (click)="updateType()">Take Shift</button>
 </div>

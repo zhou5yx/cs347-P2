@@ -22,11 +22,9 @@ export class CalendarDayComponent implements OnInit {
 
   ngOnChanges()
   {
-
     if(this.person && this.person.role_id === 2)
     {
-      this.events = [
-        {course_id: 159,
+      this.events = [{course_id: 159,
         end_date: new Date(2019,3,7,23,0,0,0),
         id: 9,
         location: 250,
@@ -39,12 +37,15 @@ export class CalendarDayComponent implements OnInit {
     console.log(this.events);
     const dialogRef = this.dialog.open(EventDialogComponent, {
           width: '250px',
-          data: {event: event}
+          data: {event: event, person: this.person}
         });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+          if(result == 'Pending')
+          {
+            document.getElementById('test-style').setAttribute("style", "color:blue; border-color: blue;");
+          }
+     });
   }
 
   getDay(dateStr: string) {
