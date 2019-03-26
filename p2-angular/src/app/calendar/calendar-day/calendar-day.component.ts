@@ -17,21 +17,21 @@ export class CalendarDayComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-
   }
 
   ngOnChanges()
   {
+    /**console.log(this.events);
     if(this.person && this.person.role_id === 2)
     {
       this.events = [{course_id: 159,
-        end_date: new Date(2019,3,7,23,0,0,0),
-        id: 9,
-        location: 250,
-        start_date: new Date(2019,3,6,16,0,0,0),
-        type: "shift",
-        user_id: 1 }];
-    }
+      end_date: new Date(2019,3,7,23,0,0,0),
+      id: 9,
+      location: 250,
+      start_date: new Date(2019,3,6,16,0,0,0),
+      type: "shift",
+      user_id: 1}];
+    }**/
   }
   openDialog(event: ICalendarEvent) {
     console.log(this.events);
