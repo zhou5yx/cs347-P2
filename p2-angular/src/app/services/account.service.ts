@@ -1,8 +1,8 @@
 import { IAccount } from '../interfaces/account.type';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable()
 export class AccountService {
@@ -23,9 +23,8 @@ export class AccountService {
   }
 
   registerUser(form) {
-    console.log(form);
     const body = JSON.stringify(form);
-    const headers = new Headers({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
     return this.http.post('http://localhost:3000/api/user/', body, {headers: headers})

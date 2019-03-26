@@ -15,3 +15,17 @@ exports.getUserInfo = function(req, res, next) {
     connection.end();
   });
 };
+
+exports.registerUser = function(req, res, next) {
+  var connection = db.connect();
+  console.log(req.body);
+  return null;
+  // connection.query('SELECT * FROM user WHERE id = ' + parseInt(req.params.id),
+  // function(err, result) {
+  //   if (err) return res.status(404).json({
+  //     message: 'User not found'
+  //   });
+  //   else return res.status(200).json(result);
+  //   connection.end();
+  // });
+}

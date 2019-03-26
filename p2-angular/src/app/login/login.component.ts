@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   registerSubmit(form: NgForm) {
     if (!form.invalid) {
-      this.accountService.registerUser(this.form.value).subscribe((result) => {
+      this.accountService.registerUser(form.value).subscribe((result) => {
         console.log(result);
       })
     }
