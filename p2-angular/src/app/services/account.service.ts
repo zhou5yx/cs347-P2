@@ -21,4 +21,18 @@ export class AccountService {
         })
       );
   }
+
+  registerUser(form) {
+    console.log(form);
+    const body = JSON.stringify(form);
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post('http://localhost:3000/api/user/', body, {headers: headers})
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((error: Response) => throwError(error.json()))
+      );
+  }
+
 }
