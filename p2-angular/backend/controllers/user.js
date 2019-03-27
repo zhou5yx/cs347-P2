@@ -1,5 +1,5 @@
 const db = require('../db_startup');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 /**
  * Gets the attributes of the user from the parameters.
  * ex. profile/1 returns the user with the id of 1's data.
