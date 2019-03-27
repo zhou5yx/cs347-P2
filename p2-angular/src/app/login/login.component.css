@@ -369,3 +369,11 @@ input[type=text]:placeholder {
   background: rgba(255,255,255,.3);
   left: 215px;
 }
+
+#input-hours{
+  margin: auto;
+}
+
+#course-input{
+  color: #333333;
+}

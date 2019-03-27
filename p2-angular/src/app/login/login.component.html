@@ -85,10 +85,10 @@
           </small>
           <div id="course-input" *ngIf="regRole.value === 'ta' || regRole.value === 'student'">
             <h3>Select Course</h3>
-            <input type="radio" id="149_toggle" name="course"
+            <input type="radio" id="toggle_149" name="course"
                    value="149" required ngModel #regCourse="ngModel">
             <label for="149_toggle"><p>CS 149</p></label>
-            <input type="radio" id="159_toggle" name="course"
+            <input type="radio" id="toggle_159" name="course"
                    value="159" required ngModel #regCourse="ngModel">
             <label for="159_toggle"><p>CS 159</p></label>
             <small [hidden]="regCourse.valid || !regForm.submitted"
@@ -96,38 +96,38 @@
               Please Select A Course
             </small>
           </div>
-          <div class="fadeIn third" *ngIf="regRole.value === 'ta'">
-            <h3>Select Your Weekly Hours</h3>
+          <div id="input-hours" class="fadeIn third" *ngIf="regRole.value === 'ta'">
+            <h3>Input Your Weekly Hours</h3>
             <table>
               <tr>
                 <th>Monday</th>
-                <td><input name="monday-start" type="time" ngModel>pm
-                    <input name="monday-end" type="time" ngModel>pm</td>
+                <td><input name="monday-start" type="time" ngModel>-
+                    <input name="monday-end" type="time" ngModel></td>
               </tr>
               <tr>
                 <th>Tuesday</th>
-                <td><input name="tuesday-start" type="time" ngModel>pm
-                    <input name="tuesday-end" type="time" ngModel>pm</td>
+                <td><input name="tuesday-start" type="time" ngModel>-
+                    <input name="tuesday-end" type="time" ngModel></td>
               </tr>
               <tr>
                 <th>Wednesday</th>
-                <td><input name="wednesday-start" type="time" ngModel>pm
-                    <input name="wednesday-end" type="time" ngModel>pm</td>
+                <td><input name="wednesday-start" type="time" ngModel>-
+                    <input name="wednesday-end" type="time" ngModel></td>
               </tr>
               <tr>
                 <th>Thursday</th>
-                <td><input name="thursday-start" type="time" ngModel>pm
-                    <input type="time" name="thursday-end" ngModel>pm</td>
+                <td><input name="thursday-start" type="time" ngModel>-
+                    <input type="time" name="thursday-end" ngModel></td>
               </tr>
               <tr>
                 <th>Friday</th>
-                <td><input name="friday-start" type="time" ngModel>pm
-                    <input name="friday-end" type="time" ngModel>pm</td>
+                <td><input name="friday-start" type="time" ngModel>-
+                    <input name="friday-end" type="time" ngModel></td>
               </tr>
               <tr>
                 <th>Sunday</th>
-                <td><input name="sunday-start" type="time" ngModel>pm
-                    <input name="sunday-end" type="time" ngModel>pm</td>
+                <td><input name="sunday-start" type="time" ngModel>-
+                    <input name="sunday-end" type="time" ngModel></td>
               </tr>
             </table>
           </div>
