@@ -15,7 +15,7 @@ export class CalendarService {
         map(res => {
           return res.result;
         })
-      );
+      ); 
   }
 
   getCourseEvents(course: number, month: number): Observable<ICalendarEvent[][][]> {
