@@ -2,8 +2,9 @@
   <div>{{ day }}</div>
   <div>
     <ul *ngIf="events && events.length > 0">
-      <li id="test-style" *ngFor="let event of events" (click)="openDialog(event)"
-          [ngStyle]="event.type === 'cover' && {'color': 'red', 'border-color': 'red'}">
+      <li *ngFor="let event of events" (click)="openDialog(event)"
+          [ngStyle]="(event.type === 'cover' && {'color': 'red', 'border-color': 'red'})
+                    || (event.type === 'Pending' && {'color': 'blue', 'border-color': 'blue'})">
         {{ getDay(event.start_date) }} - {{ getDay(event.end_date) }}</li>
     </ul>
   </div>

@@ -21,11 +21,12 @@ export class EventDialogComponent implements OnInit {
   }
 
   updateType(){
+    //console.log(this.data.event.type);
     if(this.data.event.type === 'shift')
     {
       this.data.event.type = 'Pending';
     }
-    if(this.data.event.type === 'cover')
+    else if(this.data.event.type === 'cover')
     {
       this.data.event.type = 'Pending';
     }

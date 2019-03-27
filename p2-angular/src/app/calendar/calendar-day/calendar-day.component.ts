@@ -40,12 +40,9 @@ export class CalendarDayComponent implements OnInit {
           data: {event: event, person: this.person}
         });
 
-    dialogRef.afterClosed().subscribe(result => {
-          if(result == 'Pending')
-          {
-            document.getElementById('test-style').setAttribute("style", "color:blue; border-color: blue;");
-          }
-     });
+    // dialogRef.afterClosed().subscribe(result => {
+    //
+    //  });
   }
 
   getDay(dateStr: string) {
