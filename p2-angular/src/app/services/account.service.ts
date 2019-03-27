@@ -31,7 +31,7 @@ export class AccountService {
       .pipe(
         map((response: Response) => {return response},
         catchError((error: Response) => throwError(error))
-      );
+      ));
   }
 
 }
