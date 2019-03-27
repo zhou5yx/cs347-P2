@@ -62,16 +62,74 @@
             class="text-danger">
             Please confirm password
           </small>
-
+          <small [hidden]="regPasswordConfirm.pristine || regPasswordConfirm.value === regPassword.value"
+            class="text-danger">
+            Password Mismatch
+          </small>
           <div class="toggle_radio fadeIn third">
-            <input type="radio" class="toggle_option" id="first_toggle" name="toggle_option" value="student" ngModel>
-            <input type="radio" checked class="toggle_option" id="second_toggle" name="toggle_option" value="ta" ngModel>
-            <input type="radio" class="toggle_option" id="third_toggle" name="toggle_option" value="admin" ngModel>
+            <input type="radio" class="toggle_option" id="first_toggle" name="role"
+                   value="student" required ngModel #regRole="ngModel">
+            <input type="radio" class="toggle_option" id="second_toggle" name="role"
+                   value="ta" required ngModel #regRole="ngModel">
+            <input type="radio" class="toggle_option" id="third_toggle" name="role"
+                   value="admin" required ngModel #regRole="ngModel">
             <label for="first_toggle"><p>Student</p></label>
             <label for="second_toggle"><p>TA</p></label>
             <label for="third_toggle"><p>Admin</p></label>
             <div class="toggle_option_slider">
             </div>
+          </div>
+          <small [hidden]="regRole.valid || !regForm.submitted"
+            class="text-danger">
+            Please Select A User Role
+          </small>
+          <div id="course-input" *ngIf="regRole.value === 'ta' || regRole.value === 'student'">
+            <h3>Select Course</h3>
+            <input type="radio" id="149_toggle" name="course"
+                   value="149" required ngModel #regCourse="ngModel">
+            <label for="149_toggle"><p>CS 149</p></label>
+            <input type="radio" id="159_toggle" name="course"
+                   value="159" required ngModel #regCourse="ngModel">
+            <label for="159_toggle"><p>CS 159</p></label>
+            <small [hidden]="regCourse.valid || !regForm.submitted"
+              class="text-danger">
+              Please Select A Course
+            </small>
+          </div>
+          <div class="fadeIn third" *ngIf="regRole.value === 'ta'">
+            <h3>Select Your Weekly Hours</h3>
+            <table>
+              <tr>
+                <th>Monday</th>
+                <td><input name="monday-start" type="time" ngModel>pm
+                    <input name="monday-end" type="time" ngModel>pm</td>
+              </tr>
+              <tr>
+                <th>Tuesday</th>
+                <td><input name="tuesday-start" type="time" ngModel>pm
+                    <input name="tuesday-end" type="time" ngModel>pm</td>
+              </tr>
+              <tr>
+                <th>Wednesday</th>
+                <td><input name="wednesday-start" type="time" ngModel>pm
+                    <input name="wednesday-end" type="time" ngModel>pm</td>
+              </tr>
+              <tr>
+                <th>Thursday</th>
+                <td><input name="thursday-start" type="time" ngModel>pm
+                    <input type="time" name="thursday-end" ngModel>pm</td>
+              </tr>
+              <tr>
+                <th>Friday</th>
+                <td><input name="friday-start" type="time" ngModel>pm
+                    <input name="friday-end" type="time" ngModel>pm</td>
+              </tr>
+              <tr>
+                <th>Sunday</th>
+                <td><input name="sunday-start" type="time" ngModel>pm
+                    <input name="sunday-end" type="time" ngModel>pm</td>
+              </tr>
+            </table>
           </div>
           <input type="submit" class="fadeIn fourth" value="Register">
           <button class="btn btn-primary fadeIn fourth" (click)="login = !login">Login</button>

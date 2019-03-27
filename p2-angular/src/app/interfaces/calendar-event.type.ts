@@ -1,6 +1,10 @@
 export interface ICalendarEvent {
-  start: number;
-  end: number;
+  id: number;
+  start_date: Date;
+  course_id: number;
   type: string;
-  date?: Date;
+  end_date: Date;
+  location: number;
+  user_id: number;
+  requestee?: number;
 }

@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit {
   }
 
   registerSubmit(form: NgForm) {
-    if (form.invalid) {
-
-    } else {
-      //send to backend
+    if (!form.invalid) {
+      this.accountService.registerUser(form.value).subscribe((result) => {
+        console.log(result);
+      })
     }
   }
 
