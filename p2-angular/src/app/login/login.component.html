@@ -85,12 +85,16 @@
           </small>
           <div id="course-input" *ngIf="regRole.value === 'ta' || regRole.value === 'student'">
             <h3>Select Course</h3>
+            <div id="radio-b">
             <input type="radio" id="toggle_149" name="course"
                    value="149" required ngModel #regCourse="ngModel">
             <label for="149_toggle"><p>CS 149</p></label>
+            </div>
+            <div id="radio-b2">
             <input type="radio" id="toggle_159" name="course"
                    value="159" required ngModel #regCourse="ngModel">
             <label for="159_toggle"><p>CS 159</p></label>
+            </div>
             <small [hidden]="regCourse.valid || !regForm.submitted"
               class="text-danger">
               Please Select A Course
