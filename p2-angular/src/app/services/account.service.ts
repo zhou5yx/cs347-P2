@@ -29,8 +29,8 @@ export class AccountService {
     });
     return this.http.post('http://localhost:3000/api/user/', body, {headers: headers})
       .pipe(
-        map((response: Response) => response.json()),
-        catchError((error: Response) => throwError(error.json()))
+        map((response: Response) => {return response},
+        catchError((error: Response) => throwError(error))
       );
   }
 
