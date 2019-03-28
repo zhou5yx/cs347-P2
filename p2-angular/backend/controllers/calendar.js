@@ -53,3 +53,24 @@ exports.getCourseEvents = function(req, res, next){
       }
     });
 }
+
+
+exports.updateEventType = function(req, res, next){
+  var connection = db.connect();
+  var id = req.body.id;
+  var type = req.body.type;
+  var sql = "UPDATE event SET type='" + type + "' WHERE id="+id;
+  connection.query(sql, function(err, result) {
+      if (err) {
+        return res.status(500).json({
+          title: 'An error occurred getting the calendar course data',
+          error: err
+        });
+      }
+      else {
+        return res.status(200).json({
+          result: result
+        });
+      }
+    });
+}

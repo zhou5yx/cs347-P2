@@ -4,4 +4,6 @@ var CalendarController = require('../controllers/calendar');
 
 router.get('/:id', CalendarController.getCalendarEventProfileData);
 router.get('/',CalendarController.getCourseEvents);
+router.put('/', CalendarController.updateEventType);
+
 module.exports = router;

@@ -3,6 +3,7 @@ import { ICalendarEvent } from '../../interfaces/calendar-event.type';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { IAccount } from '../../interfaces/account.type';
 import { AccountService } from '../../services/account.service';
+import { CalendarService } from '../../services/calendar.service';
 
 @Component({
   selector: 'app-event-dialog',
@@ -14,6 +15,7 @@ export class EventDialogComponent implements OnInit {
   constructor(
   public dialogRef: MatDialogRef<EventDialogComponent>,
   private accountService: AccountService,
+  private calendarService: CalendarService,
   @Inject(MAT_DIALOG_DATA) public data) { }
 
 
@@ -38,6 +40,9 @@ export class EventDialogComponent implements OnInit {
     else if(this.data.event.type === 'cover')
     {
       this.data.event.type = 'Pending';
+    }
+    this.calendarService.updateEventType(this.data.event).subscribe((result) => {
+      console.log(result);
     }
     this.dialogRef.close(this.data.event.type);
   }
