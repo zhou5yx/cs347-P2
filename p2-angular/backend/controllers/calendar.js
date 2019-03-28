@@ -63,7 +63,7 @@ exports.updateEventType = function(req, res, next){
   connection.query(sql, function(err, result) {
       if (err) {
         return res.status(500).json({
-          title: 'An error occurred getting the calendar course data',
+          title: 'An error occurred updating the calendar course data',
           error: err
         });
       }
