@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS location (
 CREATE TABLE IF NOT EXISTS event (
   id int NOT NULL AUTO_INCREMENT,
   user_id int,
+  requester int,
   requestee int,
   type varchar(10),
   start_date datetime,
