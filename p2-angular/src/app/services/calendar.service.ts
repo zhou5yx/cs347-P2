@@ -27,7 +27,7 @@ export class CalendarService {
       );
   }
 
-  updateEventType(event) {
+  updateEvent(event) {
     const body = JSON.stringify(event);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'

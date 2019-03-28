@@ -55,11 +55,11 @@ exports.getCourseEvents = function(req, res, next){
 }
 
 
-exports.updateEventType = function(req, res, next){
+exports.updateEvent = function(req, res, next){
   var connection = db.connect();
   var id = req.body.id;
   var type = req.body.type;
-  var sql = "UPDATE event SET type='" + type + "' WHERE id="+id;
+  var sql = "UPDATE event SET type='" + type + "', requestee="+ req.body.requestee +" WHERE id="+id;
   connection.query(sql, function(err, result) {
       if (err) {
         return res.status(500).json({
@@ -73,4 +73,5 @@ exports.updateEventType = function(req, res, next){
         });
       }
     });
+
 }

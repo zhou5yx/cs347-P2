@@ -40,8 +40,9 @@ export class EventDialogComponent implements OnInit {
     else if(this.data.event.type === 'cover')
     {
       this.data.event.type = 'Pending';
+      this.data.event.requestee = this.data.person.id;
     }
-    this.calendarService.updateEventType(this.data.event).subscribe((result) => {
+    this.calendarService.updateEvent(this.data.event).subscribe((result) => {
       console.log(result);
     }
     this.dialogRef.close(this.data.event.type);
