@@ -54,5 +54,36 @@ exports.registerUser = function(req, res, next) {
 
 exports.loginUser = function(req, res, next) {
   var connection = db.connect();
+  const sql = "SELECT * FROM user WHERE username = '" + req.body.login + "'";
+  console.log(req.body);
+  connection.query(sql, function(err, result) {
+    if (err) { // error in sql
+        return res.status(500).json({
+        message: 'Error logging in',
+        error: err
+      });
+    } else {
+      if (result.length !== 1) { // username not found in db
+        return res.status(500).json({
+          message: 'User not found',
+        });
+      }
+      console.log(result);
+      bcrypt.compare(req.body.password, result[0].password)
+        .then((same) => {
+          if (same) { // password matches
+            return res.status(201).json({
+              message: 'User successfully logged in',
+              result: result
+            });
+          } else { // wrong password
+            return res.status(500).json({
+              message: 'Wrong password',
+            });
+          }
+        });
+    }
+    connection.end();
+  });
   return null;
 }

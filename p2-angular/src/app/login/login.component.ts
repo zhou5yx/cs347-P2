@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log(form);
     if (form.valid) {
       this.accountService.loginUser(form.value).subscribe((result) => {
         console.log(result);
