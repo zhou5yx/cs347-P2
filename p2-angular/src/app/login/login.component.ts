@@ -20,21 +20,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form) {
+    console.log(form);
     if (form.valid) {
-      this.accountService.currentAccount.username = form.value.username;
-      if (form.value.toggle_option === "ta") {
-        this.accountService.currentAccount.type = "ta";
-        this.router.navigate(['/profile/1']);
-      } else if (form.value.toggle_option === "student") {
-        this.accountService.currentAccount.type = "student";
-        this.router.navigate(['/profile/2']);
-      } else if (form.value.toggle_option === "admin") {
-        this.accountService.currentAccount.type = "admin";
-        this.router.navigate(['/admin']);
-      }
-    } else {
-      // TODO: figure out form validation for angular
-      alert('invalid form');
+      this.accountService.loginUser(form.value).subscribe((result) => {
+        console.log(result);
+      });
     }
   }
 

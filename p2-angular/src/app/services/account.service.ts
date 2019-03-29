@@ -34,4 +34,16 @@ export class AccountService {
       ));
   }
 
+  loginUser(form) {
+    const body = JSON.stringify(form);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post('http://localhost:3000/api/user/login', body, {headers: headers})
+      .pipe(
+        map((response: Response) => {return response},
+        catchError((error: Response) => throwError(error))
+      ));
+  }
+
 }

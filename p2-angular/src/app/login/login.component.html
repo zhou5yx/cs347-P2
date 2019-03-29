@@ -11,25 +11,41 @@
       <div id="login-container" *ngIf="login">
         <form action="" id="login-form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
           <input type="text" id="dukes-id" class="fadeIn second"
-            name="login" placeholder="JMU e-id" required ngModel>
+            name="login" placeholder="JMU e-id" required ngModel #loginUsername="ngModel">
+          <small [hidden]="loginUsername.valid || !loginForm.submitted"
+            class="text-danger">
+            Please Enter a Username
+          </small>
           <input type="password" id="password" class="fadeIn third"
-            name="password" placeholder="Password" minlength="8" required ngModel>
-            <div class="toggle_radio fadeIn third" id="login-slider">
-              <input type="radio" class="toggle_option" id="first_toggle" name="toggle_option" value="student" ngModel>
-              <input type="radio" class="toggle_option" id="second_toggle" name="toggle_option" value="ta" ngModel>
-              <input type="radio" checked class="toggle_option" id="third_toggle" name="toggle_option" value="admin" ngModel>
-              <label for="first_toggle"><p>Student</p></label>
-              <label for="second_toggle"><p>TA</p></label>
-              <label for="third_toggle"><p>Admin</p></label>
-              <div class="toggle_option_slider">
-              </div>
+            name="password" placeholder="Password" minlength="8" required ngModel
+            #loginPassword="ngModel">
+          <small [hidden]="loginPassword.valid || !loginForm.submitted"
+            class="text-danger">
+            Please Enter a password that is at least 8 characters
+          </small>
+          <div class="toggle_radio fadeIn third" id="login-slider">
+            <input type="radio" class="toggle_option" id="first_toggle" name="role"
+              value="student" required ngModel #loginRole="ngModel">
+            <input type="radio" class="toggle_option" id="second_toggle" name="role"
+              value="ta" required ngModel #loginRole="ngModel">
+            <input type="radio" class="toggle_option" id="third_toggle" name="role"
+              value="admin" required ngModel #loginRole="ngModel">
+            <label for="first_toggle"><p>Student</p></label>
+            <label for="second_toggle"><p>TA</p></label>
+            <label for="third_toggle"><p>Admin</p></label>
+            <div class="toggle_option_slider">
             </div>
+          </div>
+          <small [hidden]="loginRole.valid || !loginForm.submitted"
+            class="text-danger">
+            Please Select A User Role
+          </small>
           <input type="submit" class="fadeIn fourth" value="Log In">
           <button class="btn btn-primary fadeIn fourth" (click)="login = !login">Register</button>
         </form>
       </div>
       <div id="register-container" *ngIf="!login">
-        <form action="ta-setup.html" id="register-form" #regForm="ngForm" (ngSubmit)="registerSubmit(regForm)">
+        <form id="register-form" #regForm="ngForm" (ngSubmit)="registerSubmit(regForm)">
           <input type="text" class="fadeIn first" id="firstname"
             name="firstname" placeholder="First Name" required ngModel
             #regFirstName="ngModel">

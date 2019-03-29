@@ -51,3 +51,8 @@ exports.registerUser = function(req, res, next) {
       });
     });
 }
+
+exports.loginUser = function(req, res, next) {
+  var connection = db.connect();
+  return null;
+}
