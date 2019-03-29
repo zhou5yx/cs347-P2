@@ -44,7 +44,7 @@ export class EventDialogComponent implements OnInit {
     }
     this.calendarService.updateEvent(this.data.event).subscribe((result) => {
       console.log(result);
-    }
+    })
     this.dialogRef.close(this.data.event.type);
   }
 }
