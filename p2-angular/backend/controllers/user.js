@@ -1,5 +1,6 @@
 const db = require('../db_startup');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 /**
  * Gets the attributes of the user from the parameters.
  * ex. profile/1 returns the user with the id of 1's data.
@@ -64,17 +65,26 @@ exports.loginUser = function(req, res, next) {
       });
     } else {
       if (result.length !== 1) { // username not found in db
-        return res.status(500).json({
+        return res.status(401).json({
           message: 'User not found',
         });
       }
-      console.log(result);
+      console.log(result[0]);
       bcrypt.compare(req.body.password, result[0].password)
         .then((same) => {
+          const token = jwt.sign({
+            id: result[0].id,
+            username: result[0].username,
+            firstname: result[0].firstname,
+            lastname: result[0].lastname,
+            roleId: result[0].role_id,
+            courseId: result[0].courseId,
+            monthlyHours: result[0].monthly_hours
+          }, 'secretstringthing');
           if (same) { // password matches
-            return res.status(201).json({
+            return res.status(200).json({
               message: 'User successfully logged in',
-              result: result
+              token: token
             });
           } else { // wrong password
             return res.status(500).json({
