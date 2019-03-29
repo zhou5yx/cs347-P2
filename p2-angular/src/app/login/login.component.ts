@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
     if (form.valid) {
       this.accountService.loginUser(form.value).subscribe((result) => {
         console.log(result);
+        // update the token in the user account
+        this.accountService.token = result.token;
       });
     }
   }
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
     if (!form.invalid) {
       this.accountService.registerUser(form.value).subscribe((result) => {
         console.log(result);
-      })
+      });
     }
   }
 

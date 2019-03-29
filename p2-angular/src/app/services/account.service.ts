@@ -7,6 +7,8 @@ import { Observable, throwError } from 'rxjs';
 @Injectable()
 export class AccountService {
 
+  token: string;
+
   currentAccount: IAccount = {firstname: 'name', lastname: 'name',
                               username: 'spagett', id: 7, role_id: 2, type: 'ta',
                               courses: []};
@@ -41,7 +43,7 @@ export class AccountService {
     });
     return this.http.post('http://localhost:3000/api/user/login', body, {headers: headers})
       .pipe(
-        map((response: Response) => {return response},
+        map((response: {message: string, token: string}) => {return response},
         catchError((error: Response) => throwError(error))
       ));
   }
