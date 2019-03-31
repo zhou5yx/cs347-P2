@@ -53,4 +53,8 @@ export class EventDialogComponent implements OnInit {
     })
     this.dialogRef.close(this.data.event.type);
   }
+
+  getDay(dateStr: string) {
+    return new Date(dateStr).getHours() % 12;
+  }
 }
