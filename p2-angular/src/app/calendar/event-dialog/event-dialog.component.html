@@ -2,8 +2,7 @@
   <table>
     <tr *ngIf="data.person.role_id !=2">
       <td>TA:</td>
-      <td *ngIf="data.event.type =='shift'">{{data.person.firstname}} {{data.person.lastname}}</td>
-      <td *ngIf="data.event.type =='cover'">{{data.person.firstname}} {{data.person.lastname}}</td>
+      <td>{{requesterAccount.firstname}} {{requesterAccount.lastname}}</td>
     </tr>
     <tr>
       <td>Class:</td>
@@ -22,6 +21,6 @@
       <td>{{data.event.type}}</td>
     </tr>
   </table>
-  <button class="btn btn-primary" *ngIf="data.event.type === 'shift' && data.person.role_id ===1" (click)="updateType()">Request Cover</button>
-  <button class="btn btn-primary" *ngIf="data.event.type === 'cover'&& data.person.role_id ===1 " (click)="updateType()">Take Shift</button>
+  <button class="btn btn-primary" id="rc" *ngIf="data.event.type === 'shift' && data.person.role_id ===1" (click)="updateType()">Request Cover</button>
+  <button class="btn btn-primary" id="ts"*ngIf="data.event.type === 'cover'&& data.person.role_id ===1 " (click)="updateType()">Take Shift</button>
 </div>

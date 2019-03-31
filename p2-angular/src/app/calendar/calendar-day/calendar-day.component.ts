@@ -36,7 +36,7 @@ export class CalendarDayComponent implements OnInit {
   openDialog(event: ICalendarEvent) {
     console.log(this.events);
     const dialogRef = this.dialog.open(EventDialogComponent, {
-          width: '250px',
+          width: '300px',
           data: {event: event, person: this.person}
         });
 

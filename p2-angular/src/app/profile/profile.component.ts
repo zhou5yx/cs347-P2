@@ -12,7 +12,7 @@ export class ProfileComponent implements OnInit {
   id: number = 0;
   currentAccount: IAccount;
   displayedAccount: IAccount = {firstname: '', lastname: '', username: '',
-                                role_id: 0, id: 0 };
+                                 id: 0, role_id: 0,type:'', courses:[] };
 
   constructor(
     private accountService: AccountService,

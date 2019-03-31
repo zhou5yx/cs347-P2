@@ -11,3 +11,17 @@ td {
   width: 90%;
   margin: auto;
 }
+
+#rc{
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: #B599CE;
+  border-color: #DACCE6;
+}
+
+#ts{
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: #CBB677;
+  border-color: #F4EFE1;
+}

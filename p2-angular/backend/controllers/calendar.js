@@ -59,7 +59,8 @@ exports.updateEvent = function(req, res, next){
   var connection = db.connect();
   var id = req.body.id;
   var type = req.body.type;
-  var sql = "UPDATE event SET type='" + type + "', requestee="+ req.body.requestee +" WHERE id="+id;
+  var idrequester = req.body.requester;
+  var sql = "UPDATE event SET type='" + type + "', requestee="+ req.body.requestee +", requester=" +idrequester+ " WHERE id="+id;
   connection.query(sql, function(err, result) {
       if (err) {
         return res.status(500).json({

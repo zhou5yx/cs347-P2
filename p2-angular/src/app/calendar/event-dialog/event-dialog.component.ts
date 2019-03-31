@@ -11,6 +11,8 @@ import { CalendarService } from '../../services/calendar.service';
   styleUrls: ['./event-dialog.component.css']
 })
 export class EventDialogComponent implements OnInit {
+  requesterAccount: IAccount = {firstname: '', lastname: '', username: '',
+                                role_id: 0, id: 0 };
 
   constructor(
   public dialogRef: MatDialogRef<EventDialogComponent>,
@@ -20,7 +22,10 @@ export class EventDialogComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.data);
+    this.accountService.getProfileData(this.data.event.requester)
+      .subscribe((account: IAccount) => {
+          this.requesterAccount = account;
+        });
   }
 
   updateType(){
@@ -36,6 +41,7 @@ export class EventDialogComponent implements OnInit {
       {
         this.data.event.type = 'cover';
       }
+      this.data.event.requester = this.data.person.id;
     }
     else if(this.data.event.type === 'cover')
     {
