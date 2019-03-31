@@ -6,5 +6,5 @@ export interface IAccount {
   username: string,
   role_id: number,
   type?: string,
-  courses?: string[],
+  course?: number,
 }

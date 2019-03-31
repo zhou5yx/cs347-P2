@@ -22,9 +22,14 @@ export class LoginComponent implements OnInit {
   onSubmit(form) {
     if (form.valid) {
       this.accountService.loginUser(form.value).subscribe((result) => {
-        console.log(result);
-        // update the token in the user account
-        this.accountService.token = result.token;
+        if (result) {
+          // update the token in the user account
+          console.log(this.accountService.token);
+          console.log(this.accountService.currentUser);
+        }
+      }, (err) => {
+        console.log(err);
+        alert(err.error.message);
       });
     }
   }

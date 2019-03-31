@@ -9,9 +9,9 @@ export class AccountService {
 
   token: string;
 
-  currentAccount: IAccount = {firstname: 'name', lastname: 'name',
+  currentUser: IAccount = {firstname: 'name', lastname: 'name',
                               username: 'spagett', id: 7, role_id: 2, type: 'ta',
-                              courses: []};
+                              course: 149};
 
   constructor(private http: HttpClient) {}
 
@@ -43,9 +43,30 @@ export class AccountService {
     });
     return this.http.post('http://localhost:3000/api/user/login', body, {headers: headers})
       .pipe(
-        map((response: {message: string, token: string}) => {return response},
+        map((response) => {
+          console.log(response);
+          localStorage.setItem('firstname', response.user.firstname);
+          localStorage.setItem('lastname', response.user.lastname);
+          localStorage.setItem('id', response.user.id);
+          localStorage.setItem('role', response.user.roleId);
+          localStorage.setItem('course', response.user.courseId);
+          localStorage.setItem('username', response.user.username);
+          localStorage.setItem('token', response.token);
+          this.setGlobalValues();
+          return response;
+        },
         catchError((error: Response) => throwError(error))
       ));
+  }
+
+  setGlobalValues() {
+    this.currentUser.firstname = localStorage.getItem('firstname');
+    this.currentUser.lastname = localStorage.getItem('lastname');
+    this.currentUser.username = localStorage.getItem('username');
+    this.currentUser.id = parseInt(localStorage.getItem('id'));
+    this.currentUser.role_id = parseInt(localStorage.getItem('role'));
+    this.currentUser.course = parseInt(localStorage.getItem('course'));
+    this.token = localStorage.getItem('token');
   }
 
 }

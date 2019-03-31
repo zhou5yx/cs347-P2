@@ -23,7 +23,6 @@ exports.getUserInfo = function(req, res, next) {
  */
 exports.registerUser = function(req, res, next) {
   var connection = db.connect();
-  console.log(req.body);
   var roles = {
     ta: 1,
     student: 2,
@@ -56,7 +55,6 @@ exports.registerUser = function(req, res, next) {
 exports.loginUser = function(req, res, next) {
   var connection = db.connect();
   const sql = "SELECT * FROM user WHERE username = '" + req.body.login + "'";
-  console.log(req.body);
   connection.query(sql, function(err, result) {
     if (err) { // error in sql
         return res.status(500).json({
@@ -69,7 +67,6 @@ exports.loginUser = function(req, res, next) {
           message: 'User not found',
         });
       }
-      console.log(result[0]);
       bcrypt.compare(req.body.password, result[0].password)
         .then((same) => {
           const token = jwt.sign({
@@ -84,6 +81,15 @@ exports.loginUser = function(req, res, next) {
           if (same) { // password matches
             return res.status(200).json({
               message: 'User successfully logged in',
+              user: {
+                id: result[0].id,
+                username: result[0].username,
+                firstname: result[0].firstname,
+                lastname: result[0].lastname,
+                roleId: result[0].role_id,
+                courseId: result[0].course_id,
+                monthlyHours: result[0].monthly_hours
+              },
               token: token
             });
           } else { // wrong password
