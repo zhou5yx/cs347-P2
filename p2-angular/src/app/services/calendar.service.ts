@@ -21,7 +21,7 @@ export class CalendarService {
 
   getCourseEvents(course: number, month: number): Observable<ICalendarEvent[][][]> {
     return this.http.get<{result: ICalendarEvent[][][]}>('http://localhost:3000/api/calendar/'
-      + '?course='+ course + '&month=' +month + '&token=' + token)
+      + '?course='+ course + '&month=' +month + '&token=' + localStorage.getItem('token'))
       .pipe(
         map(res=> {
           return res.result;
