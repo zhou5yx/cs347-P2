@@ -9,14 +9,15 @@ export class AccountService {
 
   token: string;
 
-  currentUser: IAccount = {firstname: 'name', lastname: 'name',
+  currentAccount: IAccount = {firstname: 'name', lastname: 'name',
                               username: 'spagett', id: 7, role_id: 2, type: 'ta',
                               course: 149};
 
   constructor(private http: HttpClient) {}
 
   getProfileData(personId: number): Observable<IAccount> {
-    return this.http.get('http://localhost:3000/api/user/' + personId)
+    return this.http.get('http://localhost:3000/api/user/' + personId
+      + '?token=' + localStorage.getItem('token'))
       .pipe(
         map(res => {
           return res[0];
@@ -29,7 +30,8 @@ export class AccountService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post('http://localhost:3000/api/user/', body, {headers: headers})
+    return this.http.post('http://localhost:3000/api/user/',
+      body, {headers: headers})
       .pipe(
         map((response: Response) => {return response},
         catchError((error: Response) => throwError(error))
@@ -41,7 +43,8 @@ export class AccountService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post('http://localhost:3000/api/user/login', body, {headers: headers})
+    return this.http.post('http://localhost:3000/api/user/login',
+      body, {headers: headers})
       .pipe(
         map((response) => {
           console.log(response);
@@ -60,12 +63,12 @@ export class AccountService {
   }
 
   setGlobalValues() {
-    this.currentUser.firstname = localStorage.getItem('firstname');
-    this.currentUser.lastname = localStorage.getItem('lastname');
-    this.currentUser.username = localStorage.getItem('username');
-    this.currentUser.id = parseInt(localStorage.getItem('id'));
-    this.currentUser.role_id = parseInt(localStorage.getItem('role'));
-    this.currentUser.course = parseInt(localStorage.getItem('course'));
+    this.currentAccount.firstname = localStorage.getItem('firstname');
+    this.currentAccount.lastname = localStorage.getItem('lastname');
+    this.currentAccount.username = localStorage.getItem('username');
+    this.currentAccount.id = parseInt(localStorage.getItem('id'));
+    this.currentAccount.role_id = parseInt(localStorage.getItem('role'));
+    this.currentAccount.course = parseInt(localStorage.getItem('course'));
     this.token = localStorage.getItem('token');
   }
 

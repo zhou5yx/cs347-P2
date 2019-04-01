@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       this.accountService.loginUser(form.value).subscribe((result) => {
         if (result) {
           // update the token in the user account
-          this.router.navigate(['/profile/' + this.accountService.currentUser.id]);
+          this.router.navigate(['/profile/' + this.accountService.currentAccount.id]);
         }
       }, (err) => {
         console.log(err);

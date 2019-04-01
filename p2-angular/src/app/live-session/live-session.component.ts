@@ -67,6 +67,8 @@ export class LiveSessionComponent implements OnInit {
   dataSource =   new MatTableDataSource(LIVE_DATA);
   expandedElement: LiveData | null;
   showsess: boolean = false;
+  id: number = localStorage.getItem('id') ? parseInt(localStorage.getItem('id')) : 1;
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
@@ -83,7 +85,7 @@ export class LiveSessionComponent implements OnInit {
       this.router.navigate(['/login']);
       alert('must be logged in to access this feature');
     }
-    this.currentAccount = this.accountService.currentUser;
+    this.currentAccount = this.accountService.currentAccount;
     this.dataSource.sort = this.sort;
   }
 

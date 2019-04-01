@@ -10,7 +10,8 @@ export class CalendarService {
   constructor(private http: HttpClient) {}
 
   getEvents(personId: number, month: number): Observable<ICalendarEvent[][][]> {
-    return this.http.get<{result: ICalendarEvent[][][]}>('http://localhost:3000/api/calendar/' + personId + '?month=' + month)
+    return this.http.get<{result: ICalendarEvent[][][]}>('http://localhost:3000/api/calendar/'
+      + personId + '?month=' + month + '&token=' + localStorage.getItem('token'))
       .pipe(
         map(res => {
           return res.result;
@@ -19,7 +20,8 @@ export class CalendarService {
   }
 
   getCourseEvents(course: number, month: number): Observable<ICalendarEvent[][][]> {
-    return this.http.get<{result: ICalendarEvent[][][]}>('http://localhost:3000/api/calendar/'+ '?course='+ course + '&month=' +month)
+    return this.http.get<{result: ICalendarEvent[][][]}>('http://localhost:3000/api/calendar/'
+      + '?course='+ course + '&month=' +month + '&token=' + token)
       .pipe(
         map(res=> {
           return res.result;
@@ -32,7 +34,8 @@ export class CalendarService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.put('http://localhost:3000/api/calendar/', body, {headers: headers})
+    return this.http.put('http://localhost:3000/api/calendar/?token='
+      + localStorage.getItem('token'), body, {headers: headers})
       .pipe(
         map((response: Response) => {return response},
         catchError((error: Response) => throwError(error))
