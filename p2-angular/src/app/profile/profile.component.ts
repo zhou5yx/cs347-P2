@@ -12,7 +12,7 @@ export class ProfileComponent implements OnInit {
   currentAccount: IAccount;
   displayedAccount: IAccount = {firstname: '', lastname: '', username: '',
                                  id: 0, role_id: 0,type:'', course: 0 };
-
+  roleName: string = '';
   constructor(
     private accountService: AccountService,
     private route: ActivatedRoute,
@@ -31,8 +31,12 @@ export class ProfileComponent implements OnInit {
           this.router.navigate(['/notfound']);
         } else {
           this.displayedAccount = account;
+          this.accountService.getRole(this.displayedAccount.role_id).subscribe(result=> {
+            this.roleName = result.role_name.charAt(0).toUpperCase() + result.role_name.slice(1);
+          });
         }
       });
+
   }
 
 }

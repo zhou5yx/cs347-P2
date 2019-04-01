@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import {MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatMenuModule} from '@angular/material/menu';
+import { IAccount } from '../interfaces/account.type';
+import { AccountService } from '../services/account.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface FakeData {
   Requester: string;
@@ -80,7 +83,9 @@ export class AdminComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private accountService:AccountService
   ) { }
 
   ngOnInit() {
@@ -90,6 +95,8 @@ export class AdminComponent implements OnInit {
     }
     this.dataSource.sort = this.sort;
 
+
+    }
 
   }
 

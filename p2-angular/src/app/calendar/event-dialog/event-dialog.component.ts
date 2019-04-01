@@ -22,6 +22,7 @@ export class EventDialogComponent implements OnInit {
 
 
   ngOnInit() {
+    console.log(this.data.event.requester);
     this.accountService.getProfileData(this.data.event.requester)
       .subscribe((account: IAccount) => {
           this.requesterAccount = account;

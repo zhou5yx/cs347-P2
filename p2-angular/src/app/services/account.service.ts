@@ -26,6 +26,15 @@ export class AccountService {
       );
   }
 
+  getRole(role_id: number){
+    return this.http.get('http://localhost:3000/api/role/'+role_id + '?token=' + localStorage.getItem('token'))
+    .pipe(
+      map(res => {
+        return res[0];
+      })
+    );
+  }
+
   registerUser(form) {
     const body = JSON.stringify(form);
     const headers = new HttpHeaders({
@@ -85,7 +94,7 @@ export class AccountService {
     this.token = localStorage.getItem('token') ? localStorage.getItem('token') : "";
     return this.token.length > 0;
   }
-  
+
   getLoginObservable() {
     return this.subject.asObservable();
   }

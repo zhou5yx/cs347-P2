@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <td>Role:</td>
-          <td></td>
+          <td>{{this.roleName}}</td>
         </tr>
         <tr>
           <td>Semester:</td>
@@ -36,7 +36,7 @@
         </tr>
         <tr>
           <td>Role:</td>
-          <td>{{ displayedAccount.role_id }}</td>
+          <td>{{this.roleName}}</td>
         </tr>
         <tr>
           <td>Semester: </td>
@@ -48,9 +48,27 @@
         </tr>
       </table>
     </div>
-  </div>
+    <div class="admin-profile" *ngIf="displayedAccount.role_id === 3">
+      <h2>Admin Profile</h2>
+      <table id="admin-table">
+        <tr>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwQCm9PbjRcwixwQERgE88we7n1e72OriAvpd2UNN3Q3UHvtp1Q" alt ="profile_img" id="p_img">
+        </tr>
+        <tr>
+          <td>Name:</td>
+          <td>{{ displayedAccount.firstname }} {{ displayedAccount.lastname }}</td>
+        </tr>
+        <tr>
+          <td>Role:</td>
+          <td>{{this.roleName}}</td>
+        </tr>
+      </table>
+      </div>
+    </div>
   <div class="wrapper">
-    <h2>TA Hours</h2>
-    <app-calendar [person]=displayedAccount></app-calendar>
+    <h2 *ngIf="displayedAccount.role_id != 3">TA Hours</h2>
+    <app-calendar [person]=displayedAccount *ngIf="displayedAccount.role_id != 3"></app-calendar>
+    <h2 *ngIf="displayedAccount.role_id === 3">TA Management</h2>
+    <app-admin *ngIf="displayedAccount.role_id === 3"></app-admin>
   </div>
 </div>

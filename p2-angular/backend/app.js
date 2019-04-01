@@ -7,6 +7,7 @@ const app = express();
 // routes
 var calendarRoutes = require('./routes/calendar');
 var userRoutes = require('./routes/user');
+var roleRoutes= require('./routes/role');
 
 app.use(bodyParser.json()); // parses POST request json
 
@@ -37,5 +38,6 @@ var connection = dbStart.connect();
 dbStart.create(connection);
 
 app.use('/api/user', userRoutes);
-app.use('/api/calendar', calendarRoutes)
+app.use('/api/calendar', calendarRoutes);
+app.use('/api/role', roleRoutes);
 module.exports = app;
