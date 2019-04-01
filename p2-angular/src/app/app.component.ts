@@ -14,7 +14,9 @@ export class AppComponent implements OnInit {
   subscription: Subscription;
 
   ngOnInit() {
-    
+    setTimeout(() => {
+      this.accountService.setLoginObservableValue(localStorage.getItem('token') != null);
+    }, 100);
   }
 
   ngOnDestroy() {
@@ -32,6 +34,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     localStorage.clear();
+    this.isLoggedIn = false;
     this.accountService.token = "";
     this.accountService.resetCurrentAccount();
     this.accountService.setLoginObservableValue(false);

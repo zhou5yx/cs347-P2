@@ -23,23 +23,6 @@
             class="text-danger">
             Please Enter a password that is at least 8 characters
           </small>
-          <div class="toggle_radio fadeIn third" id="login-slider">
-            <input type="radio" class="toggle_option" id="first_toggle" name="role"
-              value="student" required ngModel #loginRole="ngModel">
-            <input type="radio" class="toggle_option" id="second_toggle" name="role"
-              value="ta" required ngModel #loginRole="ngModel">
-            <input type="radio" class="toggle_option" id="third_toggle" name="role"
-              value="admin" required ngModel #loginRole="ngModel">
-            <label for="first_toggle"><p>Student</p></label>
-            <label for="second_toggle"><p>TA</p></label>
-            <label for="third_toggle"><p>Admin</p></label>
-            <div class="toggle_option_slider">
-            </div>
-          </div>
-          <small [hidden]="loginRole.valid || !loginForm.submitted"
-            class="text-danger">
-            Please Select A User Role
-          </small>
           <input type="submit" class="fadeIn fourth" value="Log In">
           <button class="btn btn-primary fadeIn fourth" (click)="login = !login">Register</button>
         </form>
