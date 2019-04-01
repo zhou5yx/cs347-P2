@@ -9,7 +9,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  id: number = localStorage.getItem('id') ? parseInt(localStorage.getItem('id')) : 0;
   currentAccount: IAccount;
   displayedAccount: IAccount = {firstname: '', lastname: '', username: '',
                                  id: 0, role_id: 0,type:'', courses:[] };

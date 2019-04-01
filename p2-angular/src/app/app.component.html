@@ -1,2 +1,7 @@
 <div class="banner"><h1>JMU COMPUTER SCIENCE</h1></div>
+<ul class="navigation-bar" *ngIf="isLoggedIn">
+  <li style="margin-left: -35px"><a [routerLink]="['/profile', id]">Profile</a></li>
+  <li><a routerLink="/session">Live Session</a></li>
+  <li  style="float: right"><a routerLink="/login" (click)="logout()">Logout</a><li>
+</ul>
 <router-outlet></router-outlet>

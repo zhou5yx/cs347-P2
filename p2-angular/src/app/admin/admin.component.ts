@@ -79,7 +79,9 @@ export class AdminComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     if (!localStorage.getItem('token')) {

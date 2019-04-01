@@ -67,7 +67,6 @@ export class LiveSessionComponent implements OnInit {
   dataSource =   new MatTableDataSource(LIVE_DATA);
   expandedElement: LiveData | null;
   showsess: boolean = false;
-  id: number = localStorage.getItem('id') ? parseInt(localStorage.getItem('id')) : 1;
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
