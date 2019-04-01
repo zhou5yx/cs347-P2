@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { IAccount } from '../interfaces/account.type';
@@ -10,6 +10,7 @@ import { AccountService } from '../services/account.service';
 })
 export class LoginComponent implements OnInit {
   login: boolean = true;
+  @Output() newLogin = new EventEmitter<boolean>();
 
   constructor (
     private router: Router,
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
         }
       }, (err) => {
         console.log(err);
-        alert(err.error.message);
+        alert(err);
       });
     }
   }

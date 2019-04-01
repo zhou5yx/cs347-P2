@@ -2,16 +2,17 @@ import { IAccount } from '../interfaces/account.type';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, Subject } from 'rxjs';
 
 @Injectable()
 export class AccountService {
 
-  token: string;
+  token: string = localStorage.getItem('token') ? localStorage.getItem('token') : "";
 
   currentAccount: IAccount = {firstname: 'name', lastname: 'name',
                               username: 'spagett', id: 7, role_id: 2, type: 'ta',
                               course: 149};
+  private subject = new Subject<any>();
 
   constructor(private http: HttpClient) {}
 
@@ -46,7 +47,8 @@ export class AccountService {
     return this.http.post('http://localhost:3000/api/user/login',
       body, {headers: headers})
       .pipe(
-        map((response) => {
+        map((response: {token: string, user: {firstname: string, lastname: string,
+          id: string, roleId: string, courseId: string, username: string}}) => {
           console.log(response);
           localStorage.setItem('firstname', response.user.firstname);
           localStorage.setItem('lastname', response.user.lastname);
@@ -70,6 +72,26 @@ export class AccountService {
     this.currentAccount.role_id = parseInt(localStorage.getItem('role'));
     this.currentAccount.course = parseInt(localStorage.getItem('course'));
     this.token = localStorage.getItem('token');
+    this.setLoginObservableValue(true);
+  }
+
+  resetCurrentAccount() {
+    this.currentAccount = {firstname: 'name', lastname: 'name',
+                            username: 'spagett', id: 7, role_id: 2, type: 'ta',
+                            course: 149};
+  }
+
+  isLoggedIn() {
+    this.token = localStorage.getItem('token') ? localStorage.getItem('token') : "";
+    return this.token.length > 0;
+  }
+
+  getLoginObservable() {
+    return this.subject.asObservable();
+  }
+
+  setLoginObservableValue(loggedIn: boolean) {
+    this.subject.next({isLoggedIn: loggedIn});
   }
 
 }
