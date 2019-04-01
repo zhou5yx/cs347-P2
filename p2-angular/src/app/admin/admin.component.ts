@@ -1,5 +1,6 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { Router } from '@angular/router';
 import {MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatMenuModule} from '@angular/material/menu';
@@ -81,6 +82,10 @@ export class AdminComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if (!localStorage.getItem('token')) {
+      this.router.navigate(['/login']);
+      alert('must be logged in to access this feature');
+    }
     this.dataSource.sort = this.sort;
 
 

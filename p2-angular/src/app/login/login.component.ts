@@ -24,8 +24,7 @@ export class LoginComponent implements OnInit {
       this.accountService.loginUser(form.value).subscribe((result) => {
         if (result) {
           // update the token in the user account
-          console.log(this.accountService.token);
-          console.log(this.accountService.currentUser);
+          this.router.navigate(['/profile/' + this.accountService.currentUser.id]);
         }
       }, (err) => {
         console.log(err);
@@ -37,7 +36,8 @@ export class LoginComponent implements OnInit {
   registerSubmit(form: NgForm) {
     if (!form.invalid) {
       this.accountService.registerUser(form.value).subscribe((result) => {
-        console.log(result);
+        alert('Account created! Log in with your credentials to access your account');
+        this.router.navigate(['/login']);
       });
     }
   }

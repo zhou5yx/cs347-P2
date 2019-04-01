@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AccountService } from '../services/account.service';
 import { IAccount } from '../interfaces/account.type';
+import { Router } from '@angular/router';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatSort, MatTableDataSource} from '@angular/material';
 
@@ -73,11 +74,16 @@ export class LiveSessionComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.currentAccount = this.accountService.currentAccount;
+    if (!localStorage.getItem('token')) {
+      this.router.navigate(['/login']);
+      alert('must be logged in to access this feature');
+    }
+    this.currentAccount = this.accountService.currentUser;
     this.dataSource.sort = this.sort;
   }
 

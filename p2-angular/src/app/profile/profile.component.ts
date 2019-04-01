@@ -21,6 +21,10 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (!localStorage.getItem('token')) {
+      this.router.navigate(['/login']);
+      alert('must be logged in to access this feature');
+    }
     this.currentAccount = this.accountService.currentAccount;
     this.accountService.getProfileData(this.route.snapshot.params.id)
       .subscribe((account: IAccount) => {
