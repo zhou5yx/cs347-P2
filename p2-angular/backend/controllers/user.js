@@ -28,7 +28,7 @@ exports.registerUser = function(req, res, next) {
     student: 2,
     admin: 3
   };
-  var course = req.body.role_id === 'admin' ? 'NULL' : parseInt(req.body.course);
+  var course = req.body.role === 'admin' ? 149 : parseInt(req.body.course);
   // encrypt password
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
