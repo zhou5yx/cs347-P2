@@ -88,7 +88,19 @@ export class LiveSessionComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
+  submitQuestion(form) {
+    console.log(form);
+  }
+
+  submitAnnouncement(form) {
+    console.log(form);
+  }
+
   testM(){
     this.showsess = true;
+  }
+
+  show() {
+    console.log("adsf");
   }
 }

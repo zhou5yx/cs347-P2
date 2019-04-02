@@ -73,19 +73,19 @@
       <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
     </table>
   </div>
-  <div id="answer-question" *ngIf="currentAccount.type === 'student'">
+  <div id="answer-question" *ngIf="currentAccount.role_id === 2">
     <h2>Ask a Question</h2>
-    <form action="">
+    <form #qForm="ngForm" (ngSubmit)="submitQuestion(qForm)">
       <div>
         <label for="question-title">Title:</label>
-        <input type="text" id="question-title">
+        <input ngModel name="title" type="text" id="question-title">
       </div>
       <div>
         <div>
           <label for="question-description">Description:</label>
         </div>
-        <textarea name="question-description" id="question-description" cols="138.5" rows="5"></textarea>
-        <button mat-raised-button id="s-button">Submit</button>
+        <textarea ngModel name="description" id="question-description" cols="138.5" rows="5"></textarea>
+        <button type="submit" mat-raised-button id="s-button">Submit</button>
       </div>
     </form>
   </div>
@@ -111,19 +111,19 @@
             <li><a href="https://www.google.com/search?hl=EN&tbm=isch&source=hp&biw=1423&bih=658&ei=vBZyXLyZEpHaswW9yZfQBA&q=Puppy+photos&oq=Puppy+photos&gs_l=img.3..0l10.1534.5041..5279...2.0..0.219.1430.11j2j1......1....1..gws-wiz-img.....0.7M0ElK4ld78">Puppy Photos</a></li>
        </mat-expansion-panel>
        </mat-accordion>
-       <div id="announce-ments" *ngIf="currentAccount.type === 'ta'">
+       <div id="announce-ments" *ngIf="currentAccount.role_id === 1">
        <h2>Make an Announcement</h2>
-       <form action="">
+       <form id="announce-form" #aForm="ngForm" (ngSubmit)="submitAnnouncement(aForm)">
          <div>
            <label for="announcement-title">Title:</label>
-           <input type="text" id="annoucement-title">
+           <input ngModel name="title" type="text" id="annoucement-title">
          </div>
          <div>
            <div>
              <label for="annoucement-description">Description:</label>
            </div>
-           <textarea name="annoucement-description" id="annoucement-description" cols="138.5" rows="5"></textarea>
-           <button mat-raised-button id="s-button">Submit</button>
+           <textarea ngModel name="description" id="annoucement-description" cols="138.5" rows="5"></textarea>
+           <input value="sub" mat-raised-button id="s-button" type="submit">
          </div>
        </form>
        </div>

@@ -9,9 +9,14 @@ export class AccountService {
 
   token: string = localStorage.getItem('token') ? localStorage.getItem('token') : "";
 
-  currentAccount: IAccount = {firstname: 'name', lastname: 'name',
-                              username: 'spagett', id: 7, role_id: 2, type: 'ta',
-                              course: 149};
+  currentAccount: IAccount = {
+    firstname: localStorage.getItem('firstname'),
+    lastname: localStorage.getItem('lastname'),
+    username: localStorage.getItem('username'),
+    id: parseInt(localStorage.getItem('id')),
+    role_id: parseInt(localStorage.getItem('role')),
+    course: parseInt(localStorage.getItem('course'))
+  };
   private subject = new Subject<any>();
 
   constructor(private http: HttpClient) {}
