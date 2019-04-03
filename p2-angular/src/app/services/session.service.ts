@@ -9,7 +9,7 @@ export class SessionService {
   constructor(private http: HttpClient) {}
 
   postQuestion(form, id: number) {
-    console.log(form);
+    form.id = id;
     const body = JSON.stringify(form);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -21,7 +21,15 @@ export class SessionService {
         map((response: Response) => {return response},
         catchError((error: Response) => throwError(error))
       ));
-    }
+  }
+
+  getQuestions() {
+    return this.http.get('http://localhost:3000/api/session/question?token='
+      + localStorage.getItem('token'))
+    .pipe(
+      map((response: Response) => {return response}),
+      catchError((error: Response) => throwError(error))
+    );
   }
 
 }

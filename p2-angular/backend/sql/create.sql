@@ -90,6 +90,7 @@ CREATE TABLE IF NOT EXISTS session_questions (
 CREATE TABLE IF NOT EXISTS question (
   id int NOT NULL AUTO_INCREMENT,
   session_id int,
+  user_id int,
   title varchar(255),
   description varchar(1000),
   ta_answer varchar(1000),

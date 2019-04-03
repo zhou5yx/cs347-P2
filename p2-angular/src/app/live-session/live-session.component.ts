@@ -17,38 +17,38 @@ export interface LiveData {
   TAanswer: string;
 }
 
-const LIVE_DATA: LiveData[] = [
- {
-    Question: 'How do I fix this bug?',
-    Name: 'Jeremiah Tinklewinkers',
-    Time: '5:00pm',
-    Status:'Unresolved',
-    Votes: 3,
-    description: 'There is a bug, a very bad bug, and it is under my rug. Can you please help me? I don\'t know what to do!',
-    Stuanswer: '',
-    TAanswer:''
- },
- {
-    Question: 'How do I write a Java Swing GUI?',
-    Name: 'Harold C. Jaboobalop',
-    Time: '6:00pm',
-    Status:'Resolved',
-    Votes: 4,
-    description: 'I don\'t know what I\'m suppose to do! Everything is so confusing :(',
-    Stuanswer: 'You have to start by writing panels. Then after that you have to do a layout. Then you should add buttons. Then you should make some events like click and stuff. Good luck!',
-    TAanswer: ''
- },
- {
-    Question:'My eclipse keeps crashing?',
-    Name: 'Helga Welga',
-    Time: '7:00pm',
-    Status: 'Resolved',
-    Votes: 10,
-    description: 'I tried to open by 149 lab in eclipse but it crashed and now my screen is displaying a laughing skull and crossbones. What gives?',
-    TAanswer: 'This is actually a common problem in eclipse and they are working on a fix now. If you get up and do 3 spins then sit back down you should be good!',
-    Stuanswer: ''
-   }
-];
+// const LIVE_DATA: LiveData[] = [
+//  {
+//     Question: 'How do I fix this bug?',
+//     Name: 'Jeremiah Tinklewinkers',
+//     Time: '5:00pm',
+//     Status:'Unresolved',
+//     Votes: 3,
+//     description: 'There is a bug, a very bad bug, and it is under my rug. Can you please help me? I don\'t know what to do!',
+//     Stuanswer: '',
+//     TAanswer:''
+//  },
+//  {
+//     Question: 'How do I write a Java Swing GUI?',
+//     Name: 'Harold C. Jaboobalop',
+//     Time: '6:00pm',
+//     Status:'Resolved',
+//     Votes: 4,
+//     description: 'I don\'t know what I\'m suppose to do! Everything is so confusing :(',
+//     Stuanswer: 'You have to start by writing panels. Then after that you have to do a layout. Then you should add buttons. Then you should make some events like click and stuff. Good luck!',
+//     TAanswer: ''
+//  },
+//  {
+//     Question:'My eclipse keeps crashing?',
+//     Name: 'Helga Welga',
+//     Time: '7:00pm',
+//     Status: 'Resolved',
+//     Votes: 10,
+//     description: 'I tried to open by 149 lab in eclipse but it crashed and now my screen is displaying a laughing skull and crossbones. What gives?',
+//     TAanswer: 'This is actually a common problem in eclipse and they are working on a fix now. If you get up and do 3 spins then sit back down you should be good!',
+//     Stuanswer: ''
+//    }
+// ];
 
 @Component({
   selector: 'app-live-session',
@@ -65,7 +65,8 @@ const LIVE_DATA: LiveData[] = [
 export class LiveSessionComponent implements OnInit {
   currentAccount: IAccount;
   displayedColumns: string[] = ['Question', 'Name', 'Time', 'Status','Votes'];
-  dataSource =   new MatTableDataSource(LIVE_DATA);
+  liveData: LiveData[] = []
+  dataSource =   new MatTableDataSource(this.liveData);
   expandedElement: LiveData | null;
   showsess: boolean = false;
 
@@ -88,6 +89,10 @@ export class LiveSessionComponent implements OnInit {
     }
     this.currentAccount = this.accountService.currentAccount;
     this.dataSource.sort = this.sort;
+    this.sessionService.getQuestions()
+      .subscribe((result) => {
+        console.log(result);
+      });
   }
 
   submitQuestion(form) {
