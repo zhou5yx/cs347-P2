@@ -22,11 +22,11 @@
         <div class ="container">
         <div class = "month_to_schedule">
           <mat-form-field id="month-selection" *ngIf="SemesterSel==='sp19'">
-            <mat-select placeholder="Please Select a Month" [(ngModel)]="selectedMon">
-              <mat-option value="jan">January</mat-option>
-              <mat-option value="feb">February</mat-option>
-              <mat-option value="mar">March</mat-option>
-              <mat-option value="april">April</mat-option>
+            <mat-select placeholder="Please Select a Month" [(value)]="selectedMon">
+              <mat-option value="January">January</mat-option>
+              <mat-option value="February">February</mat-option>
+              <mat-option value="March">March</mat-option>
+              <mat-option value="April">April</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field id="month-selection-fall" *ngIf="SemesterSel==='fa19'">
@@ -41,7 +41,7 @@
 
         <div class ="avail-ta">
           <label for="avail-tas">TAs Data</label>
-          <div id= "j-tas" *ngIf="selectedMon == 'jan' && SemesterSel==='sp19'">
+          <div id= "j-tas" *ngIf="selectedMon == 'January' && SemesterSel==='sp19'">
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
             <thead>
               <tr>
@@ -51,21 +51,21 @@
             </thead>
             <tbody>
               <tr>
-               <td class="mdl-data-table__cell--non-numeric">Ross Woodhams</td>
+               <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].firstname}} {{this.Mhr[0].lastname}}</td>
                <td>30</td>
               </tr>
               <tr>
-               <td class="mdl-data-table__cell--non-numeric">Shandar Hathaway</td>
+               <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].firstname}} {{this.Mhr[1].lastname}}</td>
                <td>25</td>
               </tr>
               <tr>
-               <td class="mdl-data-table__cell--non-numeric">Sebastián Perrault</td>
+               <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].firstname}} {{this.Mhr[2].lastname}}</td>
                <td>32</td>
               </tr>
             </tbody>
           </table>
           </div>
-          <div id = "f-tas" *ngIf="selectedMon == 'feb' && SemesterSel==='sp19'">
+          <div id = "f-tas" *ngIf="selectedMon == 'February' && SemesterSel==='sp19'">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
               <thead>
                 <tr>
@@ -75,21 +75,21 @@
               </thead>
               <tbody>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">Ross Woodhams</td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].firstname}} {{this.Mhr[0].lastname}}</td>
                  <td></td>
                 </tr>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">Shandar Hathaway</td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].firstname}} {{this.Mhr[1].lastname}}</td>
                  <td></td>
                 </tr>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">Sebastián Perrault</td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].firstname}} {{this.Mhr[2].lastname}}</td>
                  <td></td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div id = "m-tas" *ngIf="selectedMon == 'mar' && SemesterSel==='sp19'">
+          <div id = "m-tas" *ngIf="selectedMon == 'March' && SemesterSel==='sp19'">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
               <thead>
                 <tr>
@@ -99,21 +99,21 @@
               </thead>
               <tbody>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">Ross Woodhams</td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].firstname}} {{this.Mhr[0].lastname}}</td>
                  <td></td>
                 </tr>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">Shandar Hathaway</td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].firstname}} {{this.Mhr[1].lastname}}</td>
                  <td></td>
                 </tr>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">Sebastián Perrault</td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].firstname}} {{this.Mhr[2].lastname}}</td>
                  <td></td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div id = "a-tas" *ngIf="selectedMon == 'april' && SemesterSel==='sp19'">
+          <div id = "a-tas" *ngIf="selectedMon == 'April' && SemesterSel==='sp19'">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
               <thead>
                 <tr>
@@ -123,15 +123,15 @@
               </thead>
               <tbody>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">Ross Woodhams</td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].firstname}} {{this.Mhr[0].lastname}}</td>
                  <td></td>
                 </tr>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">Shandar Hathaway</td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].firstname}} {{this.Mhr[1].lastname}}</td>
                  <td></td>
                 </tr>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">Sebastián Perrault</td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].firstname}} {{this.Mhr[2].lastname}}</td>
                  <td></td>
                 </tr>
               </tbody>

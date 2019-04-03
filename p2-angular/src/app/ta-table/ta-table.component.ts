@@ -1,34 +1,10 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
+import { AccountService } from '../services/account.service';
 
-export interface FakeTA {
-  Name: string;
-  Course: string;
-  Email: string;
-  description:string;
-}
-
-const FAKE_TA: FakeTA[] = [
-  {
-    Name: 'Rose Woodhams',
-    Course: 'CS 149',
-    description: '',
-    Email:'woodhamsr@dukes.jmu.edu'
-  }, {
-    Name: 'Shondra Hathaway',
-    Course: 'CS 159',
-    description: '',
-    Email:'Hathaways@dukes.jmu.edu'
-  }, {
-    Name: 'Alice Tod',
-    Course: 'CS 159',
-    description: '',
-    Email:'Toda@dukes.jmu.edu'
-  }
-];
-
+const FAKE_TA: FakeTA[];
 @Component({
   selector: 'app-ta-table',
   templateUrl: './ta-table.component.html', animations: [
@@ -42,10 +18,12 @@ const FAKE_TA: FakeTA[] = [
 })
 export class TaTableComponent implements OnInit {
 
+
+  dataSource;
   displayedColumns: string[] = ['select','Name', 'Course','Email'];
-  dataSource =   new MatTableDataSource<FakeTA>(FAKE_TA);
   selection = new SelectionModel<FakeTA>(true, []);
   expandedElement: FakeTA | null;
+
 
   isAllSelected() {
    const numSelected = this.selection.selected.length;
@@ -66,10 +44,17 @@ export class TaTableComponent implements OnInit {
 
    @ViewChild(MatSort) sort: MatSort;
 
-  constructor() { }
+  constructor(private accountService:AccountService) {
+ }
 
   ngOnInit() {
-    this.dataSource.sort = this.sort;
+    this.accountService.getAllUser().subscribe((result) => {
+      FAKE_TA = result;
+      this.dataSource =   new MatTableDataSource<FakeTA>(FAKE_TA);
+      this.dataSource.sort = this.sort;
+    });
+
+
   }
 
 }

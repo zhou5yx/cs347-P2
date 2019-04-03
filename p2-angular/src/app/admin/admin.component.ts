@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild, OnChanges } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { Router } from '@angular/router';
 import {MatSort, MatTableDataSource} from '@angular/material';
@@ -41,6 +41,7 @@ const FAKE_DATA: FakeData[] = [
     description: 'Request is still waiting for approval'
   }
 ];
+const HR: H_R[];
 
 @Component({
   selector: 'app-admin',
@@ -61,7 +62,7 @@ export class AdminComponent implements OnInit {
   selection = new SelectionModel<FakeData>(true, []);
   expandedElement: FakeData | null;
   SemesterSel = "sp19";
-
+  Mhr: string[];
 
   isAllSelected() {
    const numSelected = this.selection.selected.length;
@@ -93,11 +94,26 @@ export class AdminComponent implements OnInit {
       this.router.navigate(['/login']);
       alert('must be logged in to access this feature');
     }
+
+    this.accountService.getAllUser().subscribe((result) => {
+      HR = result;
+      this.Mhr = HR;
+    });
+
     this.dataSource.sort = this.sort;
 
+  }
+  ngOnChanges(){
 
-    }
 
   }
 
+      /**
+      this.accountService.getHrFromUser().subscribe((result) => {
+        HR = result;
+        this.Mhr = HR;
+
+      });**/
+    }
+  }
 }

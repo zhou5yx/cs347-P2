@@ -18,6 +18,18 @@ exports.getUserInfo = function(req, res, next) {
 };
 
 
+exports.getAllUser = function(req, res, next) {
+  var connection = db.connect();
+  connection.query('SELECT * FROM user WHERE role_id =1',
+  function(err, result) {
+    if (err) return res.status(404).json({
+      message: 'Users not found'
+    });
+    else return res.status(200).json(result);
+    connection.end();
+  });
+};
+
 /**
  * Regiser a new user from the registration form.
  */

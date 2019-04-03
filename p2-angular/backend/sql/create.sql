@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS session_users;
 DROP TABLE IF EXISTS session_questions;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS announcement;
-
+DROP TABLE IF EXISTS monhr;
 
 CREATE TABLE IF NOT EXISTS course (
   id int NOT NULL,
@@ -34,7 +34,14 @@ CREATE TABLE IF NOT EXISTS user (
   lastname varchar(255),
   role_id int,
   course_id int,
-  monthly_hours int,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS monhr (
+  id int NOT NULL AUTO_INCREMENT,
+  user_id int,
+  month varchar(225),
+  hr int,
   PRIMARY KEY (id)
 );
 
