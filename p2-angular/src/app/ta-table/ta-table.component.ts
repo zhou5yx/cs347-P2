@@ -4,7 +4,6 @@ import {MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import { AccountService } from '../services/account.service';
 
-const FAKE_TA: FakeTA[];
 @Component({
   selector: 'app-ta-table',
   templateUrl: './ta-table.component.html', animations: [
@@ -21,7 +20,7 @@ export class TaTableComponent implements OnInit {
 
   dataSource;
   displayedColumns: string[] = ['select','Name', 'Course','Email'];
-  selection = new SelectionModel<FakeTA>(true, []);
+  selection = new SelectionModel(true, []);
   expandedElement: FakeTA | null;
 
 
@@ -49,8 +48,7 @@ export class TaTableComponent implements OnInit {
 
   ngOnInit() {
     this.accountService.getAllUser().subscribe((result) => {
-      FAKE_TA = result;
-      this.dataSource =   new MatTableDataSource<FakeTA>(FAKE_TA);
+      this.dataSource =   new MatTableDataSource(result);
       this.dataSource.sort = this.sort;
     });
 
