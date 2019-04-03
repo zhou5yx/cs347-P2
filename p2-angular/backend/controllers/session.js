@@ -27,8 +27,8 @@ exports.addQuestion= function(req, res, next) {
 
 exports.getQuestions = function(req, res, next) {
   var connection = db.connect();
-  console.log('adsf');
-  connection.query("SELECT * FROM question WHERE session_id=1", function(err, results) {
+  connection.query("SELECT q.*, u.firstname, u.lastname FROM question AS q JOIN user AS u "
+    + "ON q.user_id = u.id WHERE q.session_id=1", function(err, results) {
     if (err) return res.status(500).json({
       message: 'Unable to get questions',
       error: err

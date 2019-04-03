@@ -7,11 +7,11 @@ INSERT INTO course VALUES (159, 'CS159', 1);
 INSERT INTO semester VALUES(id, 'Fall', 2019);
 INSERT INTO semester VALUES(id, 'Spring', 2019);
 
-/**
-INSERT INTO user VALUES (id, 'arnolde', 'password', 'Arnold', 'Schwarzenboy', 2, 159, NULL);
-INSERT INTO user VALUES (id, 'johnys', 'nicetomeetyou', 'Johnny', 'Jarganfargangas', 1, 149, 10);
-INSERT INTO user VALUES (id, 'happyfeet99', 'penguin', 'Catalina', 'Happyfeetpenguingirl III', 1, 159, 15);
-**/
+
+-- INSERT INTO user VALUES (id, 'arnolde', 'password', 'Arnold', 'Schwarzenboy', 2, 159);
+-- INSERT INTO user VALUES (id, 'johnys', 'nicetomeetyou', 'Johnny', 'Jarganfargangas', 1, 149);
+-- INSERT INTO user VALUES (id, 'happyfeet99', 'penguin', 'Catalina', 'Happyfeetpenguingirl III', 1, 159);
+
 
 INSERT INTO role VALUES (id, 'ta');
 INSERT INTO role VALUES (id, 'student');

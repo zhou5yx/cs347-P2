@@ -15,40 +15,8 @@ export interface LiveData {
   description:string;
   Stuanswer: string;
   TAanswer: string;
+  id: number;
 }
-
-// const LIVE_DATA: LiveData[] = [
-//  {
-//     Question: 'How do I fix this bug?',
-//     Name: 'Jeremiah Tinklewinkers',
-//     Time: '5:00pm',
-//     Status:'Unresolved',
-//     Votes: 3,
-//     description: 'There is a bug, a very bad bug, and it is under my rug. Can you please help me? I don\'t know what to do!',
-//     Stuanswer: '',
-//     TAanswer:''
-//  },
-//  {
-//     Question: 'How do I write a Java Swing GUI?',
-//     Name: 'Harold C. Jaboobalop',
-//     Time: '6:00pm',
-//     Status:'Resolved',
-//     Votes: 4,
-//     description: 'I don\'t know what I\'m suppose to do! Everything is so confusing :(',
-//     Stuanswer: 'You have to start by writing panels. Then after that you have to do a layout. Then you should add buttons. Then you should make some events like click and stuff. Good luck!',
-//     TAanswer: ''
-//  },
-//  {
-//     Question:'My eclipse keeps crashing?',
-//     Name: 'Helga Welga',
-//     Time: '7:00pm',
-//     Status: 'Resolved',
-//     Votes: 10,
-//     description: 'I tried to open by 149 lab in eclipse but it crashed and now my screen is displaying a laughing skull and crossbones. What gives?',
-//     TAanswer: 'This is actually a common problem in eclipse and they are working on a fix now. If you get up and do 3 spins then sit back down you should be good!',
-//     Stuanswer: ''
-//    }
-// ];
 
 @Component({
   selector: 'app-live-session',
@@ -66,7 +34,7 @@ export class LiveSessionComponent implements OnInit {
   currentAccount: IAccount;
   displayedColumns: string[] = ['Question', 'Name', 'Time', 'Status','Votes'];
   liveData: LiveData[] = []
-  dataSource =   new MatTableDataSource(this.liveData);
+  dataSource = new MatTableDataSource(this.liveData);
   expandedElement: LiveData | null;
   showsess: boolean = false;
 
@@ -90,17 +58,40 @@ export class LiveSessionComponent implements OnInit {
     this.currentAccount = this.accountService.currentAccount;
     this.dataSource.sort = this.sort;
     this.sessionService.getQuestions()
-      .subscribe((result) => {
-        console.log(result);
+      .subscribe((res) => {
+        res.result.forEach((question) => {
+          this.liveData.push({
+            Question: question.title,
+            Name: question.firstname + " " + question.lastname,
+            Time: new Date(question.mytimestamp).getTime() + "",
+            Status: question.status,
+            Votes: question.votes,
+            description: question.description,
+            Stuanswer: question.student_answer,
+            TAanswer: question.ta_answer,
+            id: question.id
+          });
+        });
       });
   }
 
   submitQuestion(form) {
-    console.log(form);
     if (form.valid) {
       this.sessionService.postQuestion(form.value, this.accountService.currentAccount.id)
         .subscribe((result) => {
-          console.log(result);
+          this.liveData.push({
+            Question: form.value.title,
+            Name: this.accountService.currentAccount.firstname + " "
+              + this.accountService.currentAccount.lastname,
+            Time: new Date().getTime() + "",
+            Status: "Unresolved",
+            Votes: 0,
+            description: form.value.description,
+            Stuanswer: "",
+            TAanswer: "",
+            id: result.insertId
+          });
+          this.dataSource = new MatTableDataSource(this.liveData);
         });
     }
   }

@@ -18,7 +18,7 @@ export class SessionService {
       + localStorage.getItem('token'),
       body, {headers: headers})
       .pipe(
-        map((response: Response) => {return response},
+        map((response: any) => {return response},
         catchError((error: Response) => throwError(error))
       ));
   }
@@ -27,7 +27,7 @@ export class SessionService {
     return this.http.get('http://localhost:3000/api/session/question?token='
       + localStorage.getItem('token'))
     .pipe(
-      map((response: Response) => {return response}),
+      map((response: any) => {return response}),
       catchError((error: Response) => throwError(error))
     );
   }

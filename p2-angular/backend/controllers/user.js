@@ -46,7 +46,7 @@ exports.registerUser = function(req, res, next) {
     .then(hash => {
       const sql = "INSERT INTO user VALUES (id, " + "'" + req.body.eid + "', '" + hash
         + "', '" + req.body.firstname + "', '" + req.body.lastname + "', "
-        + roles[req.body.role] + ", " + course + ", NULL)";
+        + roles[req.body.role] + ", " + course + ")";
       connection.query(sql, function(err, result) {
         if (err) {
             return res.status(500).json({
