@@ -59,6 +59,6 @@ INSERT INTO session_users VALUES(id,1,1);
 
 INSERT INTO session_questions VALUES(id, 1, 1, 1);
 
-INSERT INTO question VALUES(id,1,'HELP ME', 'EVERYTHING IS ON FIRE',NULL,NULL,'Unresolved', 0,now());
+INSERT INTO question VALUES(id,1,1,'HELP ME', 'EVERYTHING IS ON FIRE',NULL,NULL,'Unresolved', 0,now());
 
 INSERT INTO announcement VALUES(id,1,'LISTEN','EVERYTHING IS NOT OKAY', 1);

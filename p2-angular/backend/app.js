@@ -8,6 +8,7 @@ const app = express();
 var calendarRoutes = require('./routes/calendar');
 var userRoutes = require('./routes/user');
 var roleRoutes= require('./routes/role');
+var sessionRoutes= require('./routes/session');
 
 app.use(bodyParser.json()); // parses POST request json
 
@@ -40,4 +41,5 @@ dbStart.create(connection);
 app.use('/api/user', userRoutes);
 app.use('/api/calendar', calendarRoutes);
 app.use('/api/role', roleRoutes);
+app.use('/api/session', sessionRoutes);
 module.exports = app;
