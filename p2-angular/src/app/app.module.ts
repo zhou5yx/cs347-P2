@@ -19,6 +19,7 @@ import { TaTableComponent } from './ta-table/ta-table.component';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from './services/account.service';
 import { CalendarService } from './services/calendar.service';
+import { SessionService } from './services/session.service';
 import { CalendarDayComponent } from './calendar/calendar-day/calendar-day.component';
 import { EventDialogComponent } from './calendar/event-dialog/event-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -68,7 +69,7 @@ const routes: Routes = [
   entryComponents: [
     EventDialogComponent
   ],
-  providers: [AccountService, CalendarService],
+  providers: [AccountService, CalendarService, SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

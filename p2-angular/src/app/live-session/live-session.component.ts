@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AccountService } from '../services/account.service';
+import { SessionService } from '../services/session.service';
 import { IAccount } from '../interfaces/account.type';
 import { Router } from '@angular/router';
 import {animate, state, style, transition, trigger} from '@angular/animations';
@@ -76,7 +77,8 @@ export class LiveSessionComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    private sessionService: SessionService
   ) { }
 
   ngOnInit() {
@@ -90,6 +92,10 @@ export class LiveSessionComponent implements OnInit {
 
   submitQuestion(form) {
     console.log(form);
+    if (form.valid) {
+      this.sessionService.postQuestion(form.value, this.accountService.currentAccount.id)
+        .subscribe();
+    }
   }
 
   submitAnnouncement(form) {
@@ -100,7 +106,4 @@ export class LiveSessionComponent implements OnInit {
     this.showsess = true;
   }
 
-  show() {
-    console.log("adsf");
-  }
 }
