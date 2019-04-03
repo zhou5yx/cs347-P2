@@ -15,13 +15,15 @@ import { AccountService } from '../services/account.service';
  ],
   styleUrls: ['./ta-table.component.css']
 })
+
+
 export class TaTableComponent implements OnInit {
 
-
+  fakeTA;
   dataSource;
   displayedColumns: string[] = ['select','Name', 'Course','Email'];
   selection = new SelectionModel(true, []);
-  expandedElement: FakeTA | null;
+  expandedElement: null;
 
 
   isAllSelected() {
@@ -48,7 +50,8 @@ export class TaTableComponent implements OnInit {
 
   ngOnInit() {
     this.accountService.getAllUser().subscribe((result) => {
-      this.dataSource =   new MatTableDataSource(result);
+      this.fakeTA = result;
+      this.dataSource =   new MatTableDataSource(this.fakeTA);
       this.dataSource.sort = this.sort;
     });
 

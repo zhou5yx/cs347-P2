@@ -6,7 +6,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {MatMenuModule} from '@angular/material/menu';
 import { IAccount } from '../interfaces/account.type';
 import { AccountService } from '../services/account.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 export interface FakeData {
   Requester: string;
@@ -41,7 +41,7 @@ const FAKE_DATA: FakeData[] = [
     description: 'Request is still waiting for approval'
   }
 ];
-const HR: H_R[];
+
 
 @Component({
   selector: 'app-admin',
@@ -63,6 +63,7 @@ export class AdminComponent implements OnInit {
   expandedElement: FakeData | null;
   SemesterSel = "sp19";
   Mhr: string[];
+  hR;
 
   isAllSelected() {
    const numSelected = this.selection.selected.length;
@@ -96,8 +97,8 @@ export class AdminComponent implements OnInit {
     }
 
     this.accountService.getAllUser().subscribe((result) => {
-      HR = result;
-      this.Mhr = HR;
+      this.hR = result;
+      this.Mhr = this.hR;
     });
 
     this.dataSource.sort = this.sort;
@@ -115,4 +116,3 @@ export class AdminComponent implements OnInit {
 
       });**/
     }
-  
