@@ -1,6 +1,5 @@
 const db = require('../db_startup');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 
 exports.getRole = function(req, res, next) {
   var connection = db.connect();

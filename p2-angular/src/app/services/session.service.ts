@@ -14,7 +14,8 @@ export class SessionService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post('http://localhost:3000/api/session/question',
+    return this.http.post('http://localhost:3000/api/session/question?token='
+      + localStorage.getItem('token'),
       body, {headers: headers})
       .pipe(
         map((response: Response) => {return response},

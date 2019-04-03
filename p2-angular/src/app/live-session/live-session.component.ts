@@ -94,7 +94,9 @@ export class LiveSessionComponent implements OnInit {
     console.log(form);
     if (form.valid) {
       this.sessionService.postQuestion(form.value, this.accountService.currentAccount.id)
-        .subscribe();
+        .subscribe((result) => {
+          console.log(result);
+        });
     }
   }
 
