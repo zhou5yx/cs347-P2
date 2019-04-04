@@ -7,41 +7,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { IAccount } from '../interfaces/account.type';
 import { AccountService } from '../services/account.service';
 import { ActivatedRoute } from '@angular/router';
-
-export interface FakeData {
-  Requester: string;
-  Requestee: string;
-  Course: string;
-  Shift: string;
-  Status: string;
-  description: string;
-}
-
-const FAKE_DATA: FakeData[] = [
-  {
-    Requester: 'Ross Woodhams',
-    Requestee: 'Raghnall Reynell',
-    Course: 'CS 149',
-    Shift: 'Wednesday, March 13, 2019 4:00pm-6:00pm',
-    Status: 'Approved',
-    description: 'This request has been approved'
-  }, {
-    Requester: 'Shandar Hathaway',
-    Requestee: 'Sebastián Perrault',
-    Course: 'CS 159',
-    Shift: 'Sunday March 16, 2019 1:00pm-3:00pm',
-    Status: 'Pending',
-    description: 'Request is still waiting for approval'
-  }, {
-    Requester: 'Ali Tod',
-    Requestee: 'Alvis Borislavov',
-    Course: 'CS 159',
-    Shift: 'Tuesday March 19, 2019, 6:00pm-8:00pm',
-    Status: 'Pending',
-    description: 'Request is still waiting for approval'
-  }
-];
-
+import { CalendarService } from '../services/calendar.service';
 
 @Component({
   selector: 'app-admin',
@@ -56,14 +22,16 @@ const FAKE_DATA: FakeData[] = [
  ],
 })
 export class AdminComponent implements OnInit {
-
+  dataSource;
+  FakeData;
   displayedColumns: string[] = ['select','Requester', 'Requestee', 'Course', 'Shift','Status'];
-  dataSource =   new MatTableDataSource<FakeData>(FAKE_DATA);
-  selection = new SelectionModel<FakeData>(true, []);
-  expandedElement: FakeData | null;
+  selection = new SelectionModel(true, []);
+  expandedElement: null;
   SemesterSel = "sp19";
+  selectedMon = '';
   Mhr: string[];
   hR;
+  test: string[];
 
   isAllSelected() {
    const numSelected = this.selection.selected.length;
@@ -87,7 +55,8 @@ export class AdminComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private accountService:AccountService
+    private accountService:AccountService,
+    private calendarService: CalendarService
   ) { }
 
   ngOnInit() {
@@ -101,12 +70,29 @@ export class AdminComponent implements OnInit {
       this.Mhr = this.hR;
     });
 
-    this.dataSource.sort = this.sort;
+    this.calendarService.getPending().subscribe((result) => {
+      this.FakeData = result;
+      this.dataSource =   new MatTableDataSource(this.FakeData);
+      console.log(this.dataSource.data[0].type);
+
+      this.dataSource.sort = this.sort;
+
+    });
+
+
 
   }
+
+  getDay(dateStr: string) {
+    return new Date(dateStr).getHours() % 12;
+  }
+
+  getEventDate(dateStr: string){
+    var d = new Date(dateStr);
+    return d.getMonth()+1 + '/' + d.getDate() +'/'+d.getFullYear();
+  }
+
   ngOnChanges(){
-
-
   }
 
       /**

@@ -3,6 +3,7 @@ var router = express.Router();
 var CalendarController = require('../controllers/calendar');
 var checkAuth = require('../middleware/check-auth');
 
+router.get('/pending', checkAuth, CalendarController.getPending);
 router.get('/:id', checkAuth, CalendarController.getCalendarEventProfileData);
 router.get('/', checkAuth, CalendarController.getCourseEvents);
 router.put('/', checkAuth, CalendarController.updateEvent);

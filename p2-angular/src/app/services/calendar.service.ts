@@ -29,6 +29,15 @@ export class CalendarService {
       );
   }
 
+  getPending(){
+    return this.http.get('http://localhost:3000/api/calendar/pending' +  '?token=' + localStorage.getItem('token'))
+      .pipe(
+        map((res: any) => {
+          return res.result;
+        })
+      );
+  }
+
   updateEvent(event) {
     const body = JSON.stringify(event);
     const headers = new HttpHeaders({

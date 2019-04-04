@@ -54,6 +54,26 @@ exports.getCourseEvents = function(req, res, next){
     });
 }
 
+exports.getPending = function(req, res, next){
+  var connection = db.connect();
+
+
+  var sql = "select * from (select event.id, concat(user.firstname, ' ', user.lastname) as requester from event join user where event.requester = user.id) t1 join (select event.id, concat(firstname, ' ', lastname) as requestee, start_date, end_date, event.course_id, type from event join user where event.requestee = user.id) t2 on t1.id=t2.id;";
+  connection.query(sql, function(err, result) {
+      if (err) {
+        return res.status(500).json({
+          title: 'An error occurred getting the calendar pending data',
+          error: err
+        });
+      }
+      else {
+        return res.status(200).json({
+          result: result
+        });
+      }
+    });
+}
+
 
 exports.updateEvent = function(req, res, next){
   var connection = db.connect();
