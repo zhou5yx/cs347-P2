@@ -95,19 +95,12 @@
         <mat-expansion-panel *ngFor="let announcement of announcements">
           <mat-expansion-panel-header>
             <mat-panel-title>
-
+              {{ announcement.title }}
             </mat-panel-title>
+            From: {{ announcement.name }}
           </mat-expansion-panel-header>
-          
+          {{ announcement.description }}
         </mat-expansion-panel>
-         <mat-expansion-panel>
-           <mat-expansion-panel-header>
-             <mat-panel-title>
-               Tips on how to complete PA-1
-             </mat-panel-title>
-           </mat-expansion-panel-header>
-           Yeah sorry, you're on your own :) Google is probably your best friend but remember no cheating!
-         </mat-expansion-panel>
          <mat-expansion-panel>
          <mat-expansion-panel-header>
            <mat-panel-title>
@@ -131,7 +124,7 @@
              <label for="announcement-description">Description:</label>
            </div>
            <textarea ngModel name="description" id="announcement-description" cols="138.5" rows="5"></textarea>
-           <input value="sub" mat-raised-button id="s-button" type="submit">
+           <button type="submit" mat-raised-button id="s-button">Submit</button>
          </div>
        </form>
        </div>

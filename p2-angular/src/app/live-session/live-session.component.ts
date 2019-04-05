@@ -3,6 +3,7 @@ import { AccountService } from '../services/account.service';
 import { SessionService } from '../services/session.service';
 import { IAccount } from '../interfaces/account.type';
 import { Question } from '../interfaces/question.type';
+import { Announcement } from '../interfaces/announcement.type';
 import { Router } from '@angular/router';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatSort, MatTableDataSource} from '@angular/material';
@@ -23,7 +24,7 @@ export class LiveSessionComponent implements OnInit {
   currentAccount: IAccount;
   displayedColumns: string[] = ['Question', 'Name', 'Time', 'Status','Votes'];
   questions: Question[] = [];
-  announcements = [];
+  announcements: Announcement[] = [];
   dataSource = new MatTableDataSource(this.questions);
   expandedElement: Question | null;
   showsess: boolean = false;
@@ -63,6 +64,18 @@ export class LiveSessionComponent implements OnInit {
           });
         });
       });
+    this.sessionService.getAnnouncements()
+      .subscribe((res) => {
+        res.result.forEach((announcement) => {
+          this.announcements.push({
+            id: announcement.id,
+            title: announcement.title,
+            description: announcement.description,
+            userId: announcement.user_id,
+            name: announcement.firstname + " " + announcement.lastname
+          });
+        });
+      });
   }
 
   submitQuestion(form) {
@@ -88,21 +101,15 @@ export class LiveSessionComponent implements OnInit {
 
   submitAnnouncement(form) {
     if (form.valid) {
-      this.sessionService.postNew(form.value, this.accountService.currentAccount.id, false)
+      this.sessionService.postNew(form.value, this.currentAccount.id, false)
         .subscribe((result) => {
           this.announcements.push({
-            Question: form.value.title,
-            Name: this.accountService.currentAccount.firstname + " "
-              + this.accountService.currentAccount.lastname,
-            Time: new Date().getTime() + "",
-            Status: "Unresolved",
-            Votes: 0,
+            id: result.insertId,
+            title: form.value.title,
             description: form.value.description,
-            Stuanswer: "",
-            TAanswer: "",
-            id: result.insertId
+            userId: this.currentAccount.id,
+            name: this.currentAccount.firstname + " " + this.currentAccount.lastname
           });
-          this.dataSource = new MatTableDataSource(this.announcements);
         });
     }
   }

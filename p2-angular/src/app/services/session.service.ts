@@ -34,4 +34,13 @@ export class SessionService {
     );
   }
 
+  getAnnouncements() {
+    return this.http.get('http://localhost:3000/api/session/announcement?token='
+      + localStorage.getItem('token'))
+    .pipe(
+      map((response: any) => {return response}),
+      catchError((error: Response) => throwError(error))
+    );
+  }
+
 }
