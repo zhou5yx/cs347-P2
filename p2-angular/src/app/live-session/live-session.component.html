@@ -92,6 +92,14 @@
     </mat-tab>
     <mat-tab label="Announcements">
       <mat-accordion>
+        <mat-expansion-panel *ngFor="let announcement of announcements">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          
+        </mat-expansion-panel>
          <mat-expansion-panel>
            <mat-expansion-panel-header>
              <mat-panel-title>
@@ -120,9 +128,9 @@
          </div>
          <div>
            <div>
-             <label for="annoucement-description">Description:</label>
+             <label for="announcement-description">Description:</label>
            </div>
-           <textarea ngModel name="description" id="annoucement-description" cols="138.5" rows="5"></textarea>
+           <textarea ngModel name="description" id="announcement-description" cols="138.5" rows="5"></textarea>
            <input value="sub" mat-raised-button id="s-button" type="submit">
          </div>
        </form>

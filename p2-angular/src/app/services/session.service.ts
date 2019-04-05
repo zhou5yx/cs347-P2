@@ -8,13 +8,15 @@ export class SessionService {
 
   constructor(private http: HttpClient) {}
 
-  postQuestion(form, id: number) {
+  postNew(form, id: number, isQuestion) {
     form.id = id;
     const body = JSON.stringify(form);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post('http://localhost:3000/api/session/question?token='
+    let url = isQuestion ? 'http://localhost:3000/api/session/question'
+      : 'http://localhost:3000/api/session/announcement'
+    return this.http.post(url + '?token='
       + localStorage.getItem('token'),
       body, {headers: headers})
       .pipe(

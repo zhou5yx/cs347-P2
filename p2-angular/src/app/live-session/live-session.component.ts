@@ -2,21 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AccountService } from '../services/account.service';
 import { SessionService } from '../services/session.service';
 import { IAccount } from '../interfaces/account.type';
+import { Question } from '../interfaces/question.type';
 import { Router } from '@angular/router';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatSort, MatTableDataSource} from '@angular/material';
-
-export interface LiveData {
-  Question: string;
-  Name: string;
-  Time:string;
-  Status: string;
-  Votes: number;
-  description:string;
-  Stuanswer: string;
-  TAanswer: string;
-  id: number;
-}
 
 @Component({
   selector: 'app-live-session',
@@ -33,9 +22,10 @@ export interface LiveData {
 export class LiveSessionComponent implements OnInit {
   currentAccount: IAccount;
   displayedColumns: string[] = ['Question', 'Name', 'Time', 'Status','Votes'];
-  liveData: LiveData[] = []
-  dataSource = new MatTableDataSource(this.liveData);
-  expandedElement: LiveData | null;
+  questions: Question[] = [];
+  announcements = [];
+  dataSource = new MatTableDataSource(this.questions);
+  expandedElement: Question | null;
   showsess: boolean = false;
 
   applyFilter(filterValue: string) {
@@ -60,7 +50,7 @@ export class LiveSessionComponent implements OnInit {
     this.sessionService.getQuestions()
       .subscribe((res) => {
         res.result.forEach((question) => {
-          this.liveData.push({
+          this.questions.push({
             Question: question.title,
             Name: question.firstname + " " + question.lastname,
             Time: new Date(question.mytimestamp).getTime() + "",
@@ -77,9 +67,9 @@ export class LiveSessionComponent implements OnInit {
 
   submitQuestion(form) {
     if (form.valid) {
-      this.sessionService.postQuestion(form.value, this.accountService.currentAccount.id)
+      this.sessionService.postNew(form.value, this.accountService.currentAccount.id, true)
         .subscribe((result) => {
-          this.liveData.push({
+          this.questions.push({
             Question: form.value.title,
             Name: this.accountService.currentAccount.firstname + " "
               + this.accountService.currentAccount.lastname,
@@ -91,13 +81,30 @@ export class LiveSessionComponent implements OnInit {
             TAanswer: "",
             id: result.insertId
           });
-          this.dataSource = new MatTableDataSource(this.liveData);
+          this.dataSource = new MatTableDataSource(this.questions);
         });
     }
   }
 
   submitAnnouncement(form) {
-    console.log(form);
+    if (form.valid) {
+      this.sessionService.postNew(form.value, this.accountService.currentAccount.id, false)
+        .subscribe((result) => {
+          this.announcements.push({
+            Question: form.value.title,
+            Name: this.accountService.currentAccount.firstname + " "
+              + this.accountService.currentAccount.lastname,
+            Time: new Date().getTime() + "",
+            Status: "Unresolved",
+            Votes: 0,
+            description: form.value.description,
+            Stuanswer: "",
+            TAanswer: "",
+            id: result.insertId
+          });
+          this.dataSource = new MatTableDataSource(this.announcements);
+        });
+    }
   }
 
   testM(){

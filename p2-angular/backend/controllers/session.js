@@ -25,6 +25,29 @@ exports.addQuestion= function(req, res, next) {
   });
 };
 
+exports.addAnnouncement = function(req, res, next) {
+  var connection = db.connect();
+  var now = new Date(); // current date
+  var dateStr = now.getYear() + '-' + (now.getMonth() + 1) + '-'
+    + now.getDate() + ' ' + now.getHours() + ':' + now.getMinutes()
+    + ':' + now.getSeconds();
+  connection.query("INSERT INTO announcement VALUES (id, 1, '" + req.body.title
+    + "', '" + req.body.description + "', " + req.body.id + ")",
+  function(err, result) {
+    if (err) return res.status(500).json({
+      message: 'Unable to add announcement',
+      error: err
+    });
+    else {
+      return res.status(201).json({
+        message: 'Announcement added',
+        result: result
+      });
+    }
+    connection.end();
+  });
+};
+
 exports.getQuestions = function(req, res, next) {
   var connection = db.connect();
   connection.query("SELECT q.*, u.firstname, u.lastname FROM question AS q JOIN user AS u "
