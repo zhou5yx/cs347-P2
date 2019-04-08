@@ -30,6 +30,7 @@ exports.getAllUser = function(req, res, next) {
   });
 };
 
+
 /**
  * Regiser a new user from the registration form.
  */

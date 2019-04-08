@@ -41,10 +41,21 @@ export class AccountService {
       );
   }
 
+  getHoursForMonth(month: string){
+    return this.http.get('http://localhost:3000/api/mon/'+ month
+      + '?token=' + localStorage.getItem('token'))
+      .pipe(
+        map(res=> {
+          return res;
+        })
+      )
+  }
+
   getRole(role_id: number){
     return this.http.get('http://localhost:3000/api/role/'+role_id + '?token=' + localStorage.getItem('token'))
     .pipe(
       map(res => {
+
         return res[0];
       })
     );

@@ -22,7 +22,7 @@
         <div class ="container">
         <div class = "month_to_schedule">
           <mat-form-field id="month-selection" *ngIf="SemesterSel==='sp19'">
-            <mat-select placeholder="Please Select a Month" [(value)]="selectedMon">
+            <mat-select placeholder="Please Select a Month" (selectionChange)="OnSelect(selectedMon)" [(value)]="selectedMon">
               <mat-option value="January">January</mat-option>
               <mat-option value="February">February</mat-option>
               <mat-option value="March">March</mat-option>
@@ -51,16 +51,16 @@
             </thead>
             <tbody>
               <tr>
-               <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].firstname}} {{this.Mhr[0].lastname}}</td>
-               <td>30</td>
+               <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].name}}</td>
+               <td>{{this.Mhr[0].hr}}</td>
               </tr>
               <tr>
-               <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].firstname}} {{this.Mhr[1].lastname}}</td>
-               <td>25</td>
+               <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].name}}</td>
+               <td>{{this.Mhr[1].hr}}</td>
               </tr>
               <tr>
-               <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].firstname}} {{this.Mhr[2].lastname}}</td>
-               <td>32</td>
+               <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].name}}</td>
+               <td>{{this.Mhr[2].hr}}</td>
               </tr>
             </tbody>
           </table>
@@ -75,16 +75,16 @@
               </thead>
               <tbody>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].firstname}} {{this.Mhr[0].lastname}}</td>
-                 <td></td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].name}}</td>
+                 <td>{{this.Mhr[0].hr}}</td>
                 </tr>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].firstname}} {{this.Mhr[1].lastname}}</td>
-                 <td></td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].name}}</td>
+                 <td>{{this.Mhr[1].hr}}</td>
                 </tr>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].firstname}} {{this.Mhr[2].lastname}}</td>
-                 <td></td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].name}}</td>
+                 <td>{{this.Mhr[2].hr}}</td>
                 </tr>
               </tbody>
             </table>
@@ -99,16 +99,16 @@
               </thead>
               <tbody>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].firstname}} {{this.Mhr[0].lastname}}</td>
-                 <td></td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].name}}</td>
+                 <td>{{this.Mhr[0].hr}}</td>
                 </tr>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].firstname}} {{this.Mhr[1].lastname}}</td>
-                 <td></td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].name}}</td>
+                 <td>{{this.Mhr[1].hr}}</td>
                 </tr>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].firstname}} {{this.Mhr[2].lastname}}</td>
-                 <td></td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].name}}</td>
+                 <td>{{this.Mhr[2].hr}}</td>
                 </tr>
               </tbody>
             </table>
@@ -123,15 +123,15 @@
               </thead>
               <tbody>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].firstname}} {{this.Mhr[0].lastname}}</td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].name}}</td>
                  <td></td>
                 </tr>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].firstname}} {{this.Mhr[1].lastname}}</td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].name}}</td>
                  <td></td>
                 </tr>
                 <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].firstname}} {{this.Mhr[2].lastname}}</td>
+                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].name}}</td>
                  <td></td>
                 </tr>
               </tbody>

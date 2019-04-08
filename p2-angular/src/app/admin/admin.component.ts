@@ -8,6 +8,8 @@ import { IAccount } from '../interfaces/account.type';
 import { AccountService } from '../services/account.service';
 import { ActivatedRoute } from '@angular/router';
 import { CalendarService } from '../services/calendar.service';
+import { Hours } from '../interfaces/hours.type';
+
 
 @Component({
   selector: 'app-admin',
@@ -29,9 +31,7 @@ export class AdminComponent implements OnInit {
   expandedElement: null;
   SemesterSel = "sp19";
   selectedMon = '';
-  Mhr: string[];
-  hR;
-  test: string[];
+  Mhr;
 
   isAllSelected() {
    const numSelected = this.selection.selected.length;
@@ -65,16 +65,10 @@ export class AdminComponent implements OnInit {
       alert('must be logged in to access this feature');
     }
 
-    this.accountService.getAllUser().subscribe((result) => {
-      this.hR = result;
-      this.Mhr = this.hR;
-    });
 
     this.calendarService.getPending().subscribe((result) => {
       this.FakeData = result;
       this.dataSource =   new MatTableDataSource(this.FakeData);
-      console.log(this.dataSource.data[0].type);
-
       this.dataSource.sort = this.sort;
 
     });
@@ -92,13 +86,17 @@ export class AdminComponent implements OnInit {
     return d.getMonth()+1 + '/' + d.getDate() +'/'+d.getFullYear();
   }
 
-  ngOnChanges(){
+  OnSelect(value){
+    this.selectedMon = value;
+    this.accountService.getHoursForMonth(value).subscribe(
+      (result) => {
+        this.Mhr = result;
+      }
+    )
   }
 
-      /**
-      this.accountService.getHrFromUser().subscribe((result) => {
-        HR = result;
-        this.Mhr = HR;
+  ngOnChanges(){
 
-      });**/
+  }
+
     }
