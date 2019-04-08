@@ -43,4 +43,24 @@ export class SessionService {
     );
   }
 
+  updateQuestion(id: number, votes?: number, stuAns?: string, taAns?: string) {
+    let data = {
+      votes: votes,
+      studentAns: stuAns,
+      taAns: taAns
+    }
+    const body = JSON.stringify(data);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    let url = 'http://localhost:3000/api/session/question/' + id;
+    return this.http.put(url + '?token='
+      + localStorage.getItem('token'),
+      body, {headers: headers})
+      .pipe(
+        map((response: any) => {return response},
+        catchError((error: Response) => throwError(error))
+      ));
+  }
+
 }
