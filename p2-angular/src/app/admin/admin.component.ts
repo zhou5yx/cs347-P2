@@ -8,7 +8,6 @@ import { IAccount } from '../interfaces/account.type';
 import { AccountService } from '../services/account.service';
 import { ActivatedRoute } from '@angular/router';
 import { CalendarService } from '../services/calendar.service';
-import { Hours } from '../interfaces/hours.type';
 
 
 @Component({
