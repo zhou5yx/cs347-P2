@@ -49,6 +49,39 @@ export class AdminComponent implements OnInit {
      this.dataSource.filter = filterValue.trim().toLowerCase();
    }
 
+
+  removeSelectedRows(buttonClicked) {
+
+    if(buttonClicked === 'A'){
+      this.selection.selected.forEach(item => {
+        let t = this.FakeData.find(d => d === item);
+        t.type = 'shift';
+        t.requester = t.requestee;
+        t.user_id = t.requestee;
+        t.requestee = 'NULL';
+        this.calendarService.updateEvent(t).subscribe((result) => {
+        });
+      });
+    }
+    if(buttonClicked === 'D')
+    {
+      this.selection.selected.forEach(item => {
+        let t = this.FakeData.find(d => d === item);
+        t.type = 'shift';
+        t.requestee = 'NULL';
+        this.calendarService.updateEvent(t).subscribe((result) => {
+        });
+      });
+    }
+
+    this.selection.selected.forEach(item => {
+      let index: number = this.FakeData.findIndex(d => d === item);
+      this.FakeData.splice(index,1)
+      this.dataSource = new MatTableDataSource<Element>(this.FakeData);
+    });
+    this.selection = new SelectionModel<Element>(true, []);
+  }
+
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
@@ -63,7 +96,6 @@ export class AdminComponent implements OnInit {
       this.router.navigate(['/login']);
       alert('must be logged in to access this feature');
     }
-
 
     this.calendarService.getPending().subscribe((result) => {
       this.FakeData = result;
@@ -95,7 +127,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnChanges(){
-
   }
 
     }

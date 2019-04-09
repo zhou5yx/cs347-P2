@@ -50,4 +50,5 @@ export class CalendarService {
         catchError((error: Response) => throwError(error))
       ));
   }
+
 }

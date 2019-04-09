@@ -162,8 +162,8 @@
       <mat-tab label="Swap Requests">
       <div class ="requests">
         <div class ="head">
-        <button mat-raised-button id="a-button" (click)="onApprove()">Approve</button>
-        <button mat-raised-button id="d-button">Deny</button>
+        <button mat-raised-button id="a-button" (click)="removeSelectedRows('A')">Approve</button>
+        <button mat-raised-button id="d-button"(click)="removeSelectedRows('D')">Deny</button>
         <mat-form-field>
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
         </mat-form-field>
@@ -191,13 +191,13 @@
       <!-- Requester Column -->
       <ng-container matColumnDef="Requester">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Requester </th>
-      <td mat-cell *matCellDef="let element"> {{element.requester}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.requesterName}} </td>
       </ng-container>
 
       <!-- Requestee Column -->
       <ng-container matColumnDef="Requestee">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Requestee </th>
-      <td mat-cell *matCellDef="let element"> {{element.requestee}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.requesteeName}} </td>
       </ng-container>
 
       <!-- Course Column -->

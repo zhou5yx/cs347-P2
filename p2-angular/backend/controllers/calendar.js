@@ -58,7 +58,7 @@ exports.getPending = function(req, res, next){
   var connection = db.connect();
 
 
-  var sql = "select * from (select event.id, concat(user.firstname, ' ', user.lastname) as requester from event join user where event.requester = user.id) t1 join (select event.id, concat(firstname, ' ', lastname) as requestee, start_date, end_date, event.course_id, type from event join user where event.requestee = user.id) t2 on t1.id=t2.id;";
+  var sql = "select * from (select event.id, event.user_id, event.requester, concat(user.firstname, ' ', user.lastname) as requesterName from event join user where event.requester = user.id) t1 join (select event.id, event.requestee, concat(firstname, ' ', lastname) as requesteeName, start_date, end_date, event.course_id, type from event join user where event.requestee = user.id) t2 on t1.id=t2.id;";
   connection.query(sql, function(err, result) {
       if (err) {
         return res.status(500).json({
@@ -76,11 +76,13 @@ exports.getPending = function(req, res, next){
 
 
 exports.updateEvent = function(req, res, next){
+
   var connection = db.connect();
   var id = req.body.id;
   var type = req.body.type;
   var idrequester = req.body.requester;
-  var sql = "UPDATE event SET type='" + type + "', requestee="+ req.body.requestee +", requester=" +idrequester+ " WHERE id="+id;
+  var idrequestee = req.body.requestee;
+  var sql = "UPDATE event SET user_id =" + req.body.user_id+ ", type='" + type + "', requestee="+ req.body.requestee +", requester=" +idrequester+ " WHERE id="+id;
   connection.query(sql, function(err, result) {
       if (err) {
         return res.status(500).json({

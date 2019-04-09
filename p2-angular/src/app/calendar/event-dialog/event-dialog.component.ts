@@ -11,6 +11,7 @@ import { CalendarService } from '../../services/calendar.service';
   styleUrls: ['./event-dialog.component.css']
 })
 export class EventDialogComponent implements OnInit {
+  currentAccount = this.accountService.currentAccount;
   requesterAccount: IAccount = {firstname: '', lastname: '', username: '',
                                 role_id: 0, id: 0 };
 
@@ -22,7 +23,6 @@ export class EventDialogComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.data.event.requester);
     this.accountService.getProfileData(this.data.event.requester)
       .subscribe((account: IAccount) => {
           this.requesterAccount = account;
