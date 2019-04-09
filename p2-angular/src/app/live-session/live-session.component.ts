@@ -115,10 +115,10 @@ export class LiveSessionComponent implements OnInit {
   }
 
   addLike(question) {
-    console.log(question);
+    document.getElementById("like-button-" + question.id).disabled = true;
     this.sessionService.updateQuestion(question.id, question.Votes + 1)
       .subscribe((results) => {
-        console.log(results);
+
       });
   }
 
@@ -126,7 +126,7 @@ export class LiveSessionComponent implements OnInit {
     console.log(question);
     this.sessionService.updateQuestion(question.id, undefined, form.value.student)
       .subscribe((results) => {
-        console.log(results);
+        alert('Answer submitted!');
       });
   }
 
@@ -134,7 +134,7 @@ export class LiveSessionComponent implements OnInit {
     console.log(question);
     this.sessionService.updateQuestion(question.id, undefined, undefined, form.value.ta)
       .subscribe((results) => {
-        console.log(results);
+        alert('Answer submitted!');
       });
   }
 

@@ -82,25 +82,32 @@ exports.getAnnouncements = function(req, res, next) {
 
 exports.updateQuestion = function(req, res, next) {
   var connection = db.connect();
-  var update = '';
+  var update = "";
   if (req.body.votes) {
-    update = 'votes = ' + req.body.votes;
+    update = "votes = " + req.body.votes;
   } else if (req.body.studentAns) {
-    update = 'student_answer = ' + req.body.studentAns;
+    update = "student_answer = '" + req.body.studentAns + "'";
   } else if (req.body.taAns) {
-    update = 'ta_answer = ' + req.body.taAns;
+    update = "ta_answer = '" + req.body.taAns + "'";
   }
-  connection.query("UPDATE question SET " + update + " WHERE id = " + req.params.id, function(err, results) {
-    if (err) return res.status(500).json({
-      message: 'Unable to get announcements',
-      error: err
-    });
-    else {
-      return res.status(200).json({
-        message: 'Announcements retrieved',
-        result: results
+  if (update.length > 0) {
+    connection.query("UPDATE question SET " + update + " WHERE id = " + req.params.id, function(err, results) {
+      if (err) return res.status(500).json({
+        message: 'Unable to update question',
+        error: err
       });
-    }
+      else {
+        return res.status(200).json({
+          message: 'Question Updated',
+          result: results
+        });
+      }
+      connection.end();
+    });
+  } else {
     connection.end();
-  });
+    return res.status(500).json({
+      message: 'Unable to update question: invalid body'
+    });
+  }
 }
