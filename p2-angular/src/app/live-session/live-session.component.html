@@ -54,12 +54,12 @@
       <div class ="ans">
        <h3>Student Answer</h3>
        <form #stuAnsForm="ngForm" (ngSubmit)="addStudentQuestion(element, stuAnsForm)">
-          <tr><textarea name="student" [(ngModel)]="element.Stuanswer" id="student-a" cols="145" rows="5"></textarea></tr>
+          <tr><textarea [disabled]="currentAccount.role_id != 2" name="student" [(ngModel)]="element.Stuanswer" id="student-a" cols="145" rows="5"></textarea></tr>
           <button mat-raised-button id="s-answer">Answer</button>
         </form>
         <h3>TA Answer</h3>
         <form #taAnsForm="ngForm" (ngSubmit)="addTAQuestion(element, taAnsForm)">
-          <tr><textarea name="ta" [(ngModel)]="element.TAanswer" id="ta" cols="145" rows="5"></textarea></tr>
+          <tr><textarea [disabled]="currentAccount.role_id != 1" name="ta" [(ngModel)]="element.TAanswer" id="ta" cols="145" rows="5"></textarea></tr>
           <button mat-raised-button type="submit" id="s-answer">Answer</button>
         </form>
        </div>

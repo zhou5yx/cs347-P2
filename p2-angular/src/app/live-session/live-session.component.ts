@@ -118,7 +118,11 @@ export class LiveSessionComponent implements OnInit {
     (<HTMLInputElement> document.getElementById("like-button-" + question.id)).disabled = true;
     this.sessionService.updateQuestion(question.id, question.Votes + 1)
       .subscribe((results) => {
-
+        this.questions.forEach((q) => {
+          if (q.id === question.id) {
+            q.Votes++;
+          }
+        })
       });
   }
 
