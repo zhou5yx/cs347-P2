@@ -25,7 +25,7 @@ import { CalendarService } from '../services/calendar.service';
 export class AdminComponent implements OnInit {
   dataSource;
   FakeData;
-  displayedColumns: string[] = ['select','Requester', 'Requestee', 'Course', 'Shift','Status'];
+  displayedColumns: string[] = ['select','requesterName', 'requesteeName', 'course_id', 'start_date','type'];
   selection = new SelectionModel(true, []);
   expandedElement: null;
   SemesterSel = "sp19";
