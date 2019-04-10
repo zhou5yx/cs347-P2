@@ -123,7 +123,6 @@ export class LiveSessionComponent implements OnInit {
   }
 
   addStudentQuestion(question, form) {
-    console.log(question);
     this.sessionService.updateQuestion(question.id, undefined, form.value.student)
       .subscribe((results) => {
         alert('Answer submitted!');
@@ -131,7 +130,6 @@ export class LiveSessionComponent implements OnInit {
   }
 
   addTAQuestion(question, form) {
-    console.log(question);
     this.sessionService.updateQuestion(question.id, undefined, undefined, form.value.ta)
       .subscribe((results) => {
         alert('Answer submitted!');

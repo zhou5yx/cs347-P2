@@ -30,7 +30,7 @@
       <!-- Course Column -->
       <ng-container matColumnDef="Time">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Time </th>
-      <td mat-cell *matCellDef="let element"> {{element.Time}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.Time | date: 'shortTime'}} </td>
       </ng-container>
 
       <!-- Shift Column -->
