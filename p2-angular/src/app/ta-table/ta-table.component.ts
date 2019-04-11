@@ -21,7 +21,7 @@ export class TaTableComponent implements OnInit {
 
   fakeTA;
   dataSource;
-  displayedColumns: string[] = ['select','Name', 'Course','Email'];
+  displayedColumns: string[] = ['select','firstname', 'course_id','username'];
   selection = new SelectionModel(true, []);
   expandedElement: null;
 

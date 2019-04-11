@@ -9,7 +9,7 @@ exports.getCalendarEventProfileData = function(req, res, next) {
   var connection = db.connect();
   var month = parseInt(req.query.month) + 1;
   var numDays = new Date(2019, month, 0).getDate();
-  var sql = "SELECT * FROM event WHERE user_id = " + req.params.id + " AND "
+  var sql = "SELECT * FROM event WHERE (user_id = " + req.params.id + " OR requestee="+ req.params.id+ ") AND "
     + "(start_date BETWEEN CAST('2019-" + month + "-01' AS DATE) AND "
     + "CAST('2019-" + month + "-" + numDays + "' AS DATE) OR "
     + "end_date BETWEEN CAST('2019-" + month + "-01' AS DATE) AND "

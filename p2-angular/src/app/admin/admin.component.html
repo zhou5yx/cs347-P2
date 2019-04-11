@@ -189,31 +189,31 @@
 
 
       <!-- Requester Column -->
-      <ng-container matColumnDef="Requester">
+      <ng-container matColumnDef="requesterName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Requester </th>
       <td mat-cell *matCellDef="let element"> {{element.requesterName}} </td>
       </ng-container>
 
       <!-- Requestee Column -->
-      <ng-container matColumnDef="Requestee">
+      <ng-container matColumnDef="requesteeName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Requestee </th>
       <td mat-cell *matCellDef="let element"> {{element.requesteeName}} </td>
       </ng-container>
 
       <!-- Course Column -->
-      <ng-container matColumnDef="Course">
+      <ng-container matColumnDef="course_id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Course </th>
       <td mat-cell *matCellDef="let element"> CS {{element.course_id}} </td>
       </ng-container>
 
       <!-- Shift Column -->
-      <ng-container matColumnDef="Shift">
+      <ng-container matColumnDef="start_date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Shift </th>
       <td mat-cell *matCellDef="let element">{{getEventDate(element.start_date)}}: {{getDay(element.start_date)}}PM to {{getDay(element.end_date)}}PM </td>
       </ng-container>
 
-      <ng-container matColumnDef="Status">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+      <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
       <td mat-cell *matCellDef="let element"> {{element.type}} </td>
 
       </ng-container>
