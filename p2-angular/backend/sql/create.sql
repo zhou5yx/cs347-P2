@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS session_questions;
 DROP TABLE IF EXISTS question;
 DROP TABLE IF EXISTS announcement;
 DROP TABLE IF EXISTS monhr;
+DROP TABLE IF EXISTS avail;
 
 CREATE TABLE IF NOT EXISTS course (
   id int NOT NULL,
@@ -34,6 +35,24 @@ CREATE TABLE IF NOT EXISTS user (
   lastname varchar(255),
   role_id int,
   course_id int,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS avail (
+  id int NOT NULL AUTO_INCREMENT,
+  user_id int,
+  mon_start int,
+  mon_end int,
+  tues_start int,
+  tues_end int,
+  wed_start int,
+  wed_end int,
+  thurs_start int,
+  thurs_end int,
+  fri_start int,
+  fri_end int,
+  sun_start int,
+  sun_end int,
   PRIMARY KEY (id)
 );
 
