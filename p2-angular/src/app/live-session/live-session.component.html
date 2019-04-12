@@ -51,7 +51,7 @@
         <div class="example-element-description">
         <h3>Description</h3>
         {{element.description}} <button mat-raised-button id="like-button-{{element.id}}" (click)="addLike(element)">&#10084; Like</button>
-        <button *ngIf="currentAccount.id === element.userId && !element.Status === 'Resolved'" class="btn btn-primary btn-small" (click)="markAsResolved(element)">Mark as Resolved</button>
+        <button *ngIf="currentAccount.id === element.userId && element.Status !== 'Resolved'" class="btn btn-primary btn-small" (click)="markAsResolved(element)">Mark as Resolved</button>
           <div class ="ans">
            <h3>Student Answer</h3>
            <form #stuAnsForm="ngForm" (ngSubmit)="addStudentQuestion(element, stuAnsForm)">
