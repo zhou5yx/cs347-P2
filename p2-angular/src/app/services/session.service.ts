@@ -43,11 +43,12 @@ export class SessionService {
     );
   }
 
-  updateQuestion(id: number, votes?: number, stuAns?: string, taAns?: string) {
+  updateQuestion(id: number, votes?: number, stuAns?: string, taAns?: string, resolved?: string) {
     let data = {
       votes: votes,
       studentAns: stuAns,
-      taAns: taAns
+      taAns: taAns,
+      resolved: resolved
     }
     const body = JSON.stringify(data);
     const headers = new HttpHeaders({

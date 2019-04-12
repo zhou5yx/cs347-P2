@@ -7,5 +7,6 @@ export interface Question {
   description:string;
   Stuanswer: string;
   TAanswer: string;
+  userId: number;
   id: number;
 }

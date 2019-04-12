@@ -89,6 +89,8 @@ exports.updateQuestion = function(req, res, next) {
     update = "student_answer = '" + req.body.studentAns + "'";
   } else if (req.body.taAns) {
     update = "ta_answer = '" + req.body.taAns + "'";
+  } else if (req.body.resolved) {
+    update = "status = '" + req.body.resolved + "'"; 
   }
   if (update.length > 0) {
     connection.query("UPDATE question SET " + update + " WHERE id = " + req.params.id, function(err, results) {

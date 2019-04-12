@@ -60,6 +60,7 @@ export class LiveSessionComponent implements OnInit {
             description: question.description,
             Stuanswer: question.student_answer,
             TAanswer: question.ta_answer,
+            userId: question.user_id,
             id: question.id
           });
         });
@@ -92,6 +93,7 @@ export class LiveSessionComponent implements OnInit {
             description: form.value.description,
             Stuanswer: "",
             TAanswer: "",
+            userId: this.currentAccount.id,
             id: result.insertId
           });
           this.dataSource = new MatTableDataSource(this.questions);
@@ -122,7 +124,7 @@ export class LiveSessionComponent implements OnInit {
           if (q.id === question.id) {
             q.Votes++;
           }
-        })
+        });
       });
   }
 
@@ -137,6 +139,13 @@ export class LiveSessionComponent implements OnInit {
     this.sessionService.updateQuestion(question.id, undefined, undefined, form.value.ta)
       .subscribe((results) => {
         alert('Answer submitted!');
+      });
+  }
+
+  markAsResolved(question) {
+    this.sessionService.updateQuestion(question.id, undefined, undefined, undefined, "Resolved")
+      .subscribe((results) => {
+        question.Status = "Resolved";
       });
   }
 
