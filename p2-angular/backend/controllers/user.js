@@ -55,10 +55,45 @@ exports.registerUser = function(req, res, next) {
             error: err
           });
         } else {
-          return res.status(201).json({
-            message: 'User successfully registered',
-            result: result
-          });
+          // create ta hours
+          if (req.body.role === 'ta') {
+            console.log(req.body);
+            console.log(req.body['monday-start']);
+            var mondayStart = req.body['monday-start'] ? req.body['monday-start'] : -1;
+            var mondayEnd = req.body['monday-end'] ? req.body['monday-end'] : -1;
+            var tuesdayStart = req.body['tuesday-start'] ? req.body['tuesday-start'] : -1;
+            var tuesdayEnd = req.body['tuesday-end'] ? req.body['tuesday-end'] : -1;
+            var wednesdayStart = req.body['wednesday-start'] ? req.body['wednesday-start'] : -1;
+            var wednesdayEnd = req.body['wednesday-end'] ? req.body['wednesday-end'] : -1;
+            var thursdayStart = req.body['thursday-start'] ? req.body['thursday-start'] : -1;
+            var thursdayEnd = req.body['thursday-end'] ? req.body['thursday-end'] : -1;
+            var fridayStart = req.body['friday-start'] ? req.body['friday-start'] : -1;
+            var fridayEnd = req.body['friday-end'] ? req.body['friday-end'] : -1;
+            var sundayStart = req.body['sunday-start'] ? req.body['sunday-start'] : -1;
+            var sundayEnd = req.body['sunday-end'] ? req.body['sunday-end'] : -1;
+            const taSql = "INSERT INTO avail VALUES (id, " + result.insertId + ", " + mondayStart + ", "
+              + mondayEnd + ", " + tuesdayStart + ", " + tuesdayEnd + ", " + wednesdayStart
+              + ", " + wednesdayEnd + ", " + thursdayStart + ", " + thursdayEnd + ", "
+              + fridayStart + ", " + fridayEnd + ", " + sundayStart + ", " + sundayEnd + ")";
+            connection.query(taSql, function(err, result) {
+              if (err) {
+                return res.status(500).json({
+                  message: 'Error creating user',
+                  error: err
+                });
+              } else {
+                return res.status(201).json({
+                  message: 'User successfully registered',
+                  result: result
+                });
+              }
+            });
+          } else {
+            return res.status(201).json({
+              message: 'User successfully registered',
+              result: result
+            });
+          }
         }
         connection.end();
       });
