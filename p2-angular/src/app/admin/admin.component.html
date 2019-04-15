@@ -50,17 +50,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-               <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].name}}</td>
-               <td>{{this.Mhr[0].hr}}</td>
-              </tr>
-              <tr>
-               <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].name}}</td>
-               <td>{{this.Mhr[1].hr}}</td>
-              </tr>
-              <tr>
-               <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].name}}</td>
-               <td>{{this.Mhr[2].hr}}</td>
+              <tr *ngFor="let mhr of Mhr">
+               <td>{{mhr.name}}</td>
+               <td>{{mhr.hr}}</td>
               </tr>
             </tbody>
           </table>
@@ -74,17 +66,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].name}}</td>
-                 <td>{{this.Mhr[0].hr}}</td>
-                </tr>
-                <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].name}}</td>
-                 <td>{{this.Mhr[1].hr}}</td>
-                </tr>
-                <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].name}}</td>
-                 <td>{{this.Mhr[2].hr}}</td>
+                <tr *ngFor="let mhr of Mhr">
+                 <td>{{mhr.name}}</td>
+                 <td>{{mhr.hr}}</td>
                 </tr>
               </tbody>
             </table>
@@ -98,17 +82,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].name}}</td>
-                 <td>{{this.Mhr[0].hr}}</td>
-                </tr>
-                <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].name}}</td>
-                 <td>{{this.Mhr[1].hr}}</td>
-                </tr>
-                <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].name}}</td>
-                 <td>{{this.Mhr[2].hr}}</td>
+                <tr *ngFor="let mhr of Mhr">
+                 <td>{{mhr.name}}</td>
+                 <td>{{mhr.hr}}</td>
                 </tr>
               </tbody>
             </table>
@@ -122,17 +98,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[0].name}}</td>
-                 <td></td>
-                </tr>
-                <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[1].name}}</td>
-                 <td></td>
-                </tr>
-                <tr>
-                 <td class="mdl-data-table__cell--non-numeric">{{this.Mhr[2].name}}</td>
-                 <td></td>
+                <tr *ngFor="let mhr of Mhr">
+                 <td>{{mhr.name}}</td>
+                 <td>{{mhr.hr}}</td>
                 </tr>
               </tbody>
             </table>
