@@ -129,4 +129,19 @@ export class AccountService {
     this.subject.next({isLoggedIn: loggedIn});
   }
 
+  generateSchedule() {
+    console.log('generate');
+    const body = JSON.stringify({});
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post('http://localhost:3000/api/user/schedule?'
+      + 'token=' + localStorage.getItem('token')),
+      body, {headers: headers})
+      .pipe(
+        map((response: Response) => {return response},
+        catchError((error: Response) => throwError(error))
+      ));
+  }
+
 }

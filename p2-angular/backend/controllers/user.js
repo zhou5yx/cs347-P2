@@ -57,8 +57,6 @@ exports.registerUser = function(req, res, next) {
         } else {
           // create ta hours
           if (req.body.role === 'ta') {
-            console.log(req.body);
-            console.log(req.body['monday-start']);
             var mondayStart = req.body['monday-start'] ? req.body['monday-start'] : -1;
             var mondayEnd = req.body['monday-end'] ? req.body['monday-end'] : -1;
             var tuesdayStart = req.body['tuesday-start'] ? req.body['tuesday-start'] : -1;
@@ -149,5 +147,12 @@ exports.loginUser = function(req, res, next) {
     }
     connection.end();
   });
+  return null;
+}
+
+exports.generateSchedule = function(req, res, next) {
+  var connection = db.connect();
+  console.log('generate schedule');
+  connection.end();
   return null;
 }

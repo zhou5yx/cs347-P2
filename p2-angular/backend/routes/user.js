@@ -8,5 +8,5 @@ router.get('/:id', checkAuth, UserController.getUserInfo);
 router.get('/', checkAuth, UserController.getAllUser);
 router.post('/', UserController.registerUser);
 router.post('/login', UserController.loginUser);
-
+router.post('/schedule', checkAuth, UserController.generateSchedule)
 module.exports = router;

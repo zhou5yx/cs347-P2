@@ -87,7 +87,7 @@ export class AdminComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private accountService:AccountService,
+    private accountService: AccountService,
     private calendarService: CalendarService
   ) { }
 
@@ -124,6 +124,14 @@ export class AdminComponent implements OnInit {
         this.Mhr = result;
       }
     )
+  }
+
+  generateSchedule() {
+    this.accountService.generateSchedule().subscribe(
+      (result) => {
+        console.log(result);
+      }
+    );
   }
 
   ngOnChanges(){
