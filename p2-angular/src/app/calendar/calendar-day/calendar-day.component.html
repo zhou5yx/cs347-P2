@@ -3,8 +3,8 @@
   <div>
     <ul *ngIf="events && events.length > 0">
       <li *ngFor="let event of events" (click)="openDialog(event)"
-          [ngStyle]="(event.type === 'cover' && {'color': 'red', 'border-color': 'red'})
-                    || (event.type === 'Pending' && {'color': 'blue', 'border-color': 'blue'})">
+          [ngStyle]="(this.person.role_id===2 && {'color': 'green', 'border-color': 'green'}) || (event.type === 'cover' && {'color': 'red', 'border-color': 'red'})
+                    || (event.type === 'Pending' && {'color': 'blue', 'border-color': 'blue'}) ">
         {{ getDay(event.start_date) }} - {{ getDay(event.end_date) }}</li>
     </ul>
   </div>

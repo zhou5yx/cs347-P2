@@ -15,7 +15,7 @@ export class AccountService {
     username: localStorage.getItem('username'),
     id: parseInt(localStorage.getItem('id')),
     role_id: parseInt(localStorage.getItem('role')),
-    course: parseInt(localStorage.getItem('course'))
+    course_id: parseInt(localStorage.getItem('course'))
   };
   private subject = new Subject<any>();
 
@@ -105,7 +105,7 @@ export class AccountService {
     this.currentAccount.username = localStorage.getItem('username');
     this.currentAccount.id = parseInt(localStorage.getItem('id'));
     this.currentAccount.role_id = parseInt(localStorage.getItem('role'));
-    this.currentAccount.course = parseInt(localStorage.getItem('course'));
+    this.currentAccount.course_id = parseInt(localStorage.getItem('course'));
     this.token = localStorage.getItem('token');
     this.setLoginObservableValue(true);
   }
@@ -113,7 +113,7 @@ export class AccountService {
   resetCurrentAccount() {
     this.currentAccount = {firstname: 'name', lastname: 'name',
                             username: 'spagett', id: 7, role_id: 2, type: 'ta',
-                            course: 149};
+                            course_id: 149};
   }
 
   isLoggedIn() {

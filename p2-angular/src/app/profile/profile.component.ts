@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
   currentAccount: IAccount;
   displayedAccount: IAccount = {firstname: '', lastname: '', username: '',
-                                 id: 0, role_id: 0,type:'', course: 0 };
+                                 id: 0, role_id: 0,type:'', course_id: 0 };
   roleName: string = '';
   constructor(
     private accountService: AccountService,

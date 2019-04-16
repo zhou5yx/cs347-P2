@@ -21,6 +21,6 @@
       <td>{{data.event.type}}</td>
     </tr>
   </table>
-  <button class="btn btn-primary" id="rc" *ngIf="data.event.type === 'shift' && data.person.role_id ===1" (click)="updateType()">Request Cover</button>
-  <button class="btn btn-primary" id="ts"*ngIf="data.event.type === 'cover'&& data.person.role_id ===1 " (click)="updateType()">Take Shift</button>
+  <button class="btn btn-primary" id="rc" *ngIf="data.event.type === 'shift' && data.person.role_id ===1 && data.person.id === accountService.currentAccount.id" (click)="updateType()">Request Cover</button>
+  <button class="btn btn-primary" id="ts"*ngIf="data.event.type === 'cover' && data.person.role_id ===1 &&  data.event.requester != data.person.id" (click)="updateType()">Take Shift</button>
 </div>
