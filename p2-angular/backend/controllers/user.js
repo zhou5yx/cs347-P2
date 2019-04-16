@@ -152,7 +152,60 @@ exports.loginUser = function(req, res, next) {
 
 exports.generateSchedule = function(req, res, next) {
   var connection = db.connect();
-  console.log('generate schedule');
+  var sql = "INSERT INTO event VALUES (id, 3, NULL,NULL, 'shift','2019-04-16 17:00:00','2019-04-16 19:00:00',149,250);"
+  +"INSERT INTO event VALUES (id, 3, NULL,NULL, 'shift','2019-04-19 17:00:00','2019-04-19 19:00:00',149,250);"
+  +"INSERT INTO event VALUES (id, 3, NULL,NULL, 'shift','2019-04-05 16:00:00','2019-04-05 22:00:00',149,250);"
+  +"INSERT INTO event VALUES (id, 3, 3,NULL, 'cover','2019-04-26 17:00:00','2019-04-26 19:00:00',149,250);"
+  +"INSERT INTO event VALUES (id, 3, 3, NULL, 'cover','2019-04-18 21:00:00','2019-04-18 23:00:00',149,250);"
+  +"INSERT INTO event VALUES (id, 3, NULL, NULL, 'shift','2019-04-29 20:00:00','2019-04-29 23:00:00',149,250);"
+  +"INSERT INTO event VALUES (id, 3, NULL, NULL, 'shift','2019-04-07 13:00:00','2019-04-07 17:00:00',149,250);"
+  +"INSERT INTO event VALUES (id, 3, NULL, NULL, 'shift','2019-04-09 17:00:00','2019-04-09 19:00:00',149,250);"
+  +"INSERT INTO event VALUES (id, 3, NULL, NULL, 'shift','2019-04-14 17:00:00','2019-04-14 19:00:00',149,250);"
+  +"INSERT INTO event VALUES (id, 3, NULL, NULL, 'shift','2019-04-12 17:00:00','2019-04-12 19:00:00',149,250);"
+  +"INSERT INTO event VALUES(id, 1, 1, NULL, 'shift', '2019-04-07 13:00:00','2019-04-07 15:00:00',159,250);"
+  +"INSERT INTO event VALUES(id, 4, 4, NULL, 'shift', '2019-04-07 15:00:00','2019-04-07 17:00:00',159,250);"
+  +"INSERT INTO event VALUES(id, 1, 1, NULL, 'shift', '2019-04-14 13:00:00','2019-04-14 15:00:00',159,250);"
+  +"INSERT INTO event VALUES(id, 4, 4, NULL, 'shift', '2019-04-14 15:00:00','2019-04-14 17:00:00',159,250);"
+  +"INSERT INTO event VALUES(id, 4, 4, NULL, 'shift', '2019-04-21 13:00:00','2019-04-21 17:00:00',159,250);"
+  +"INSERT INTO event VALUES(id, 4, 4, NULL, 'shift', '2019-04-28 13:00:00','2019-04-28 17:00:00',159,250);"
+  +"INSERT INTO event VALUES(id, 1, 1, NULL, 'shift', '2019-05-05 15:00:00','2019-05-05 17:00:00',159,250);"
+  +"INSERT INTO event VALUES(id,1,1, NULL, 'shift', '2019-04-01 18:00:00', '2019-04-01 22:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,1,1, NULL, 'shift', '2019-04-03 19:00:00', '2019-04-03 23:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,1,1, NULL, 'shift', '2019-04-04 21:00:00', '2019-04-04 23:00:00', 159,250);"
+  +"INSERT INTO event VALUES (id, 1, 1,NULL, 'shift','2019-04-05 16:00:00','2019-04-05 22:00:00',159,250);"
+  +"INSERT INTO event VALUES(id,1,1, NULL, 'shift', '2019-04-10 20:00:00', '2019-04-10 23:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,1,1, NULL, 'shift', '2019-04-12 20:00:00', '2019-04-12 23:00:00', 159,250);"
+  +"INSERT INTO event VALUES (id, 1, 1,NULL, 'shift','2019-04-19 16:00:00','2019-04-19 22:00:00',159,250);"
+  +"INSERT INTO event VALUES(id,4,4, NULL, 'shift', '2019-04-09 16:00:00', '2019-04-09 20:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,4,4, NULL, 'shift', '2019-04-16 16:00:00', '2019-04-09 20:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,4,4, NULL, 'shift', '2019-04-23 20:00:00', '2019-04-23 23:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,4,4, NULL, 'shift', '2019-04-02 20:00:00', '2019-04-02 23:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,4,4, NULL, 'shift', '2019-04-18 16:00:00', '2019-04-18 22:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,4,4, NULL, 'cover', '2019-04-08 16:00:00', '2019-04-08 22:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,1,1, NULL, 'cover', '2019-04-11 20:00:00', '2019-04-11 23:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,4,4, NULL, 'cover', '2019-04-15 16:00:00', '2019-04-11 18:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,1,1, NULL, 'shift', '2019-04-17 16:00:00', '2019-04-17 18:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,1,1, NULL, 'shift', '2019-04-25 18:00:00', '2019-04-17 23:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,4,4, NULL, 'shift', '2019-04-22 16:00:00', '2019-04-22 22:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,4,4, NULL, 'shift', '2019-04-26 16:00:00', '2019-04-26 22:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,1,1, NULL, 'shift', '2019-04-24 15:00:00', '2019-04-24 17:00:00', 159,250);"
+  +"INSERT INTO event VALUES(id,1,1, NULL, 'shift', '2019-04-29 15:00:00', '2019-04-29 17:00:00', 159,250);";
+
+
+
+  connection.query(sql,[38,1] ,function(err, result) {
+      if (err) {
+        return res.status(500).json({
+          title: 'error',
+          error: err
+        });
+      }
+      else {
+        return res.status(200).json({
+          result: result
+        });
+      }
+    });
   connection.end();
   return null;
 }

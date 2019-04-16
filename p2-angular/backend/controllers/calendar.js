@@ -98,3 +98,26 @@ exports.updateEvent = function(req, res, next){
     });
 
 }
+
+exports.UpdateHours = function(req, res, next){
+  var connection = db.connect();
+  var sql = "DROP VIEW IF EXISTS totalhr;"
+  + "CREATE VIEW totalhr AS (SELECT distinct event.user_id, MONTHNAME(end_date) as mon, sum(extract(hour from end_date) - extract( hour from start_date)) as hour from event join monhr where (event.user_id = monhr.user_id) and monhr.month='April' group by user_id);"
+  +"UPDATE monhr set hr = (select hour from totalhr where user_id=1) where user_id=1 AND month='April';"
+  +"UPDATE monhr set hr = (select hour from totalhr where user_id=3) where user_id=3 AND month='April';"
+  +"UPDATE monhr set hr = (select hour from totalhr where user_id=4) where user_id=4 AND month='April';"
+  +"DROP VIEW totalhr;";
+  connection.query(sql,[6,1] ,function(err, result) {
+      if (err) {
+        return res.status(500).json({
+          title: 'An error occurred updating the calendar hour data',
+          error: err
+        });
+      }
+      else {
+        return res.status(200).json({
+          result: result
+        });
+      }
+    });
+}

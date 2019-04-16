@@ -10,7 +10,8 @@ module.exports = {
       host     : 'localhost',
       user     : 'root',
       password : 'password',
-      database : 'p2'
+      database : 'p2',
+      multipleStatements: true
     });
 
     connection.connect(function(err) {

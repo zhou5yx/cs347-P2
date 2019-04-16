@@ -119,6 +119,10 @@ export class AdminComponent implements OnInit {
 
   OnSelect(value){
     this.selectedMon = value;
+    this.calendarService.UpdateHours().subscribe(
+      (result)=> {
+      }
+    );
     this.accountService.getHoursForMonth(value).subscribe(
       (result) => {
         this.Mhr = result;
@@ -129,12 +133,12 @@ export class AdminComponent implements OnInit {
   generateSchedule() {
     this.accountService.generateSchedule().subscribe(
       (result) => {
-        console.log(result);
       }
     );
   }
 
   ngOnChanges(){
+
   }
 
     }

@@ -51,4 +51,17 @@ export class CalendarService {
       ));
   }
 
+  UpdateHours(){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.put('http://localhost:3000/api/calendar/hr/?token='
+      + localStorage.getItem('token'), {headers: headers})
+      .pipe(
+        map((response: Response) => {return response},
+        catchError((error: Response) => throwError(error))
+      ));
+
+  }
+
 }

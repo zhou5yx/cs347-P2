@@ -61,6 +61,14 @@ export class CalendarComponent implements OnInit {
           this.fillEvents(new Date(year,month,1).getDay(),month,year);
         });
     }
+    else if(this.person && this.person.role_id === 2)
+    {
+      console.log(this.person);
+      this.calendarService.getCourseEvents(this.person.course_id, month).subscribe((events) => {
+        this.events = events;
+        this.fillEvents(new Date(year,month,1).getDay(),month,year);
+      });
+    }
     // get the number of days this month
     const numDays = new Date(year, month+1, 0).getDate();
     // get number of days last month

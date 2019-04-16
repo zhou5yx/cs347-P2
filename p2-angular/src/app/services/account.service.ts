@@ -135,8 +135,8 @@ export class AccountService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post('http://localhost:3000/api/user/schedule?'
-      + 'token=' + localStorage.getItem('token')),
+    return this.http.post('http://localhost:3000/api/user/schedule'
+      + '?token=' + localStorage.getItem('token'),
       body, {headers: headers})
       .pipe(
         map((response: Response) => {return response},
