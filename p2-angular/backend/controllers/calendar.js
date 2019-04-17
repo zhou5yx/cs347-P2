@@ -9,7 +9,7 @@ exports.getCalendarEventProfileData = function(req, res, next) {
   var connection = db.connect();
   var month = parseInt(req.query.month) + 1;
   var numDays = new Date(2019, month, 0).getDate();
-  var sql = "SELECT * FROM event WHERE (user_id = " + req.params.id + " OR requestee="+ req.params.id+ ") AND "
+  var sql = "SELECT * FROM event WHERE (user_id = " + req.params.id + " OR requestee="+ req.params.id+ " OR type='cover') AND "
     + "(start_date BETWEEN CAST('2019-" + month + "-01' AS DATE) AND "
     + "CAST('2019-" + month + "-" + numDays + "' AS DATE) OR "
     + "end_date BETWEEN CAST('2019-" + month + "-01' AS DATE) AND "
@@ -103,11 +103,9 @@ exports.UpdateHours = function(req, res, next){
   var connection = db.connect();
   var sql = "DROP VIEW IF EXISTS totalhr;"
   + "CREATE VIEW totalhr AS (SELECT distinct event.user_id, MONTHNAME(end_date) as mon, sum(extract(hour from end_date) - extract( hour from start_date)) as hour from event join monhr where (event.user_id = monhr.user_id) and monhr.month='April' group by user_id);"
-  +"UPDATE monhr set hr = (select hour from totalhr where user_id=1) where user_id=1 AND month='April';"
-  +"UPDATE monhr set hr = (select hour from totalhr where user_id=3) where user_id=3 AND month='April';"
-  +"UPDATE monhr set hr = (select hour from totalhr where user_id=4) where user_id=4 AND month='April';"
+  +"update monhr set hr = (select hour from test where test.user_id = monhr.user_id) where monhr.month='April';"
   +"DROP VIEW totalhr;";
-  connection.query(sql,[6,1] ,function(err, result) {
+  connection.query(sql,[4,1] ,function(err, result) {
       if (err) {
         return res.status(500).json({
           title: 'An error occurred updating the calendar hour data',
