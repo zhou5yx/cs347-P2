@@ -20,8 +20,9 @@ exports.getUserInfo = function(req, res, next) {
 
 exports.getAllUser = function(req, res, next) {
   var connection = db.connect();
-  connection.query('SELECT * FROM user WHERE role_id =1',
+  connection.query('SELECT * FROM user AS u LEFT JOIN avail AS a ON u.id = a.user_id WHERE u.role_id = 1',
   function(err, result) {
+    console.log(result);
     if (err) return res.status(404).json({
       message: 'Users not found'
     });

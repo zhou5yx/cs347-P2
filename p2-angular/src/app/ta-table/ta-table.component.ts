@@ -50,6 +50,7 @@ export class TaTableComponent implements OnInit {
 
   ngOnInit() {
     this.accountService.getAllUser().subscribe((result) => {
+      console.log(result);
       this.fakeTA = result;
       this.dataSource =   new MatTableDataSource(this.fakeTA);
       this.dataSource.sort = this.sort;

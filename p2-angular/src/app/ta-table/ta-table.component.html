@@ -48,9 +48,12 @@
                            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                       <div class="example-element-description">
                         <h3>Availability</h3>
-                        <li>Monday 3-9pm</li>
-                        <li>Tuesday 3-6pm</li>
-                        <li>Sunday 1-3pm</li>
+                        <li *ngIf="element.mon_start && element.mon_start > 0">Monday: {{ element.mon_start }} - {{ element.mon_end }}pm</li>
+                        <li *ngIf="element.tues_start && element.tues_start > 0">Tuesday: {{ element.tues_start }} - {{ element.tues_end }}pm</li>
+                        <li *ngIf="element.wed_start && element.wed_start > 0">Wednesday: {{ element.wed_start }} - {{ element.wed_end }}pm</li>
+                        <li *ngIf="element.thurs_start && element.thurs_start > 0">Thursday: {{ element.thurs_start }} - {{ element.thurs_end }}pm</li>
+                        <li *ngIf="element.fri_start && element.fri_start > 0">Friday: {{ element.fri_start }} - {{ element.fri_end }}pm</li>
+                        <li *ngIf="element.sun_start && element.sun_start > 0">Sunday: {{ element.sun_start }} - {{ element.sun_end }}pm</li>
                       </div>
                     </div>
                   </td>
