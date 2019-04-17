@@ -83,10 +83,10 @@ INSERT INTO monhr VALUES(id, 4, "April", NULL);
 
 
 
-/**INSERT INTO event VALUES (id, 4, 1, NULL, 'shift','2019-04-10 19:00:00','2019-03-10 23:00:00',159,250);
-INSERT INTO event VALUES (id, 4, 1, NULL, 'shift','2019-04-18 21:00:00','2019-03-18 23:00:00',159,250);
-INSERT INTO event VALUES (id, 4, 1,NULL, 'shift','2019-04-26 17:00:00','2019-03-26 19:00:00',159,250);
-**/
+INSERT INTO event VALUES (id, 1, 1, NULL, 'shift','2019-03-10 19:00:00','2019-03-10 23:00:00',159,250);
+INSERT INTO event VALUES (id, 3, 3, NULL, 'shift','2019-03-18 21:00:00','2019-03-18 23:00:00',149,250);
+INSERT INTO event VALUES (id, 4, 4,NULL, 'shift','2019-03-26 17:00:00','2019-03-26 19:00:00',159,250);
+
 UPDATE event SET requester=user_id WHERE type = 'shift';
 
 INSERT INTO session VALUES(id, 'test','2019-03-16 17:00:00', '2019-03-16 19:00:00', 159);
